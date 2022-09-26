@@ -1,0 +1,89 @@
+.avatar-sm {
+    height: 2rem;
+    width: 2rem
+}
+
+div.dataTables_wrapper div.dataTables_filter {
+    text-align: right;
+    margin-bottom: 1em;
+}
+
+@media (max-width:767px) {
+    div.dataTables_wrapper div.dataTables_filter {
+        text-align: center
+    }
+}
+
+div.dataTables_wrapper div.dataTables_filter input {
+    margin-left: .5em;
+    margin-right: 0
+}
+
+.table.dataTable.dtr-inline.collapsed>tbody>tr>td,
+table.dataTable.dtr-inline.collapsed>tbody>tr>td {
+    position: relative
+}
+
+.table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control,
+table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control {
+    padding-left: 30px
+}
+
+.table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before,
+table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before {
+    top: 50%;
+    left: 5px;
+    height: 14px;
+    width: 14px;
+    margin-top: -9px;
+    display: block;
+    position: absolute;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 14px;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    text-align: center;
+    text-indent: 0 !important;
+    line-height: 14px;
+    content: '+';
+    background-color: #5156be
+}
+
+.table.dataTable>thead>tr>td:not(.sorting_disabled),
+.table.dataTable>thead>tr>th:not(.sorting_disabled),
+table.dataTable>thead>tr>td:not(.sorting_disabled),
+table.dataTable>thead>tr>th:not(.sorting_disabled) {
+    padding-right: 30px;
+    padding-left: 12px
+}
+
+.table.dataTable>thead .sorting::before,
+.table.dataTable>thead .sorting_asc::before,
+.table.dataTable>thead .sorting_asc_disabled::before,
+.table.dataTable>thead .sorting_desc::before,
+.table.dataTable>thead .sorting_desc_disabled::before,
+table.dataTable>thead .sorting::before,
+table.dataTable>thead .sorting_asc::before,
+table.dataTable>thead .sorting_asc_disabled::before,
+table.dataTable>thead .sorting_desc::before,
+table.dataTable>thead .sorting_desc_disabled::before {
+    right: 1em;
+    left: auto
+}
+
+.table.dataTable>thead .sorting::after,
+.table.dataTable>thead .sorting_asc::after,
+.table.dataTable>thead .sorting_asc_disabled::after,
+.table.dataTable>thead .sorting_desc::after,
+.table.dataTable>thead .sorting_desc_disabled::after,
+table.dataTable>thead .sorting::after,
+table.dataTable>thead .sorting_asc::after,
+table.dataTable>thead .sorting_asc_disabled::after,
+table.dataTable>thead .sorting_desc::after,
+table.dataTable>thead .sorting_desc_disabled::after {
+    right: .5em;
+    left: auto
+}
+
+/*# sourceMappingURL=app.min.css.map */
