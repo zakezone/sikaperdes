@@ -2,6 +2,10 @@
 
 namespace Config;
 
+use App\Filters\FilterJWT;
+use App\Filters\Deletedatasie;
+use App\Filters\Authusersie;
+use App\Filters\Noauthsie;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
@@ -23,6 +27,10 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
+        'noauthsie' => Noauthsie::class,
+        'authusersie' => Authusersie::class,
+        'deletedatasie' => Deletedatasie::class,
+        'otentikasi' => FilterJWT::class
     ];
 
     /**
