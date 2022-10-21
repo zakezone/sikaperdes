@@ -92,7 +92,6 @@
                                 <div class="col-sm-9">
                                     <div class="form-group">
                                         <label for="image">Gambar yang akan diupload</label>
-                                        <input type="hidden" name="imagelama" value="<?= htmlspecialchars($user['image'], ENT_QUOTES); ?>">
                                         <input type="file" class="form-control mb-3" id="image" name="image" onchange="previewImgUser()">
                                         <small class="form-text text-danger"><?= $validation->getError('image'); ?></small>
                                         <button type="submit" name="submit" class="btn btn-primary">Edit Profile</button>

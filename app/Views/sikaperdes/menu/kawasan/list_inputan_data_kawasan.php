@@ -32,6 +32,7 @@
                 <form class="needs-validation" novalidate action="" method="post" enctype="multipart/form-data">
                     <input type="hidden" class="txt_csrfname_sie" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
                     <div class="row">
+                        <?= session()->getFlashdata('message'); ?>
                         <div class="col-lg-2 col-md-2 mb-2">
                             <label for="statusfilt" class="form-label font-size-13 text-muted">Status</label>
                             <select class="form-select" name="statusfilt" id="statusfilt">
@@ -43,7 +44,6 @@
                         </div>
                     </div>
                     <div class="table-responsive">
-                        <?= session()->getFlashdata('message'); ?>
                         <div class="table-responsive mt-4 mb-4">
                             <table class="table align-middle datatable dt-responsive table-check nowrap" style="border-collapse: collapse; border-spacing: 0 8px; width: 100%;" id="datatable">
                                 <thead>

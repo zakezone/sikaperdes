@@ -101,39 +101,26 @@ class Data extends BaseController
             $img_produk_unggulan = "-";
         }
 
+        $pks = $this->db->query("SELECT `potensi_kerjasama_pihak3` FROM `kawasan_bank_data` WHERE `kd_kab` = $kd_kab AND `kd_kawasan` = $kd_kawasan")->getRowArray();
+        if ($pks["potensi_kerjasama_pihak3"] != null) {
+            $potensi_kerjasama_pihak3 = explode("^", $pks["potensi_kerjasama_pihak3"]);
+        } else {
+            $potensi_kerjasama_pihak3 = "-";
+        }
+
         $data = [
             'title' => 'Verifikasi',
             'user' => $this->db->table('sikaperdes_primary_user')->getWhere(['kd_login' => $this->session->get('kd_login_sikaperdes')])->getRowArray(),
             'page_title' => view('sikaperdes/layout/user/content-page-title', ['title' => 'VERIFIKASI DATA KAWASAN PERDESAAN "' . $whois['nm_kawasan'] . '"', 'li_1' => 'Kawasan', 'li_2' => 'Verifikasi', 'li_3' => 'Data']),
             'nm_kawasan' => $whois['nm_kawasan'],
             'dokumen' => $this->db->table('kawasan_bank_data')->select('*')->distinct()->getWhere(['kd_kawasan' => $kd_kawasan, 'kd_kab' => $kd_kab])->getRowArray(),
+            'dokumen_sk' => $this->db->table('kawasan_bank_data')->select('*')->getWhere(['kd_kawasan' => $kd_kawasan, 'kd_kab' => $kd_kab])->getRowArray(),
             'potensi_kawasan' => $potensi_kawasan,
             'produk_unggulan' => $produk_unggulan,
             'img_produk_unggulan' => $img_produk_unggulan,
+            'potensi_kerjasama_pihak3' => $potensi_kerjasama_pihak3,
             'bank_data' => $this->db->table('kawasan_bank_data')->getWhere(['kd_kawasan' => $kd_kawasan, 'kd_kab' => $kd_kab])->getResultArray(),
         ];
-
-        if (isset($_POST['submit'])) {
-            $this->validation->setRule('status', 'Status', 'trim|required', ['required' => 'Status laporan belum terindex']);
-            if (!$this->validation->withRequest($this->request)->run()) {
-                return redirect()->to('user/menu-admin/verifikasi_review/' . $kd_kab . '/' . $kd_kawasan)->withInput();
-            } else {
-                $update = [
-                    'verifikasi' => $this->request->getVar('status'),
-                    'tgl_verifikasi' => time(),
-                ];
-                $verif = $this->db->table('kawasan_bank_data');
-                $verif->where('kd_kab', $kd_kab);
-                $verif->where('kd_kawasan', $kd_kawasan);
-                $verif->update($update);
-                // if (isset($_POST['permendagri_id'])) {
-                //     $input = $this->request->getVar();
-                //     $this->Data_kawasan->Notifikasi($input);
-                // }
-                $this->session->setFlashdata('message', '<div class="alert alert-success alert-dismissible alert-label-icon label-arrow fade show" role="alert"><i class="mdi mdi-check-all label-icon"></i>Verifikasi dokumen <b>berhasil</b> dikirim.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>');
-                return redirect()->to('user/menu-admin/verifikasi_data');
-            }
-        }
 
         return view('sikaperdes/data/kawasan/verifikasi_data_kawasan', $data);
     }

@@ -726,6 +726,142 @@
         });
     </script>
 
+<?php elseif ($request->uri->getSegment(3) == "input_data_kawasan" || $request->uri->getSegment(3) == "revisi_review") : ?>
+    <!-- choices js -->
+    <script src="<?= base_url('minia/libs/choices.js/public/assets/scripts/choices.min.js') ?>"></script>
+    <script src="<?= base_url('minia/js/pages/form-advanceddatabumdes.init.js') ?>"></script>
+    <!-- select2 -->
+    <script src="<?= base_url('minia/libs/choices.js/public/assets/scripts/select2.js') ?>"></script>
+
+    <script>
+        function previewImgUser0() {
+            const image = document.querySelector('#image0');
+            const imgPreview = document.querySelector('.img-preview0');
+            const fileImage = new FileReader();
+            fileImage.readAsDataURL(image.files[0]);
+            fileImage.onload = function(e) {
+                imgPreview.src = e.target.result;
+            }
+        }
+
+        function previewImgUser1() {
+            const image = document.querySelector('#image1');
+            const imgPreview = document.querySelector('.img-preview1');
+            const fileImage = new FileReader();
+            fileImage.readAsDataURL(image.files[0]);
+            fileImage.onload = function(e) {
+                imgPreview.src = e.target.result;
+            }
+        }
+
+        function previewImgUser2() {
+            const image = document.querySelector('#image2');
+            const imgPreview = document.querySelector('.img-preview2');
+            const fileImage = new FileReader();
+            fileImage.readAsDataURL(image.files[0]);
+            fileImage.onload = function(e) {
+                imgPreview.src = e.target.result;
+            }
+        }
+
+        function previewImgUser3() {
+            const image = document.querySelector('#image3');
+            const imgPreview = document.querySelector('.img-preview3');
+            const fileImage = new FileReader();
+            fileImage.readAsDataURL(image.files[0]);
+            fileImage.onload = function(e) {
+                imgPreview.src = e.target.result;
+            }
+        }
+
+        function previewImgUser4() {
+            const image = document.querySelector('#image4');
+            const imgPreview = document.querySelector('.img-preview4');
+            const fileImage = new FileReader();
+            fileImage.readAsDataURL(image.files[0]);
+            fileImage.onload = function(e) {
+                imgPreview.src = e.target.result;
+            }
+        }
+
+        function previewImgUser5() {
+            const image = document.querySelector('#image5');
+            const imgPreview = document.querySelector('.img-preview5');
+            const fileImage = new FileReader();
+            fileImage.readAsDataURL(image.files[0]);
+            fileImage.onload = function(e) {
+                imgPreview.src = e.target.result;
+            }
+        }
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var csrfName = $('.txt_csrfname_sie').attr('name'); // CSRF Token name
+            var csrfHash = $('.txt_csrfname_sie').val(); // CSRF hash
+            $('#tahun_pembentukan').select2({
+                placeholder: "Tahun Pembentukan",
+            })
+            <?php if ($session->get('role_id_sikaperdes') == '1') : ?>
+                $('#filtkabupaten').select2({
+                    placeholder: "Cari Kabupaten",
+                })
+            <?php endif; ?>
+            <?php if ($session->get('role_id_sikaperdes') == '1' || $session->get('role_id_sikaperdes') == '3' || $session->get('role_id_sikaperdes') == '3') : ?>
+                $('#filtkecamatan').select2({
+                    placeholder: "Cari Kecamatan",
+                    ajax: {
+                        <?php if ($session->get('role_id_sikaperdes') == '1') : ?>
+                            url: "<?= base_url('user/menu-admin/ajaxfiltkecamatan') ?>"
+                        <?php elseif ($session->get('role_id_sikaperdes') == '3') : ?>
+                            url: "<?= base_url('user/menu-pemkab/ajaxfiltkecamatan') ?>"
+                        <?php endif; ?>,
+                        dataType: 'json',
+                        delay: 250,
+                        data: function(data) {
+                            return {
+                                filtkabupaten: $('#filtkabupaten').val(),
+                                searchTerm: data.term,
+                                [csrfName]: csrfHash
+                            };
+                        },
+                        processResults: function(data) {
+                            return {
+                                results: data.data,
+                            };
+                        },
+                    }
+                });
+            <?php endif; ?>
+            <?php if ($session->get('role_id_sikaperdes') == '1' || $session->get('role_id_sikaperdes') == '3') : ?>
+                $('#filtkeldesa').select2({
+                    placeholder: "Cari Desa",
+                    ajax: {
+                        <?php if ($session->get('role_id_sikaperdes') == '1') : ?>
+                            url: "<?= base_url('user/menu-admin/ajaxfiltdesa') ?>"
+                        <?php elseif ($session->get('role_id_sikaperdes') == '3') : ?>
+                            url: "<?= base_url('user/menu-pemkab/ajaxfiltdesa') ?>"
+                        <?php endif; ?>,
+                        dataType: 'json',
+                        delay: 250,
+                        data: function(data) {
+                            return {
+                                filtkecamatan: $('#filtkecamatan').val(),
+                                searchTerm: data.term,
+                                [csrfName]: csrfHash
+                            };
+                        },
+                        processResults: function(data) {
+                            return {
+                                results: data.data,
+                            };
+                        },
+                    }
+                })
+            <?php endif; ?>
+        });
+    </script>
+
 <?php elseif ($request->uri->getSegment(2) == "data" && $request->uri->getSegment(3) == "kawasan") : ?>
     <script src="<?= base_url('minia/libs/choices.js/public/assets/scripts/select2.js') ?>"></script>
     <script>
@@ -818,13 +954,299 @@
         }
     </script>
 
-<?php elseif ($request->uri->getSegment(2) == "data-dispermades" && $request->uri->getSegment(3) == "download") : ?>
-    <!-- Required datatable js -->
-    <script src="<?= base_url('minia/libs/datatables.net/js/jquery.dataTablesAP.min.js'); ?>"></script>
-    <script src="<?= base_url('minia/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js'); ?>"></script>
-    <!-- Responsive examples -->
-    <script src="<?= base_url('minia/js/pages/datatable-pages.init.js'); ?>"></script>
+<?php elseif ($request->uri->getSegment(3) == "dashboard") : ?>
+    <script src="<?= base_url(); ?>/highchart/code/highcharts.js"></script>
+    <script src="<?= base_url(); ?>/highchart/code/highcharts-more.js"></script>
+    <script src="<?= base_url(); ?>/highchart/code/highcharts-3d.js"></script>
+    <script src="<?= base_url(); ?>/highchart/code/modules/data.js"></script>
+    <script src="<?= base_url(); ?>/highchart/code/modules/exporting.js"></script>
+    <script src="<?= base_url(); ?>/highchart/code/modules/accessibility.js"></script>
+    <script>
+        Highcharts.setOptions({
+            lang: {
+                decimalPoint: ',',
+                thousandsSep: '.'
+            },
+            colors: Highcharts.getOptions().colors.map(function(color) {
+                return {
+                    radialGradient: {
+                        cx: 0.5,
+                        cy: 0.3,
+                        r: 0.7
+                    },
+                    stops: [
+                        [0, color],
+                        [1, Highcharts.color(color).brighten(-0.3).get('rgb')] // darken
+                    ]
+                };
+            })
+        });
 
+        Highcharts.chart('klasifikasi_kawasan', {
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                backgroundColor: 'rgba(0,0,0,0)',
+                type: 'pie'
+            },
+            title: {
+                text: 'BERDASARKAN TEMA KAWASAN'
+            },
+            subtitle: {
+                text: 'Tahun <?= date('Y'); ?>'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.y:,.0f}</b>'
+            },
+            accessibility: {
+                point: {
+                    valueSuffix: ''
+                }
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.y:,.0f}',
+                        connectorColor: 'silver'
+                    }
+                }
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: 'Total',
+                data: [{
+                        name: 'PERTANIAN TANAMAN PANGAN',
+                        y: <?= $klasifikasi_ptp ?>
+                    },
+                    {
+                        name: 'WISATA',
+                        y: <?= $klasifikasi_wisata ?>
+                    },
+                    {
+                        name: 'PERKEBUNAN',
+                        y: <?= $klasifikasi_perkebunan ?>
+                    },
+                    {
+                        name: 'PERIKANAN',
+                        y: <?= $klasifikasi_perikanan ?>
+                    },
+                    {
+                        name: 'PETERNAKAN',
+                        y: <?= $klasifikasi_peternakan ?>
+                    },
+                    {
+                        name: 'INDUSTRI RUMAHAN',
+                        y: <?= $klasifikasi_peternakan ?>
+                    },
+                ]
+            }]
+        });
+
+        Highcharts.chart('agregat_tahun_pembentukan', {
+            chart: {
+                backgroundColor: 'rgba(0,0,0,0)',
+                type: 'column',
+                options3d: {
+                    enabled: true,
+                    alpha: 10,
+                    beta: 25,
+                    depth: 70
+                }
+            },
+            title: {
+                text: 'BERDASARKAN TAHUN PEMBENTUKAN'
+            },
+            subtitle: {
+                text: 'Agregat Tahunan'
+            },
+            xAxis: {
+                categories: [
+                    <?php for ($tahun = 2016; $tahun <= date('Y'); $tahun++) : ?>
+                        <?= $tahun; ?>,
+                    <?php endfor; ?>
+                ]
+            },
+            yAxis: {
+                title: {
+                    text: 'Total Kawasan'
+                },
+                labels: {
+                    formatter: function() {
+                        return Highcharts.numberFormat(Math.abs(this.value), 0);
+                    }
+                },
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: 'Total Kawasan',
+                type: 'column',
+                data: [<?= $agregat_kp2016 != 0 ? $agregat_kp2016 : 0 ?>, <?= $agregat_kp2017 != 0 ? $agregat_kp2017 : 0 ?>, <?= $agregat_kp2018 != 0 ? $agregat_kp2018 : 0 ?>, <?= $agregat_kp2019 != 0 ? $agregat_kp2019 : 0 ?>, <?= $agregat_kp2020 != 0 ? $agregat_kp2020 : 0 ?>, <?= $agregat_kp2021 != 0 ? $agregat_kp2021 : 0 ?>, <?= $agregat_kp2022 != 0 ? $agregat_kp2022 : 0 ?>, <?= $agregat_kp2023 != 0 ? $agregat_kp2023 : null ?>, <?= $agregat_kp2024 != 0 ? $agregat_kp2024 : null ?>, <?= $agregat_kp2025 != 0 ? $agregat_kp2025 : null ?>],
+                showInLegend: false,
+                // dataLabels: {
+                //     enabled: true,
+                //     format: '{point.y:,.0f}'
+                // },
+            }]
+        });
+
+        Highcharts.chart('regulasi_tk_kawasan', {
+            chart: {
+                backgroundColor: 'rgba(0,0,0,0)',
+                type: 'bar'
+            },
+            title: {
+                text: 'BERDASARKAN REGULASI TK KAWASAN'
+            },
+            subtitle: {
+                text: 'Tahun <?= date('Y'); ?>'
+            },
+            xAxis: {
+                categories: ['SK Lokasi Kawasan', 'SK TKPKP Kawasan', 'PERBUB RPKP'],
+                title: {
+                    text: null
+                }
+            },
+            yAxis: [{
+                min: 0,
+                title: {
+                    text: 'Total',
+                    align: 'high'
+                },
+                labels: {
+                    formatter: function() {
+                        return Highcharts.numberFormat(Math.abs(this.value), 0);
+                    }
+                }
+            }],
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        formatter: function() {
+                            return Highcharts.numberFormat(Math.abs(this.y), 0);
+                        },
+                        enabled: true
+                    }
+                }
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: 'Sudah',
+                color: 'cyan',
+                data: [<?= $sk_lokasi_kawasan ?>, <?= $sk_tkpkp_kawasan ?>, <?= $perbup_rpkp ?>],
+
+                showInLegend: true,
+            }, {
+                name: 'Belum',
+                color: 'tomato',
+                data: [<?= $sk_lokasi_kawasan_belum ?>, <?= $sk_tkpkp_kawasan_belum ?>, <?= $perbup_rpkp_belum ?>],
+
+                showInLegend: true,
+            }]
+        });
+
+        Highcharts.chart('regulasi_tk_kabupaten', {
+            chart: {
+                backgroundColor: 'rgba(0,0,0,0)',
+                type: 'bar'
+            },
+            title: {
+                text: 'BERDASARKAN REGULASI TK KABUPATEN'
+            },
+            subtitle: {
+                text: 'Tahun <?= date('Y'); ?>'
+            },
+            xAxis: {
+                categories: ['SK TKPKP Kabupaten', 'PERBUP PKP', 'PERDA PKP'],
+                title: {
+                    text: null
+                }
+            },
+            yAxis: [{
+                min: 0,
+                title: {
+                    text: 'Total',
+                    align: 'high'
+                },
+                labels: {
+                    formatter: function() {
+                        return Highcharts.numberFormat(Math.abs(this.value), 0);
+                    }
+                }
+            }],
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        formatter: function() {
+                            return Highcharts.numberFormat(Math.abs(this.y), 0);
+                        },
+                        enabled: true
+                    }
+                }
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: 'Sudah',
+                data: [<?= $perda_kab_pembangunan ?>, <?= $perbup_pembangunan ?>, <?= $sk_tkpkp_kab_pembangunan ?>],
+
+                showInLegend: true,
+            }, {
+                name: 'Belum',
+                data: [<?= $perda_kab_pembangunan_belum ?>, <?= $perbup_pembangunan_belum ?>, <?= $sk_tkpkp_kab_pembangunan_belum ?>],
+
+                showInLegend: true,
+            }]
+        });
+
+        Highcharts.chart('regulasi_tk_kawasan_perkabupaten', {
+            chart: {
+                backgroundColor: 'rgba(0,0,0,0)'
+            },
+            title: {
+                text: 'BERDASARKAN JUMLAH KAWASAN PERKABUPATEN'
+            },
+            subtitle: {
+                text: 'Tahun <?= date('Y'); ?>'
+            },
+            xAxis: {
+                categories: ['Cilacap', 'Banyumas', 'Purbalingga', 'Banjarnegara', 'Kebumen', 'Purworejo', 'Wonosobo', 'Magelang', 'Boyolali', 'Klaten', 'Sukoharjo', 'Wonogiri', 'Karanganyar', 'Sragen', 'Grobogan', 'Blora', 'Rembang', 'Pati', 'Kudus', 'Jepara', 'Demak', 'Semarang', 'Temanggung', 'Kendal', 'Batang', 'Pekalongan', 'Pemalang', 'Tegal', 'Brebes']
+            },
+            yAxis: {
+                title: {
+                    text: 'Total'
+                },
+                labels: {
+                    formatter: function() {
+                        return Highcharts.numberFormat(Math.abs(this.value), 0);
+                    }
+                },
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: 'Jumlah KP',
+                type: 'column',
+                data: [<?= $kp_cilacap ?>, <?= $kp_banyumas ?>, <?= $kp_purbalingga ?>, <?= $kp_banjarnegara ?>, <?= $kp_kebumen ?>, <?= $kp_purworejo ?>, <?= $kp_wonosobo ?>, <?= $kp_magelang ?>, <?= $kp_boyolali ?>, <?= $kp_klaten ?>, <?= $kp_sukoharjo ?>, <?= $kp_wonogiri ?>, <?= $kp_karanganyar ?>, <?= $kp_sragen ?>, <?= $kp_grobogan ?>, <?= $kp_blora ?>, <?= $kp_rembang ?>, <?= $kp_pati ?>, <?= $kp_kudus ?>, <?= $kp_jepara ?>, <?= $kp_demak ?>, <?= $kp_semarang ?>, <?= $kp_temanggung ?>, <?= $kp_kendal ?>, <?= $kp_batang ?>, <?= $kp_pekalongan ?>, <?= $kp_pemalang ?>, <?= $kp_tegal ?>, <?= $kp_brebes ?>],
+                showInLegend: false,
+                // dataLabels: {
+                //     enabled: true,
+                //     format: 'Rp. {point.y:,.0f}'
+                // },
+            }]
+        });
+    </script>
 <?php endif; ?>
 
 <script>

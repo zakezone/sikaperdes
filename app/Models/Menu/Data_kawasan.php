@@ -91,4 +91,475 @@ class Data_kawasan extends Model
         $query = $this->query($sQuery)->getRowArray();
         return $query;
     }
+
+    public function inputData($input, $img_produk_unggulan1, $img_produk_unggulan2, $img_produk_unggulan3, $img_produk_unggulan4, $img_produk_unggulan5, $img_peta_delimitasi)
+    {
+        $baru = $this->db->table('kawasan_bank_data')->select('nm_kawasan')->getWhere(['kd_kab' => $input['filtkabupaten'], 'kd_kawasan' => $input['id_kawasan']])->getRowArray();
+
+        if (isset($baru)) {
+            $insertdatabase = $this->db->table('kawasan_bank_data');
+            $updatedatabase = $this->db->table('kawasan_bank_data');
+            $nm_kawasan = $this->db->table('kawasan_id')->select('nm_kawasan')->where('id', $input['id_kawasan'])->get()->getRowArray();
+            $nm_kab = $this->db->table('filt_kabupaten_dispermadesdukcapil')->select('akses')->where('kd_wilayah', $input['filtkabupaten'])->get()->getRowArray();
+            $nm_kec = $this->db->table('filt_kecamatan_dispermadesdukcapil')->select('akses')->where('kd_wilayah', $input['filtkecamatan'])->get()->getRowArray();
+            $nm_des = $this->db->table('filt_keldesa_dispermadesdukcapil')->select('akses')->where('kd_wilayah', $input['filtkeldesa'])->get()->getRowArray();
+
+            $kumpulan_potensi_kawasan = [
+                $input['potensi_kawasan0'],
+                $input['potensi_kawasan1'],
+                $input['potensi_kawasan2'],
+                $input['potensi_kawasan3'],
+                $input['potensi_kawasan4'],
+                $input['potensi_kawasan5'],
+                $input['potensi_kawasan6'],
+                $input['potensi_kawasan7'],
+                $input['potensi_kawasan8'],
+                $input['potensi_kawasan9'],
+            ];
+            $potensi_kawasan = implode("^", $kumpulan_potensi_kawasan);
+            $updatedatabase->set('potensi_kawasan', $potensi_kawasan);
+
+            $kumpulan_produk_unggulan = [
+                $input['produk_unggulan0'],
+                $input['produk_unggulan1'],
+                $input['produk_unggulan2'],
+                $input['produk_unggulan3'],
+                $input['produk_unggulan4'],
+                $input['produk_unggulan5'],
+                $input['produk_unggulan6'],
+                $input['produk_unggulan7'],
+                $input['produk_unggulan8'],
+                $input['produk_unggulan9'],
+            ];
+            $produk_unggulan = implode("^", $kumpulan_produk_unggulan);
+            $updatedatabase->set('produk_unggulan', $produk_unggulan);
+
+            $kumpulan_potensi_kerjasama = [
+                $input['potensi_kerjasama0'],
+                $input['potensi_kerjasama1'],
+                $input['potensi_kerjasama2'],
+                $input['potensi_kerjasama3'],
+                $input['potensi_kerjasama4'],
+                $input['potensi_kerjasama5'],
+                $input['potensi_kerjasama6'],
+                $input['potensi_kerjasama7'],
+                $input['potensi_kerjasama8'],
+                $input['potensi_kerjasama9'],
+            ];
+            $potensi_kerjasama_pihak3 = implode("^", $kumpulan_potensi_kerjasama);
+            $updatedatabase->set('potensi_kerjasama_pihak3', $potensi_kerjasama_pihak3);
+
+            $oldfile = $this->db->table('kawasan_bank_data')->getWhere(['kd_kab' => $input['filtkabupaten'], 'kd_kawasan' => $input['id_kawasan']])->getRowArray();
+            $oldfileimgproduk = explode("^", $oldfile["img_produk_unggulan"]);
+
+            $nmfile1 = $img_produk_unggulan1->getRandomName();
+            $old_file1 = $oldfileimgproduk[0];
+            unlink('img/uploadfile/produk_unggulan/' . $old_file1);
+            $img_produk_unggulan1->move('img/uploadfile/produk_unggulan', $nmfile1);
+            if ($img_produk_unggulan2 != '') {
+                $nmfile2 = $img_produk_unggulan2->getRandomName();
+                if ($oldfileimgproduk[1] != '') {
+                    $old_file2 = $oldfileimgproduk[1];
+                    unlink('img/uploadfile/produk_unggulan/' . $old_file2);
+                }
+                $img_produk_unggulan2->move('img/uploadfile/produk_unggulan', $nmfile2);
+            } else {
+                $nmfile2 = '';
+                if ($oldfileimgproduk[1] != '') {
+                    $old_file2 = $oldfileimgproduk[1];
+                    unlink('img/uploadfile/produk_unggulan/' . $old_file2);
+                }
+            }
+            if ($img_produk_unggulan3 != '') {
+                $nmfile3 = $img_produk_unggulan3->getRandomName();
+                if ($oldfileimgproduk[2] != '') {
+                    $old_file3 = $oldfileimgproduk[2];
+                    unlink('img/uploadfile/produk_unggulan/' . $old_file3);
+                }
+                $img_produk_unggulan3->move('img/uploadfile/produk_unggulan', $nmfile3);
+            } else {
+                $nmfile3 = '';
+                if ($oldfileimgproduk[2] != '') {
+                    $old_file3 = $oldfileimgproduk[2];
+                    unlink('img/uploadfile/produk_unggulan/' . $old_file3);
+                }
+            }
+            if ($img_produk_unggulan4 != '') {
+                $nmfile4 = $img_produk_unggulan4->getRandomName();
+                if ($oldfileimgproduk[3] != '') {
+                    $old_file4 = $oldfileimgproduk[3];
+                    unlink('img/uploadfile/produk_unggulan/' . $old_file4);
+                }
+                $img_produk_unggulan4->move('img/uploadfile/produk_unggulan', $nmfile4);
+            } else {
+                $nmfile4 = '';
+                if ($oldfileimgproduk[3] != '') {
+                    $old_file4 = $oldfileimgproduk[3];
+                    unlink('img/uploadfile/produk_unggulan/' . $old_file4);
+                }
+            }
+            if ($img_produk_unggulan5 != '') {
+                $nmfile5 = $img_produk_unggulan5->getRandomName();
+                if ($oldfileimgproduk[4] != '') {
+                    $old_file5 = $oldfileimgproduk[4];
+                    unlink('img/uploadfile/produk_unggulan/' . $old_file5);
+                }
+                $img_produk_unggulan5->move('img/uploadfile/produk_unggulan', $nmfile5);
+            } else {
+                $nmfile5 = '';
+                if ($oldfileimgproduk[4] != '') {
+                    $old_file5 = $oldfileimgproduk[4];
+                    unlink('img/uploadfile/produk_unggulan/' . $old_file5);
+                }
+            }
+            $gambar_produk_unggulan = [
+                $nmfile1,
+                $nmfile2,
+                $nmfile3,
+                $nmfile4,
+                $nmfile5,
+            ];
+            $img_produk_unggulan = implode("^", $gambar_produk_unggulan);
+            $updatedatabase->set('img_produk_unggulan', $img_produk_unggulan);
+
+            $petadelimitasi = $img_peta_delimitasi->getRandomName();
+            $old_file_peta = $oldfile['img_peta_delimitasi'];
+            unlink('img/uploadfile/peta_delimitasi/' . $old_file_peta);
+            $img_peta_delimitasi->move('img/uploadfile/peta_delimitasi', $petadelimitasi);
+            $updatedatabase->set('img_peta_delimitasi', $petadelimitasi);
+
+            $insert = array(
+                "nm_kab" => $nm_kab['akses'],
+                "kd_kab" => $input['filtkabupaten'],
+                "nm_kec" => $nm_kec['akses'],
+                "kd_kec" => $input['filtkecamatan'],
+                "nm_des" => $nm_des['akses'],
+                "kd_des" => $input['filtkeldesa'],
+                "nm_kawasan" => $nm_kawasan['nm_kawasan'],
+                "kd_kawasan" => $input['id_kawasan'],
+                "potensi_kawasan" => $potensi_kawasan,
+                "sk_lokasi_kawasan	" => $input['sk_lokasi_kawasan'],
+                "sk_tkpkp_kawasan" => $input['sk_tkpkp_kawasan'],
+                "perbup_rpkp" => $input['perbup_rpkp'],
+                "perda_kab_pembangunan" => $input['perda_kab_pembangunan'],
+                "perbup_pembangunan" => $input['perbup_pembangunan'],
+                "sk_tkpkp_kab_pembangunan" => $input['sk_tkpkp_kab_pembangunan'],
+                "produk_unggulan" => $produk_unggulan,
+                "img_produk_unggulan" => $img_produk_unggulan,
+                "img_peta_delimitasi" => $petadelimitasi,
+                "klasifikasi" => $input['jenisklasifikasi'],
+                "potensi_kerjasama_pihak3" => $potensi_kerjasama_pihak3,
+                "keterangan" => $input['keterangan'],
+                "tahun_pembentukan" => $input['tahun_pembentukan'],
+                "verifikasi" => $input['verifikasi'],
+                "tgl_verifikasi" => $input['tgl_verifikasi'],
+                "created" => $input['created'],
+            );
+            $insertdatabase->insert($insert);
+
+            $updatedatabase->set('sk_lokasi_kawasan', $input['sk_lokasi_kawasan']);
+            $updatedatabase->set('sk_tkpkp_kawasan', $input['sk_tkpkp_kawasan']);
+            $updatedatabase->set('perbup_rpkp', $input['perbup_rpkp']);
+            $updatedatabase->set('perda_kab_pembangunan', $input['perda_kab_pembangunan']);
+            $updatedatabase->set('perbup_pembangunan', $input['perbup_pembangunan']);
+            $updatedatabase->set('sk_tkpkp_kab_pembangunan', $input['sk_tkpkp_kab_pembangunan']);
+            $updatedatabase->set('klasifikasi', $input['jenisklasifikasi']);
+            $updatedatabase->set('keterangan', $input['keterangan']);
+            $updatedatabase->set('tahun_pembentukan', $input['tahun_pembentukan']);
+            $updatedatabase->set('verifikasi', $input['verifikasi']);
+            $updatedatabase->set('tgl_verifikasi', $input['tgl_verifikasi']);
+
+            $updatedatabase->where('kd_kab', $input['filtkabupaten']);
+            $updatedatabase->where('kd_kawasan', $input['id_kawasan']);
+            $updatedatabase->update();
+        } else {
+            $builder = $this->db->table('kawasan_bank_data');
+            $nm_kawasan = $this->db->table('kawasan_id')->select('nm_kawasan')->where('id', $input['id_kawasan'])->get()->getRowArray();
+            $nm_kab = $this->db->table('filt_kabupaten_dispermadesdukcapil')->select('akses')->where('kd_wilayah', $input['filtkabupaten'])->get()->getRowArray();
+            $nm_kec = $this->db->table('filt_kecamatan_dispermadesdukcapil')->select('akses')->where('kd_wilayah', $input['filtkecamatan'])->get()->getRowArray();
+            $nm_des = $this->db->table('filt_keldesa_dispermadesdukcapil')->select('akses')->where('kd_wilayah', $input['filtkeldesa'])->get()->getRowArray();
+
+            $kumpulan_potensi_kawasan = [
+                $input['potensi_kawasan0'],
+                $input['potensi_kawasan1'],
+                $input['potensi_kawasan2'],
+                $input['potensi_kawasan3'],
+                $input['potensi_kawasan4'],
+                $input['potensi_kawasan5'],
+                $input['potensi_kawasan6'],
+                $input['potensi_kawasan7'],
+                $input['potensi_kawasan8'],
+                $input['potensi_kawasan9'],
+            ];
+            $potensi_kawasan = implode("^", $kumpulan_potensi_kawasan);
+
+            $kumpulan_produk_unggulan = [
+                $input['produk_unggulan0'],
+                $input['produk_unggulan1'],
+                $input['produk_unggulan2'],
+                $input['produk_unggulan3'],
+                $input['produk_unggulan4'],
+                $input['produk_unggulan5'],
+                $input['produk_unggulan6'],
+                $input['produk_unggulan7'],
+                $input['produk_unggulan8'],
+                $input['produk_unggulan9'],
+            ];
+            $produk_unggulan = implode("^", $kumpulan_produk_unggulan);
+
+            $kumpulan_potensi_kerjasama = [
+                $input['potensi_kerjasama0'],
+                $input['potensi_kerjasama1'],
+                $input['potensi_kerjasama2'],
+                $input['potensi_kerjasama3'],
+                $input['potensi_kerjasama4'],
+                $input['potensi_kerjasama5'],
+                $input['potensi_kerjasama6'],
+                $input['potensi_kerjasama7'],
+                $input['potensi_kerjasama8'],
+                $input['potensi_kerjasama9'],
+            ];
+            $potensi_kerjasama_pihak3 = implode("^", $kumpulan_potensi_kerjasama);
+
+
+            $nmfile1 = $img_produk_unggulan1->getRandomName();
+            $img_produk_unggulan1->move('img/uploadfile/produk_unggulan', $nmfile1);
+            if ($img_produk_unggulan2 != '') {
+                $nmfile2 = $img_produk_unggulan2->getRandomName();
+                $img_produk_unggulan2->move('img/uploadfile/produk_unggulan', $nmfile2);
+            } else {
+                $nmfile2 = '';
+            }
+            if ($img_produk_unggulan3 != '') {
+                $nmfile3 = $img_produk_unggulan3->getRandomName();
+                $img_produk_unggulan3->move('img/uploadfile/produk_unggulan', $nmfile3);
+            } else {
+                $nmfile3 = '';
+            }
+            if ($img_produk_unggulan4 != '') {
+                $nmfile4 = $img_produk_unggulan4->getRandomName();
+                $img_produk_unggulan4->move('img/uploadfile/produk_unggulan', $nmfile4);
+            } else {
+                $nmfile4 = '';
+            }
+            if ($img_produk_unggulan5 != '') {
+                $nmfile5 = $img_produk_unggulan5->getRandomName();
+                $img_produk_unggulan5->move('img/uploadfile/produk_unggulan', $nmfile5);
+            } else {
+                $nmfile5 = '';
+            }
+
+            $petadelimitasi = $img_peta_delimitasi->getRandomName();
+            $img_peta_delimitasi->move('img/uploadfile/peta_delimitasi', $petadelimitasi);
+
+            $gambar_produk_unggulan = [
+                $nmfile1,
+                $nmfile2,
+                $nmfile3,
+                $nmfile4,
+                $nmfile5,
+            ];
+            $img_produk_unggulan = implode("^", $gambar_produk_unggulan);
+
+            $insert = array(
+                "nm_kab" => $nm_kab['akses'],
+                "kd_kab" => $input['filtkabupaten'],
+                "nm_kec" => $nm_kec['akses'],
+                "kd_kec" => $input['filtkecamatan'],
+                "nm_des" => $nm_des['akses'],
+                "kd_des" => $input['filtkeldesa'],
+                "nm_kawasan" => $nm_kawasan['nm_kawasan'],
+                "kd_kawasan" => $input['id_kawasan'],
+                "potensi_kawasan" => $potensi_kawasan,
+                "sk_lokasi_kawasan	" => $input['sk_lokasi_kawasan'],
+                "sk_tkpkp_kawasan" => $input['sk_tkpkp_kawasan'],
+                "perbup_rpkp" => $input['perbup_rpkp'],
+                "perda_kab_pembangunan" => $input['perda_kab_pembangunan'],
+                "perbup_pembangunan" => $input['perbup_pembangunan'],
+                "sk_tkpkp_kab_pembangunan" => $input['sk_tkpkp_kab_pembangunan'],
+                "produk_unggulan" => $produk_unggulan,
+                "img_produk_unggulan" => $img_produk_unggulan,
+                "img_peta_delimitasi" => $petadelimitasi,
+                "klasifikasi" => $input['jenisklasifikasi'],
+                "potensi_kerjasama_pihak3" => $potensi_kerjasama_pihak3,
+                "keterangan" => $input['keterangan'],
+                "tahun_pembentukan" => $input['tahun_pembentukan'],
+                "verifikasi" => $input['verifikasi'],
+                "tgl_verifikasi" => $input['tgl_verifikasi'],
+                "created" => $input['created'],
+            );
+            $builder->insert($insert);
+        }
+    }
+
+    public function revisiData($kd_kab, $kd_kawasan, $input, $img_produk_unggulan1, $img_produk_unggulan2, $img_produk_unggulan3, $img_produk_unggulan4, $img_produk_unggulan5, $img_peta_delimitasi)
+    {
+        $updatedatabase = $this->db->table('kawasan_bank_data');
+
+        $kumpulan_potensi_kawasan = [
+            $input['potensi_kawasan0'],
+            $input['potensi_kawasan1'],
+            $input['potensi_kawasan2'],
+            $input['potensi_kawasan3'],
+            $input['potensi_kawasan4'],
+            $input['potensi_kawasan5'],
+            $input['potensi_kawasan6'],
+            $input['potensi_kawasan7'],
+            $input['potensi_kawasan8'],
+            $input['potensi_kawasan9'],
+        ];
+        $potensi_kawasan = implode("^", $kumpulan_potensi_kawasan);
+        $updatedatabase->set('potensi_kawasan', $potensi_kawasan);
+
+        $kumpulan_produk_unggulan = [
+            $input['produk_unggulan0'],
+            $input['produk_unggulan1'],
+            $input['produk_unggulan2'],
+            $input['produk_unggulan3'],
+            $input['produk_unggulan4'],
+            $input['produk_unggulan5'],
+            $input['produk_unggulan6'],
+            $input['produk_unggulan7'],
+            $input['produk_unggulan8'],
+            $input['produk_unggulan9'],
+        ];
+        $produk_unggulan = implode("^", $kumpulan_produk_unggulan);
+        $updatedatabase->set('produk_unggulan', $produk_unggulan);
+
+        $kumpulan_potensi_kerjasama = [
+            $input['potensi_kerjasama0'],
+            $input['potensi_kerjasama1'],
+            $input['potensi_kerjasama2'],
+            $input['potensi_kerjasama3'],
+            $input['potensi_kerjasama4'],
+            $input['potensi_kerjasama5'],
+            $input['potensi_kerjasama6'],
+            $input['potensi_kerjasama7'],
+            $input['potensi_kerjasama8'],
+            $input['potensi_kerjasama9'],
+        ];
+        $potensi_kerjasama_pihak3 = implode("^", $kumpulan_potensi_kerjasama);
+        $updatedatabase->set('potensi_kerjasama_pihak3', $potensi_kerjasama_pihak3);
+
+        $oldfile = $this->db->table('kawasan_bank_data')->getWhere(['kd_kab' => $kd_kab, 'kd_kawasan' => $kd_kawasan])->getRowArray();
+        $oldfileimgproduk = explode("^", $oldfile["img_produk_unggulan"]);
+
+        if ($img_produk_unggulan1 == $oldfileimgproduk[0]) {
+            $nmfile1 = $oldfileimgproduk[0];
+        } else {
+            $nmfile1 = $img_produk_unggulan1->getRandomName();
+            $old_file1 = $oldfileimgproduk[0];
+            unlink('img/uploadfile/produk_unggulan/' . $old_file1);
+            $img_produk_unggulan1->move('img/uploadfile/produk_unggulan', $nmfile1);
+        }
+
+        if ($img_produk_unggulan2 == $oldfileimgproduk[1]) {
+            $nmfile2 = $oldfileimgproduk[1];
+        } else {
+            if ($img_produk_unggulan2 != '') {
+                $nmfile2 = $img_produk_unggulan2->getRandomName();
+                if ($oldfileimgproduk[1] != '') {
+                    $old_file2 = $oldfileimgproduk[1];
+                    unlink('img/uploadfile/produk_unggulan/' . $old_file2);
+                }
+                $img_produk_unggulan2->move('img/uploadfile/produk_unggulan', $nmfile2);
+            } else {
+                $nmfile2 = '';
+                if ($oldfileimgproduk[1] != '') {
+                    $old_file2 = $oldfileimgproduk[1];
+                    unlink('img/uploadfile/produk_unggulan/' . $old_file2);
+                }
+            }
+        }
+
+        if ($img_produk_unggulan3 == $oldfileimgproduk[2]) {
+            $nmfile3 = $oldfileimgproduk[2];
+        } else {
+            if ($img_produk_unggulan3 != '') {
+                $nmfile3 = $img_produk_unggulan3->getRandomName();
+                if ($oldfileimgproduk[2] != '') {
+                    $old_file3 = $oldfileimgproduk[2];
+                    unlink('img/uploadfile/produk_unggulan/' . $old_file3);
+                }
+                $img_produk_unggulan3->move('img/uploadfile/produk_unggulan', $nmfile3);
+            } else {
+                $nmfile3 = '';
+                if ($oldfileimgproduk[2] != '') {
+                    $old_file3 = $oldfileimgproduk[2];
+                    unlink('img/uploadfile/produk_unggulan/' . $old_file3);
+                }
+            }
+        }
+
+        if ($img_produk_unggulan4 == $oldfileimgproduk[3]) {
+            $nmfile4 = $oldfileimgproduk[3];
+        } else {
+            if ($img_produk_unggulan4 != '') {
+                $nmfile4 = $img_produk_unggulan4->getRandomName();
+                if ($oldfileimgproduk[3] != '') {
+                    $old_file4 = $oldfileimgproduk[3];
+                    unlink('img/uploadfile/produk_unggulan/' . $old_file4);
+                }
+                $img_produk_unggulan4->move('img/uploadfile/produk_unggulan', $nmfile4);
+            } else {
+                $nmfile4 = '';
+                if ($oldfileimgproduk[3] != '') {
+                    $old_file4 = $oldfileimgproduk[3];
+                    unlink('img/uploadfile/produk_unggulan/' . $old_file4);
+                }
+            }
+        }
+
+        if ($img_produk_unggulan5 == $oldfileimgproduk[4]) {
+            $nmfile5 = $oldfileimgproduk[4];
+        } else {
+            if ($img_produk_unggulan5 != '') {
+                $nmfile5 = $img_produk_unggulan5->getRandomName();
+                if ($oldfileimgproduk[4] != '') {
+                    $old_file5 = $oldfileimgproduk[4];
+                    unlink('img/uploadfile/produk_unggulan/' . $old_file5);
+                }
+                $img_produk_unggulan5->move('img/uploadfile/produk_unggulan', $nmfile5);
+            } else {
+                $nmfile5 = '';
+                if ($oldfileimgproduk[4] != '') {
+                    $old_file5 = $oldfileimgproduk[4];
+                    unlink('img/uploadfile/produk_unggulan/' . $old_file5);
+                }
+            }
+        }
+        $gambar_produk_unggulan = [
+            $nmfile1,
+            $nmfile2,
+            $nmfile3,
+            $nmfile4,
+            $nmfile5,
+        ];
+        $img_produk_unggulan = implode("^", $gambar_produk_unggulan);
+        $updatedatabase->set('img_produk_unggulan', $img_produk_unggulan);
+
+        if ($img_peta_delimitasi == $oldfile['img_peta_delimitasi']) {
+            $petadelimitasi = $oldfile['img_peta_delimitasi'];
+        } else {
+            $petadelimitasi = $img_peta_delimitasi->getRandomName();
+            $old_file_peta = $oldfile['img_peta_delimitasi'];
+            unlink('img/uploadfile/peta_delimitasi/' . $old_file_peta);
+            $img_peta_delimitasi->move('img/uploadfile/peta_delimitasi', $petadelimitasi);
+            $updatedatabase->set('img_peta_delimitasi', $petadelimitasi);
+        }
+
+        $updatedatabase->set('sk_lokasi_kawasan', $input['sk_lokasi_kawasan']);
+        $updatedatabase->set('sk_tkpkp_kawasan', $input['sk_tkpkp_kawasan']);
+        $updatedatabase->set('perbup_rpkp', $input['perbup_rpkp']);
+        $updatedatabase->set('perda_kab_pembangunan', $input['perda_kab_pembangunan']);
+        $updatedatabase->set('perbup_pembangunan', $input['perbup_pembangunan']);
+        $updatedatabase->set('sk_tkpkp_kab_pembangunan', $input['sk_tkpkp_kab_pembangunan']);
+        $updatedatabase->set('keterangan', $input['keterangan']);
+        $updatedatabase->set('verifikasi', $input['verifikasi']);
+        $updatedatabase->set('tgl_verifikasi', $input['tgl_verifikasi']);
+
+        $updatedatabase->where('kd_kab', $kd_kab);
+        $updatedatabase->where('kd_kawasan', $kd_kawasan);
+        $updatedatabase->update();
+    }
 }

@@ -35,6 +35,7 @@
                         <div class="card-header">
                             <h4 class="card-title">Wilayah Administrasi Pemerintahan</h4>
                             <p class="card-title-desc">Beberapa wilayah yang tergabung dalam Kawasan <b style="color: red;"><?= $nm_kawasan; ?></b></p>
+                            <p class="card-title-desc">Jenis Klasifikasi Kawasan adalah <b style="color: red;"><?= $dokumen['klasifikasi']; ?></b></p>
                         </div><!-- end card header -->
 
                         <div class="card-body">
@@ -92,7 +93,7 @@
                                         </div>
                                         <div class="col-sm-4">
                                             <div class="grid-example mt-2 mt-sm-0">
-                                                <p>PERGUB RPKP</p>
+                                                <p>PERBUP RPKP</p>
                                                 <code><?= $dokumen['perbup_rpkp']; ?></code>
                                             </div>
                                         </div>
@@ -149,7 +150,9 @@
                                                 <?php $no = 1; ?>
                                                 <?php if ($potensi_kawasan != "-") : ?>
                                                     <?php foreach ($potensi_kawasan as $pk) : ?>
-                                                        <code><?= $no++ . '. ' . $pk; ?></code><br>
+                                                        <?php if ($pk != '') : ?>
+                                                            <code><?= $no++ . '. ' . $pk; ?></code><br>
+                                                        <?php endif; ?>
                                                     <?php endforeach; ?>
                                                 <?php else : ?>
                                                     <code><?= $potensi_kawasan; ?></code>
@@ -162,7 +165,11 @@
                                                 <?php $no = 1; ?>
                                                 <?php if ($produk_unggulan != "-") : ?>
                                                     <?php foreach ($produk_unggulan as $pu) : ?>
-                                                        <code><?= $no++ . '. ' . $pu; ?></code><br>
+                                                        <?php if ($pu == '-') : ?>
+                                                            <code>-</code>
+                                                        <?php elseif ($pu != '') : ?>
+                                                            <code><?= $no++ . '. ' . $pu; ?></code><br>
+                                                        <?php endif; ?>
                                                     <?php endforeach; ?>
                                                 <?php else : ?>
                                                     <code><?= $produk_unggulan; ?></code>
@@ -172,7 +179,16 @@
                                         <div class="col-sm-4">
                                             <div class="grid-example mt-2 mt-sm-0">
                                                 <p>POTENSI KERJASAMA</p>
-                                                <code><?= $dokumen['potensi_kerjasama_pihak3']; ?></code>
+                                                <?php $no = 1; ?>
+                                                <?php if ($potensi_kerjasama_pihak3 != "-") : ?>
+                                                    <?php foreach ($potensi_kerjasama_pihak3 as $pks) : ?>
+                                                        <?php if ($pks != '') : ?>
+                                                            <code><?= $no++ . '. ' . $pks; ?></code><br>
+                                                        <?php endif; ?>
+                                                    <?php endforeach; ?>
+                                                <?php else : ?>
+                                                    <code><?= $potensi_kerjasama_pihak3; ?></code>
+                                                <?php endif; ?>
                                             </div>
                                         </div>
                                     </div>
@@ -189,7 +205,9 @@
                                                 <?php $no = 1; ?>
                                                 <?php if ($img_produk_unggulan != "-") : ?>
                                                     <?php foreach ($img_produk_unggulan as $ipu) : ?>
-                                                        <code><?= $no++ . '. '; ?><img src="/img/uploadfile/produk_unggulan/<?= $ipu; ?>" alt="" width="100"><br></code><br>
+                                                        <?php if ($ipu != '') : ?>
+                                                            <code><?= $no++ . '. '; ?><img src="/img/uploadfile/produk_unggulan/<?= $ipu; ?>" alt="" width="100"><br></code><br>
+                                                        <?php endif; ?>
                                                     <?php endforeach; ?>
                                                 <?php else : ?>
                                                     <code><?= $img_produk_unggulan; ?></code>

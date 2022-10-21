@@ -26,9 +26,62 @@
             }
         </style>
 
+        <div class="section-title text-center">
+            <h3 style="text-transform: uppercase;">INFORMASI KAWASAN PERDESAAN</h3>
+        </div>
         <div class="row">
-            <div class="col-12">
+            <div class="row" style="margin-bottom:45px;">
+                <div class="col-md-6 col-lg-6 text-center">
+                    <div class="media">
+                        <div class="media-body text-center">
+                            <figure class="highcharts-figure">
+                                <div id="klasifikasi_kawasan"></div>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 text-center">
+                    <div class="media">
+                        <div class="media-body text-center">
+                            <figure class="highcharts-figure">
+                                <div id="agregat_tahun_pembentukan"></div>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <div class="row" style="margin-bottom:45px;">
+                <div class="col-md-6 col-lg-6 text-center">
+                    <div class="media">
+                        <div class="media-body text-center">
+                            <figure class="highcharts-figure">
+                                <div id="regulasi_tk_kawasan"></div>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 text-center">
+                    <div class="media">
+                        <div class="media-body text-center">
+                            <figure class="highcharts-figure">
+                                <div id="regulasi_tk_kabupaten"></div>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="margin-bottom:45px;">
+                <div class="col-md-12 col-lg-12 text-center">
+                    <div class="media">
+                        <div class="media-body text-center">
+                            <figure class="highcharts-figure">
+                                <div id="regulasi_tk_kawasan_perkabupaten"></div>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
