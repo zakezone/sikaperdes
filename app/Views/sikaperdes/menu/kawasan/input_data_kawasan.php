@@ -129,27 +129,24 @@
                                             <div class="grid-example">
                                                 <p>SK LOKASI KAWASAN</p>
                                                 <code>
-                                                    <input type="text" class="form-control" id="sk_lokasi_kawasan" name="sk_lokasi_kawasan" value="<?= old('sk_lokasi_kawasan'); ?>">
+                                                    <input type="text" class="form-control" id="sk_lokasi_kawasan" name="sk_lokasi_kawasan" placeholder="Kosongkan jika belum ada" value="<?= old('sk_lokasi_kawasan'); ?>">
                                                 </code>
-                                                <small class="form-text text-danger"><?= $validation->getError('sk_lokasi_kawasan'); ?></small>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
                                             <div class="grid-example mt-2 mt-sm-0">
                                                 <p>SK TKPKP KAWASAN</p>
                                                 <code>
-                                                    <input type="text" class="form-control" id="sk_tkpkp_kawasan" name="sk_tkpkp_kawasan" value="<?= old('sk_tkpkp_kawasan'); ?>">
+                                                    <input type="text" class="form-control" id="sk_tkpkp_kawasan" name="sk_tkpkp_kawasan" placeholder="Kosongkan jika belum ada" value="<?= old('sk_tkpkp_kawasan'); ?>">
                                                 </code>
-                                                <small class="form-text text-danger"><?= $validation->getError('sk_tkpkp_kawasan'); ?></small>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
                                             <div class="grid-example mt-2 mt-sm-0">
                                                 <p>PERBUP RPKP</p>
                                                 <code>
-                                                    <input type="text" class="form-control" id="perbup_rpkp" name="perbup_rpkp" value="<?= old('perbup_rpkp'); ?>">
+                                                    <input type="text" class="form-control" id="perbup_rpkp" name="perbup_rpkp" placeholder="Kosongkan jika belum ada" value="<?= old('perbup_rpkp'); ?>">
                                                 </code>
-                                                <small class="form-text text-danger"><?= $validation->getError('perbup_rpkp'); ?></small>
                                             </div>
                                         </div>
                                     </div>
@@ -164,27 +161,24 @@
                                             <div class="grid-example">
                                                 <p>PERDA KABUPATEN</p>
                                                 <code>
-                                                    <input type="text" class="form-control" id="perda_kab_pembangunan" name="perda_kab_pembangunan" value="<?= old('perda_kab_pembangunan'); ?>">
+                                                    <input type="text" class="form-control" id="perda_kab_pembangunan" name="perda_kab_pembangunan" placeholder="Kosongkan jika belum ada" value="<?= old('perda_kab_pembangunan'); ?>">
                                                 </code>
-                                                <small class="form-text text-danger"><?= $validation->getError('perda_kab_pembangunan'); ?></small>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
                                             <div class="grid-example mt-2 mt-sm-0">
                                                 <p>PERBUP</p>
                                                 <code>
-                                                    <input type="text" class="form-control" id="perbup_pembangunan" name="perbup_pembangunan" value="<?= old('perbup_pembangunan'); ?>">
+                                                    <input type="text" class="form-control" id="perbup_pembangunan" name="perbup_pembangunan" placeholder="Kosongkan jika belum ada" value="<?= old('perbup_pembangunan'); ?>">
                                                 </code>
-                                                <small class="form-text text-danger"><?= $validation->getError('perbup_pembangunan'); ?></small>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
                                             <div class="grid-example mt-2 mt-sm-0">
                                                 <p>SK TKPKP KABUPATEN</p>
                                                 <code>
-                                                    <input type="text" class="form-control" id="sk_tkpkp_kab_pembangunan" name="sk_tkpkp_kab_pembangunan" value="<?= old('sk_tkpkp_kab_pembangunan'); ?>">
+                                                    <input type="text" class="form-control" id="sk_tkpkp_kab_pembangunan" name="sk_tkpkp_kab_pembangunan" placeholder="Kosongkan jika belum ada" value="<?= old('sk_tkpkp_kab_pembangunan'); ?>">
                                                 </code>
-                                                <small class="form-text text-danger"><?= $validation->getError('sk_tkpkp_kab_pembangunan'); ?></small>
                                             </div>
                                         </div>
                                     </div>
@@ -212,7 +206,7 @@
                                             <div class="grid-example">
                                                 <p>POTENSI PRODUK</p>
                                                 <small class="form-text text-danger"><?= $validation->getError('potensi_kawasan0'); ?></small>
-                                                <input type="text" class="form-control mb-3" id="potensi_kawasan0" name="potensi_kawasan0" value="<?= old('potensi_kawasan0'); ?>">
+                                                <input type="text" class="form-control mb-3" id="potensi_kawasan0" name="potensi_kawasan0" placeholder="Wajib diisi" value="<?= old('potensi_kawasan0'); ?>">
                                                 <input type="text" class="form-control mb-3" id="potensi_kawasan1" name="potensi_kawasan1" value="<?= old('potensi_kawasan1'); ?>">
                                                 <input type="text" class="form-control mb-3" id="potensi_kawasan2" name="potensi_kawasan2" value="<?= old('potensi_kawasan2'); ?>">
                                                 <input type="text" class="form-control mb-3" id="potensi_kawasan3" name="potensi_kawasan3" value="<?= old('potensi_kawasan3'); ?>">
@@ -227,8 +221,7 @@
                                         <div class="col-sm-4">
                                             <div class="grid-example mt-2 mt-sm-0">
                                                 <p>PRODUK UNGGULAN</p>
-                                                <small class="form-text text-danger"><?= $validation->getError('produk_unggulan0'); ?></small>
-                                                <input type="text" class="form-control mb-3" id="produk_unggulan0" name="produk_unggulan0" value="<?= old('produk_unggulan0'); ?>">
+                                                <input type="text" class="form-control mb-3" id="produk_unggulan0" name="produk_unggulan0" placeholder="Kosongkan jika belum ada" value="<?= old('produk_unggulan0'); ?>">
                                                 <input type="text" class="form-control mb-3" id="produk_unggulan1" name="produk_unggulan1" value="<?= old('produk_unggulan1'); ?>">
                                                 <input type="text" class="form-control mb-3" id="produk_unggulan2" name="produk_unggulan2" value="<?= old('produk_unggulan2'); ?>">
                                                 <input type="text" class="form-control mb-3" id="produk_unggulan3" name="produk_unggulan3" value="<?= old('produk_unggulan3'); ?>">
@@ -243,8 +236,7 @@
                                         <div class="col-sm-4">
                                             <div class="grid-example mt-2 mt-sm-0">
                                                 <p>POTENSI KERJASAMA</p>
-                                                <small class="form-text text-danger"><?= $validation->getError('potensi_kerjasama0'); ?></small>
-                                                <input type="text" class="form-control mb-3" id="potensi_kerjasama0" name="potensi_kerjasama0" value="<?= old('potensi_kerjasama0'); ?>">
+                                                <input type="text" class="form-control mb-3" id="potensi_kerjasama0" name="potensi_kerjasama0" placeholder="Kosongkan jika belum ada" value="<?= old('potensi_kerjasama0'); ?>">
                                                 <input type="text" class="form-control mb-3" id="potensi_kerjasama1" name="potensi_kerjasama1" value="<?= old('potensi_kerjasama1'); ?>">
                                                 <input type="text" class="form-control mb-3" id="potensi_kerjasama2" name="potensi_kerjasama2" value="<?= old('potensi_kerjasama2'); ?>">
                                                 <input type="text" class="form-control mb-3" id="potensi_kerjasama3" name="potensi_kerjasama3" value="<?= old('potensi_kerjasama3'); ?>">
@@ -266,7 +258,7 @@
                                     <div class="row align-items-center" style="min-height: 6rem;">
                                         <div class="col-sm-4">
                                             <div class="grid-example">
-                                                <p>GAMBAR PRODUK UNGGULAN</p>
+                                                <p>GAMBAR PRODUK</p>
                                                 <div class="col-sm-3" style="margin: auto;">
                                                     <img class="img-thumbnail img-preview0">
                                                 </div>

@@ -85,7 +85,6 @@
                                                 <code>
                                                     <input type="text" class="form-control" id="sk_lokasi_kawasan" name="sk_lokasi_kawasan" value="<?= $dokumen_sk['sk_lokasi_kawasan']; ?>">
                                                 </code>
-                                                <small class="form-text text-danger"><?= $validation->getError('sk_lokasi_kawasan'); ?></small>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
@@ -94,7 +93,6 @@
                                                 <code>
                                                     <input type="text" class="form-control" id="sk_tkpkp_kawasan" name="sk_tkpkp_kawasan" value="<?= $dokumen_sk['sk_tkpkp_kawasan']; ?>">
                                                 </code>
-                                                <small class="form-text text-danger"><?= $validation->getError('sk_tkpkp_kawasan'); ?></small>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
@@ -103,7 +101,6 @@
                                                 <code>
                                                     <input type="text" class="form-control" id="perbup_rpkp" name="perbup_rpkp" value="<?= $dokumen_sk['perbup_rpkp']; ?>">
                                                 </code>
-                                                <small class="form-text text-danger"><?= $validation->getError('perbup_rpkp'); ?></small>
                                             </div>
                                         </div>
                                     </div>
@@ -120,7 +117,6 @@
                                                 <code>
                                                     <input type="text" class="form-control" id="perda_kab_pembangunan" name="perda_kab_pembangunan" value="<?= $dokumen_sk['perda_kab_pembangunan']; ?>">
                                                 </code>
-                                                <small class="form-text text-danger"><?= $validation->getError('perda_kab_pembangunan'); ?></small>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
@@ -129,7 +125,6 @@
                                                 <code>
                                                     <input type="text" class="form-control" id="perbup_pembangunan" name="perbup_pembangunan" value="<?= $dokumen_sk['perbup_pembangunan']; ?>">
                                                 </code>
-                                                <small class="form-text text-danger"><?= $validation->getError('perbup_pembangunan'); ?></small>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
@@ -138,7 +133,6 @@
                                                 <code>
                                                     <input type="text" class="form-control" id="sk_tkpkp_kab_pembangunan" name="sk_tkpkp_kab_pembangunan" value="<?= $dokumen_sk['sk_tkpkp_kab_pembangunan']; ?>">
                                                 </code>
-                                                <small class="form-text text-danger"><?= $validation->getError('sk_tkpkp_kab_pembangunan'); ?></small>
                                             </div>
                                         </div>
                                     </div>
@@ -181,8 +175,7 @@
                                         <div class="col-sm-4">
                                             <div class="grid-example mt-2 mt-sm-0">
                                                 <p>PRODUK UNGGULAN</p>
-                                                <small class="form-text text-danger"><?= $validation->getError('produk_unggulan0'); ?></small>
-                                                <input type="text" class="form-control mb-3" id="produk_unggulan0" name="produk_unggulan0" value="<?= $produk_unggulan[0]; ?>">
+                                                <input type="text" class="form-control mb-3" id="produk_unggulan0" name="produk_unggulan0" placeholder="Kosongkan jika belum ada" value="<?= $produk_unggulan[0]; ?>">
                                                 <input type="text" class="form-control mb-3" id="produk_unggulan1" name="produk_unggulan1" value="<?= $produk_unggulan[1]; ?>">
                                                 <input type="text" class="form-control mb-3" id="produk_unggulan2" name="produk_unggulan2" value="<?= $produk_unggulan[2]; ?>">
                                                 <input type="text" class="form-control mb-3" id="produk_unggulan3" name="produk_unggulan3" value="<?= $produk_unggulan[3]; ?>">
@@ -197,8 +190,7 @@
                                         <div class="col-sm-4">
                                             <div class="grid-example mt-2 mt-sm-0">
                                                 <p>POTENSI KERJASAMA</p>
-                                                <small class="form-text text-danger"><?= $validation->getError('potensi_kerjasama0'); ?></small>
-                                                <input type="text" class="form-control mb-3" id="potensi_kerjasama0" name="potensi_kerjasama0" value="<?= $potensi_kerjasama_pihak3[0]; ?>">
+                                                <input type="text" class="form-control mb-3" id="potensi_kerjasama0" name="potensi_kerjasama0" placeholder="Kosongkan jika belum ada" value="<?= $potensi_kerjasama_pihak3[0]; ?>">
                                                 <input type="text" class="form-control mb-3" id="potensi_kerjasama1" name="potensi_kerjasama1" value="<?= $potensi_kerjasama_pihak3[1]; ?>">
                                                 <input type="text" class="form-control mb-3" id="potensi_kerjasama2" name="potensi_kerjasama2" value="<?= $potensi_kerjasama_pihak3[2]; ?>">
                                                 <input type="text" class="form-control mb-3" id="potensi_kerjasama3" name="potensi_kerjasama3" value="<?= $potensi_kerjasama_pihak3[3]; ?>">
@@ -220,7 +212,7 @@
                                     <div class="row align-items-center" style="min-height: 6rem;">
                                         <div class="col-sm-4">
                                             <div class="grid-example">
-                                                <p>GAMBAR PRODUK UNGGULAN</p>
+                                                <p>GAMBAR PRODUK</p>
                                                 <div class="col-sm-3" style="margin: auto;">
                                                     <img src="<?= base_url('img/uploadfile/produk_unggulan/' . $img_produk_unggulan[0]) ?>" class="img-thumbnail img-preview0">
                                                 </div>

@@ -70,7 +70,17 @@ $this->db = \Config\Database::connect();
                                             <ul class="sub-menu" aria-expanded="false">
                                                 <li>
                                                     <a href="<?= base_url('user/menu-admin/list_input_data_kawasan'); ?>">
-                                                        <span data-key="t-kawasan">Data Kawasan</span>
+                                                        <span data-key="t-kawasan">Kawasan Perdesaan</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<?= base_url('user/menu-admin/daftar_kawasan'); ?>">
+                                                        <span data-key="t-kawasan">Daftar Kawasan</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="<?= base_url('user/menu-admin/jenis_klasifikasi_list'); ?>">
+                                                        <span data-key="t-kawasan">Klasifikasi (TEMA)</span>
                                                     </a>
                                                 </li>
                                                 <li>

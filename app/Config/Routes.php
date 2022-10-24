@@ -71,14 +71,17 @@ $routes->get('/user/admin', 'User\Admin::dashboard', ['filter' => 'authusersie']
 // MENU USER ADMIN SIKAPERDES
 $routes->get('/user/menu-admin/list_input_data_kawasan', 'User\Menu_admin::listinputdatakawasan', ['filter' => 'authusersie']);
 $routes->match(['get', 'post'], '/user/menu-admin/list_datainput_kawasan', 'User\Menu_admin::list_datainput_kawasan', ['filter' => 'authusersie']);
-$routes->get('/user/menu-admin/delete_data_kawasan/(:any)/(:any)', 'User\Menu_admin::deletedatakawasan/$1/$2', ['filter' => 'authusersie']);
 $routes->match(['get', 'post'], '/user/menu-admin/input_data_kawasan', 'User\Menu_admin::inputdatakawasan', ['filter' => 'authusersie']);
+$routes->match(['get', 'post'], '/user/menu-admin/daftar_kawasan', 'User\Menu_admin::list_kawasan', ['filter' => 'authusersie']);
+$routes->match(['get', 'post'], '/user/menu-admin/input_daftar_kawasan', 'User\Menu_admin::inputdaftarkawasan', ['filter' => 'authusersie']);
+$routes->get('/user/menu-admin/delete_data_kawasan/(:any)/(:any)', 'User\Menu_admin::deletedatakawasan/$1/$2', ['filter' => 'authusersie']);
 $routes->match(['get', 'post'], '/user/menu-admin/verifikasi_review/(:any)/(:any)', 'User\Menu_admin::verifikasireview/$1/$2', ['filter' => 'authusersie']);
 $routes->match(['get', 'post'], '/user/menu-admin/revisi_review/(:any)/(:any)', 'User\Menu_admin::revisidatainputkawasan/$1/$2', ['filter' => 'authusersie']);
 $routes->match(['get', 'post'], '/user/menu-admin/ajaxfiltkecamatan', 'User\Menu_admin::ajaxfiltkecamatan', ['filter' => 'authusersie']);
 $routes->match(['get', 'post'], '/user/menu-admin/ajaxfiltdesa', 'User\Menu_admin::ajaxfiltdesa', ['filter' => 'authusersie']);
 $routes->get('/user/menu-admin/verifikasi_data', 'User\Menu_admin::verifikasi_data_kawasan', ['filter' => 'authusersie']);
 $routes->match(['get', 'post'], '/user/menu-admin/load_data_kawasan', 'User\Menu_admin::load_data_kawasan', ['filter' => 'authusersie']);
+$routes->match(['get', 'post'], '/user/menu-admin/ajax_list_daftar_kawasan', 'User\Menu_admin::ajax_list_daftar_kawasan', ['filter' => 'authusersie']);
 
 // DATA USER SIKAPERDES
 $routes->match(['get', 'post'], '/user/data/verifikasi_review/(:any)/(:any)', 'User\Data::verifikasireview/$1/$2', ['filter' => 'authusersie']);

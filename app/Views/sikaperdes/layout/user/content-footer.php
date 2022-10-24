@@ -541,7 +541,7 @@
                     },
                     data: function(data) {
                         data.csrf_test_name = $('input[name=csrf_test_name]').val();
-                        data.tahunfilt = $('#statusfilt').val();
+                        data.statusfilt = $('#statusfilt').val();
                     },
                     dataSrc: function(response) {
                         $('input[name=csrf_test_name]').val(response.csrf_test_name);
@@ -633,7 +633,7 @@
                     },
                     data: function(data) {
                         data.csrf_test_name = $('input[name=csrf_test_name]').val();
-                        data.tahunfilt = $('#statusfilt').val();
+                        data.statusfilt = $('#statusfilt').val();
                     },
                     dataSrc: function(response) {
                         $('input[name=csrf_test_name]').val(response.csrf_test_name);
@@ -687,6 +687,130 @@
                     searchable: false,
                     orderable: true,
                     targets: [0, 2, 3, 4, 5, 6, 7],
+                    className: "text-center",
+                }],
+                bDestroy: true,
+            });
+        }
+    </script>
+
+    <script src="<?= base_url('minia/libs/sweetalert2/sweetalert2.min.js'); ?>"></script>
+    <script>
+        $(document).on('click', '#sa-delete', function(e) {
+            var kd_kab = $(this).data('kdkab');
+            var kd_kawasan = $(this).data('kdkawasan');
+
+            Swal.fire({
+                    title: 'Apakah Anda yakin?',
+                    text: "Data Kawasan terpilih akan dihapus!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes, hapus!',
+                    cancelButtonText: 'No, batalkan!',
+                    confirmButtonClass: 'btn btn-success mt-2',
+                    cancelButtonClass: 'btn btn-danger ms-2 mt-2',
+                    buttonsStyling: false
+                })
+                .then((result) => {
+                    if (result.value) {
+                        window.location = '<?= base_url('user/menu-admin/delete_data_kawasan') ?>' + '/' + kd_kab + '/' + kd_kawasan
+                    } else if (result.dismiss === 'cancel') {
+                        Swal.fire(
+                            'Cancelled',
+                            'Data Kawasan tidak jadi dihapus :)',
+                            'error',
+                            '#5156be',
+                        )
+                    }
+                })
+        });
+    </script>
+
+<?php elseif ($request->uri->getSegment(2) == "menu-admin" && $request->uri->getSegment(3) == "daftar_kawasan") : ?>
+    <script src="<?= base_url('minia/libs/choices.js/public/assets/scripts/select2.js') ?>"></script>
+    <script>
+        $('#filtkabupaten').select2({
+            placeholder: "Pilih Kabupaten",
+        })
+    </script>
+    <script src="<?= base_url('minia/libs/datatables.net/js/jquery.dataTablesAP.min.js'); ?>"></script>
+    <script src="<?= base_url('minia/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js'); ?>"></script>
+    <script src="<?= base_url('minia/js/pages/datatable-pages.init.js'); ?>"></script>
+    <script>
+        $(document).ready(function() {
+            var csrfName = $('.txt_csrfname_sie').attr('name'); // CSRF Token name
+            var csrfHash = $('.txt_csrfname_sie').val(); // CSRF hash
+            $('#datatable').DataTable({
+                'order': [],
+                'processing': true,
+                'serverSide': true,
+                'serverMethod': 'post',
+                'lengthMenu': [
+                    [5, 10, 15],
+                    [5, 10, 15]
+                ],
+                "ajax": {
+                    url: "<?= base_url('user/menu-admin/ajax_list_daftar_kawasan') ?>",
+                    type: 'post',
+                    data: {
+                        "csrf_test_name": $('input[name=csrf_test_name]').val(),
+                    },
+                    data: function(data) {
+                        data.csrf_test_name = $('input[name=csrf_test_name]').val();
+                        data.filtkabupaten = $('#filtkabupaten').val();
+                    },
+                    dataSrc: function(response) {
+                        $('input[name=csrf_test_name]').val(response.csrf_test_name);
+                        return response.data;
+                    },
+                },
+                "columnDefs": [{
+                    searchable: false,
+                    orderable: true,
+                    targets: [3],
+                    className: "text-center",
+                }],
+                bDestroy: true,
+            });
+        })
+
+        $('#filtkabupaten').change(function() {
+            tampildata();
+            // let a = $(this).val();
+            // console.log(a);
+        });
+
+        function tampildata() {
+            var csrfName = $('.txt_csrfname_sie').attr('name'); // CSRF Token name
+            var csrfHash = $('.txt_csrfname_sie').val(); // CSRF hash
+            $('#datatable').DataTable({
+                'order': [],
+                'processing': true,
+                'serverSide': true,
+                'serverMethod': 'post',
+                'lengthMenu': [
+                    [5, 10, 15],
+                    [5, 10, 15]
+                ],
+                "ajax": {
+                    url: "<?= base_url('user/menu-admin/ajax_list_daftar_kawasan') ?>",
+                    type: 'post',
+                    data: {
+                        "csrf_test_name": $('input[name=csrf_test_name]').val(),
+                    },
+                    data: function(data) {
+                        data.csrf_test_name = $('input[name=csrf_test_name]').val();
+                        data.filtkabupaten = $('#filtkabupaten').val();
+                    },
+                    dataSrc: function(response) {
+                        $('input[name=csrf_test_name]').val(response.csrf_test_name);
+                        return response.data;
+                    },
+                },
+                "columnDefs": [{
+                    searchable: false,
+                    orderable: true,
+                    targets: [3],
                     className: "text-center",
                 }],
                 bDestroy: true,

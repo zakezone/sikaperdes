@@ -13,6 +13,9 @@ class Data_kawasan extends Model
     var $column_orderkab = array('id', 'nm_kec', 'nm_kab', 'nm_kawasan', 'tahun_pembentukan', 'verifikasi');
     var $order = array('id' => 'asc');
 
+    var $column_orderkab_daftar_kawasan = array('id', 'nm_kawasan', 'nm_kab', 'nm_kawasan', 'tahun_pembentukan', 'verifikasi');
+    var $order_daftar_kawasan = array('id' => 'asc');
+
     public function getJmlDesa($nmkawasan)
     {
         $builder = $this->db->table('kawasan_bank_data');
@@ -96,7 +99,7 @@ class Data_kawasan extends Model
     {
         $baru = $this->db->table('kawasan_bank_data')->select('nm_kawasan')->getWhere(['kd_kab' => $input['filtkabupaten'], 'kd_kawasan' => $input['id_kawasan']])->getRowArray();
 
-        if (isset($baru)) {
+        if (isset($baru)) { // ini jika sudah ada kawasan yang sudah ada / (input desa baru ke kawasan tersebut)
             $insertdatabase = $this->db->table('kawasan_bank_data');
             $updatedatabase = $this->db->table('kawasan_bank_data');
             $nm_kawasan = $this->db->table('kawasan_id')->select('nm_kawasan')->where('id', $input['id_kawasan'])->get()->getRowArray();
@@ -119,8 +122,11 @@ class Data_kawasan extends Model
             $potensi_kawasan = implode("^", $kumpulan_potensi_kawasan);
             $updatedatabase->set('potensi_kawasan', $potensi_kawasan);
 
+            if ($input['produk_unggulan0'] == 'belum' || $input['produk_unggulan0'] == '') {
+                $produk_unggulan0 = '-';
+            }
             $kumpulan_produk_unggulan = [
-                $input['produk_unggulan0'],
+                $produk_unggulan0,
                 $input['produk_unggulan1'],
                 $input['produk_unggulan2'],
                 $input['produk_unggulan3'],
@@ -134,8 +140,11 @@ class Data_kawasan extends Model
             $produk_unggulan = implode("^", $kumpulan_produk_unggulan);
             $updatedatabase->set('produk_unggulan', $produk_unggulan);
 
+            if ($input['potensi_kerjasama0'] == 'belum' || $input['potensi_kerjasama0'] == '') {
+                $potensi_kerjasama0 = '-';
+            }
             $kumpulan_potensi_kerjasama = [
-                $input['potensi_kerjasama0'],
+                $potensi_kerjasama0,
                 $input['potensi_kerjasama1'],
                 $input['potensi_kerjasama2'],
                 $input['potensi_kerjasama3'],
@@ -228,6 +237,37 @@ class Data_kawasan extends Model
             $img_peta_delimitasi->move('img/uploadfile/peta_delimitasi', $petadelimitasi);
             $updatedatabase->set('img_peta_delimitasi', $petadelimitasi);
 
+            if ($input['sk_lokasi_kawasan'] != '') {
+                $sk_lokasi_kawasan = $input['sk_lokasi_kawasan'];
+            } else {
+                $sk_lokasi_kawasan = "BELUM";
+            }
+            if ($input['sk_tkpkp_kawasan'] != '') {
+                $sk_tkpkp_kawasan = $input['sk_tkpkp_kawasan'];
+            } else {
+                $sk_tkpkp_kawasan = "BELUM";
+            }
+            if ($input['perbup_rpkp'] != '') {
+                $perbup_rpkp = $input['perbup_rpkp'];
+            } else {
+                $perbup_rpkp = "BELUM";
+            }
+            if ($input['perda_kab_pembangunan'] != '') {
+                $perda_kab_pembangunan = $input['perda_kab_pembangunan'];
+            } else {
+                $perda_kab_pembangunan = "BELUM";
+            }
+            if ($input['perbup_pembangunan'] != '') {
+                $perbup_pembangunan = $input['perbup_pembangunan'];
+            } else {
+                $perbup_pembangunan = "BELUM";
+            }
+            if ($input['sk_tkpkp_kab_pembangunan'] != '') {
+                $sk_tkpkp_kab_pembangunan = $input['sk_tkpkp_kab_pembangunan'];
+            } else {
+                $sk_tkpkp_kab_pembangunan = "BELUM";
+            }
+
             $insert = array(
                 "nm_kab" => $nm_kab['akses'],
                 "kd_kab" => $input['filtkabupaten'],
@@ -238,12 +278,12 @@ class Data_kawasan extends Model
                 "nm_kawasan" => $nm_kawasan['nm_kawasan'],
                 "kd_kawasan" => $input['id_kawasan'],
                 "potensi_kawasan" => $potensi_kawasan,
-                "sk_lokasi_kawasan	" => $input['sk_lokasi_kawasan'],
-                "sk_tkpkp_kawasan" => $input['sk_tkpkp_kawasan'],
-                "perbup_rpkp" => $input['perbup_rpkp'],
-                "perda_kab_pembangunan" => $input['perda_kab_pembangunan'],
-                "perbup_pembangunan" => $input['perbup_pembangunan'],
-                "sk_tkpkp_kab_pembangunan" => $input['sk_tkpkp_kab_pembangunan'],
+                "sk_lokasi_kawasan	" => $sk_lokasi_kawasan,
+                "sk_tkpkp_kawasan" => $sk_tkpkp_kawasan,
+                "perbup_rpkp" => $perbup_rpkp,
+                "perda_kab_pembangunan" => $perda_kab_pembangunan,
+                "perbup_pembangunan" => $perbup_pembangunan,
+                "sk_tkpkp_kab_pembangunan" => $sk_tkpkp_kab_pembangunan,
                 "produk_unggulan" => $produk_unggulan,
                 "img_produk_unggulan" => $img_produk_unggulan,
                 "img_peta_delimitasi" => $petadelimitasi,
@@ -257,12 +297,12 @@ class Data_kawasan extends Model
             );
             $insertdatabase->insert($insert);
 
-            $updatedatabase->set('sk_lokasi_kawasan', $input['sk_lokasi_kawasan']);
-            $updatedatabase->set('sk_tkpkp_kawasan', $input['sk_tkpkp_kawasan']);
-            $updatedatabase->set('perbup_rpkp', $input['perbup_rpkp']);
-            $updatedatabase->set('perda_kab_pembangunan', $input['perda_kab_pembangunan']);
-            $updatedatabase->set('perbup_pembangunan', $input['perbup_pembangunan']);
-            $updatedatabase->set('sk_tkpkp_kab_pembangunan', $input['sk_tkpkp_kab_pembangunan']);
+            $updatedatabase->set('sk_lokasi_kawasan', $sk_lokasi_kawasan);
+            $updatedatabase->set('sk_tkpkp_kawasan', $sk_tkpkp_kawasan);
+            $updatedatabase->set('perbup_rpkp', $perbup_rpkp);
+            $updatedatabase->set('perda_kab_pembangunan', $perda_kab_pembangunan);
+            $updatedatabase->set('perbup_pembangunan', $perbup_pembangunan);
+            $updatedatabase->set('sk_tkpkp_kab_pembangunan', $sk_tkpkp_kab_pembangunan);
             $updatedatabase->set('klasifikasi', $input['jenisklasifikasi']);
             $updatedatabase->set('keterangan', $input['keterangan']);
             $updatedatabase->set('tahun_pembentukan', $input['tahun_pembentukan']);
@@ -293,8 +333,11 @@ class Data_kawasan extends Model
             ];
             $potensi_kawasan = implode("^", $kumpulan_potensi_kawasan);
 
+            if ($input['produk_unggulan0'] == 'belum' || $input['produk_unggulan0'] == '') {
+                $produk_unggulan0 = '-';
+            }
             $kumpulan_produk_unggulan = [
-                $input['produk_unggulan0'],
+                $produk_unggulan0,
                 $input['produk_unggulan1'],
                 $input['produk_unggulan2'],
                 $input['produk_unggulan3'],
@@ -307,8 +350,11 @@ class Data_kawasan extends Model
             ];
             $produk_unggulan = implode("^", $kumpulan_produk_unggulan);
 
+            if ($input['potensi_kerjasama0'] == 'belum' || $input['potensi_kerjasama0'] == '') {
+                $potensi_kerjasama0 = '-';
+            }
             $kumpulan_potensi_kerjasama = [
-                $input['potensi_kerjasama0'],
+                $potensi_kerjasama0,
                 $input['potensi_kerjasama1'],
                 $input['potensi_kerjasama2'],
                 $input['potensi_kerjasama3'],
@@ -360,6 +406,37 @@ class Data_kawasan extends Model
                 $nmfile5,
             ];
             $img_produk_unggulan = implode("^", $gambar_produk_unggulan);
+
+            if ($input['sk_lokasi_kawasan'] != '') {
+                $sk_lokasi_kawasan = $input['sk_lokasi_kawasan'];
+            } else {
+                $sk_lokasi_kawasan = "BELUM";
+            }
+            if ($input['sk_tkpkp_kawasan'] != '') {
+                $sk_tkpkp_kawasan = $input['sk_tkpkp_kawasan'];
+            } else {
+                $sk_tkpkp_kawasan = "BELUM";
+            }
+            if ($input['perbup_rpkp'] != '') {
+                $perbup_rpkp = $input['perbup_rpkp'];
+            } else {
+                $perbup_rpkp = "BELUM";
+            }
+            if ($input['perda_kab_pembangunan'] != '') {
+                $perda_kab_pembangunan = $input['perda_kab_pembangunan'];
+            } else {
+                $perda_kab_pembangunan = "BELUM";
+            }
+            if ($input['perbup_pembangunan'] != '') {
+                $perbup_pembangunan = $input['perbup_pembangunan'];
+            } else {
+                $perbup_pembangunan = "BELUM";
+            }
+            if ($input['sk_tkpkp_kab_pembangunan'] != '') {
+                $sk_tkpkp_kab_pembangunan = $input['sk_tkpkp_kab_pembangunan'];
+            } else {
+                $sk_tkpkp_kab_pembangunan = "BELUM";
+            }
 
             $insert = array(
                 "nm_kab" => $nm_kab['akses'],
@@ -548,12 +625,43 @@ class Data_kawasan extends Model
             $updatedatabase->set('img_peta_delimitasi', $petadelimitasi);
         }
 
-        $updatedatabase->set('sk_lokasi_kawasan', $input['sk_lokasi_kawasan']);
-        $updatedatabase->set('sk_tkpkp_kawasan', $input['sk_tkpkp_kawasan']);
-        $updatedatabase->set('perbup_rpkp', $input['perbup_rpkp']);
-        $updatedatabase->set('perda_kab_pembangunan', $input['perda_kab_pembangunan']);
-        $updatedatabase->set('perbup_pembangunan', $input['perbup_pembangunan']);
-        $updatedatabase->set('sk_tkpkp_kab_pembangunan', $input['sk_tkpkp_kab_pembangunan']);
+        if ($input['sk_lokasi_kawasan'] != '') {
+            $sk_lokasi_kawasan = $input['sk_lokasi_kawasan'];
+        } else {
+            $sk_lokasi_kawasan = "BELUM";
+        }
+        if ($input['sk_tkpkp_kawasan'] != '') {
+            $sk_tkpkp_kawasan = $input['sk_tkpkp_kawasan'];
+        } else {
+            $sk_tkpkp_kawasan = "BELUM";
+        }
+        if ($input['perbup_rpkp'] != '') {
+            $perbup_rpkp = $input['perbup_rpkp'];
+        } else {
+            $perbup_rpkp = "BELUM";
+        }
+        if ($input['perda_kab_pembangunan'] != '') {
+            $perda_kab_pembangunan = $input['perda_kab_pembangunan'];
+        } else {
+            $perda_kab_pembangunan = "BELUM";
+        }
+        if ($input['perbup_pembangunan'] != '') {
+            $perbup_pembangunan = $input['perbup_pembangunan'];
+        } else {
+            $perbup_pembangunan = "BELUM";
+        }
+        if ($input['sk_tkpkp_kab_pembangunan'] != '') {
+            $sk_tkpkp_kab_pembangunan = $input['sk_tkpkp_kab_pembangunan'];
+        } else {
+            $sk_tkpkp_kab_pembangunan = "BELUM";
+        }
+
+        $updatedatabase->set('sk_lokasi_kawasan', $sk_lokasi_kawasan);
+        $updatedatabase->set('sk_tkpkp_kawasan', $sk_tkpkp_kawasan);
+        $updatedatabase->set('perbup_rpkp', $perbup_rpkp);
+        $updatedatabase->set('perda_kab_pembangunan', $perda_kab_pembangunan);
+        $updatedatabase->set('perbup_pembangunan', $perbup_pembangunan);
+        $updatedatabase->set('sk_tkpkp_kab_pembangunan', $sk_tkpkp_kab_pembangunan);
         $updatedatabase->set('keterangan', $input['keterangan']);
         $updatedatabase->set('verifikasi', $input['verifikasi']);
         $updatedatabase->set('tgl_verifikasi', $input['tgl_verifikasi']);
@@ -561,5 +669,66 @@ class Data_kawasan extends Model
         $updatedatabase->where('kd_kab', $kd_kab);
         $updatedatabase->where('kd_kawasan', $kd_kawasan);
         $updatedatabase->update();
+    }
+
+    public function getDaftarKawasan($search_value, $order_daftar_kawasan, $length, $start, $filtkabupaten)
+    {
+        if ($filtkabupaten == "" || $filtkabupaten == "all") {
+            $filter = " AND kd_kab != ''";
+        } else {
+            $filter = " AND kd_kab = '$filtkabupaten'";
+        };
+
+        if ($search_value) {
+            $keyword = $search_value;
+            $search = "nm_kawasan LIKE '%$keyword%' $filter OR nm_kab LIKE '%$keyword%' $filter";
+        } else {
+            $search = "id != 0 $filter";
+        }
+
+        if ($order_daftar_kawasan) {
+            $result_order = $this->column_orderkab_daftar_kawasan[$order_daftar_kawasan['0']['column']];
+            $result_dir = $order_daftar_kawasan['0']['dir'];
+        } elseif ($this->order_daftar_kawasan) {
+            $order_daftar_kawasan = $this->order_daftar_kawasan;
+            $result_order = key($order_daftar_kawasan);
+            $result_dir = $order_daftar_kawasan[key($order_daftar_kawasan)];
+        }
+
+        if ($length != -1);
+        $builder = $this->db->table('kawasan_id');
+        $query = $builder->select('id, nm_kawasan, kd_kab, nm_kab')->where($search)->orderBy($result_order, $result_dir);
+        if ($start != 0 || $length != 0) {
+            $query = $builder->limit($length, $start);
+        }
+        return $query->get()->getResultArray();
+    }
+
+    public function recordsTotalDaftarKawasan()
+    {
+        $builder = $this->db->table('kawasan_id');
+        $builder->select('id, nm_kawasan, kd_kab, nm_kab');
+        $builder->where('id !=', '');
+        return $builder->get()->getResultArray();
+    }
+
+    public function recordsFilteredDaftarKawasan($search_value, $filtkabupaten)
+    {
+        if ($filtkabupaten == "" || $filtkabupaten == "all") {
+            $filter = " AND kd_kab != ''";
+        } else {
+            $filter = " AND kd_kab = '$filtkabupaten'";
+        };
+
+        if ($search_value) {
+            $keyword = $search_value;
+            $search = "AND (nm_kawasan LIKE '%$keyword%' $filter OR nm_kab LIKE '%$keyword%' $filter)";
+        } else {
+            $search = "$filter";
+        }
+
+        $sQuery = "SELECT COUNT(nm_kawasan) as jml FROM kawasan_id WHERE id != 0 $search";
+        $query = $this->query($sQuery)->getRowArray();
+        return $query;
     }
 }

@@ -259,39 +259,31 @@ class Menu_admin extends BaseController
             if (!$this->validation->withRequest($this->request)->run()) {
                 return redirect()->to('user/menu-admin/input_data_kawasan')->withInput();
             }
-            $this->validation->setRule('sk_lokasi_kawasan', 'SKlokasi', 'trim|required', ['required' => 'SK Lokasi Kawasan harus diisi']);
-            if (!$this->validation->withRequest($this->request)->run()) {
-                return redirect()->to('user/menu-admin/input_data_kawasan')->withInput();
-            }
-            $this->validation->setRule('sk_tkpkp_kawasan', 'SKTKPKP', 'trim|required', ['required' => 'SK TKPKP Kawasan harus diisi']);
-            if (!$this->validation->withRequest($this->request)->run()) {
-                return redirect()->to('user/menu-admin/input_data_kawasan')->withInput();
-            }
-            $this->validation->setRule('perbup_rpkp', 'Perbubrpkp', 'trim|required', ['required' => 'PERBUP RPKP harus diisi']);
-            if (!$this->validation->withRequest($this->request)->run()) {
-                return redirect()->to('user/menu-admin/input_data_kawasan')->withInput();
-            }
-            $this->validation->setRule('perda_kab_pembangunan', 'Perdakabpembangunan', 'trim|required', ['required' => 'PERDA KAB Pembangunan harus diisi']);
-            if (!$this->validation->withRequest($this->request)->run()) {
-                return redirect()->to('user/menu-admin/input_data_kawasan')->withInput();
-            }
-            $this->validation->setRule('perbup_pembangunan', 'Perbuppembangunan', 'trim|required', ['required' => 'PERBUP Pembangunan harus diisi']);
-            if (!$this->validation->withRequest($this->request)->run()) {
-                return redirect()->to('user/menu-admin/input_data_kawasan')->withInput();
-            }
-            $this->validation->setRule('sk_tkpkp_kab_pembangunan', 'SKTKPKPKABpembangunan', 'trim|required', ['required' => 'SK TKPKP KAB Pembangunan harus diisi']);
-            if (!$this->validation->withRequest($this->request)->run()) {
-                return redirect()->to('user/menu-admin/input_data_kawasan')->withInput();
-            }
+            // $this->validation->setRule('sk_lokasi_kawasan', 'SKlokasi', 'trim|required', ['required' => 'SK Lokasi Kawasan harus diisi']);
+            // if (!$this->validation->withRequest($this->request)->run()) {
+            //     return redirect()->to('user/menu-admin/input_data_kawasan')->withInput();
+            // }
+            // $this->validation->setRule('sk_tkpkp_kawasan', 'SKTKPKP', 'trim|required', ['required' => 'SK TKPKP Kawasan harus diisi']);
+            // if (!$this->validation->withRequest($this->request)->run()) {
+            //     return redirect()->to('user/menu-admin/input_data_kawasan')->withInput();
+            // }
+            // $this->validation->setRule('perbup_rpkp', 'Perbubrpkp', 'trim|required', ['required' => 'PERBUP RPKP harus diisi']);
+            // if (!$this->validation->withRequest($this->request)->run()) {
+            //     return redirect()->to('user/menu-admin/input_data_kawasan')->withInput();
+            // }
+            // $this->validation->setRule('perda_kab_pembangunan', 'Perdakabpembangunan', 'trim|required', ['required' => 'PERDA KAB Pembangunan harus diisi']);
+            // if (!$this->validation->withRequest($this->request)->run()) {
+            //     return redirect()->to('user/menu-admin/input_data_kawasan')->withInput();
+            // }
+            // $this->validation->setRule('perbup_pembangunan', 'Perbuppembangunan', 'trim|required', ['required' => 'PERBUP Pembangunan harus diisi']);
+            // if (!$this->validation->withRequest($this->request)->run()) {
+            //     return redirect()->to('user/menu-admin/input_data_kawasan')->withInput();
+            // }
+            // $this->validation->setRule('sk_tkpkp_kab_pembangunan', 'SKTKPKPKABpembangunan', 'trim|required', ['required' => 'SK TKPKP KAB Pembangunan harus diisi']);
+            // if (!$this->validation->withRequest($this->request)->run()) {
+            //     return redirect()->to('user/menu-admin/input_data_kawasan')->withInput();
+            // }
             $this->validation->setRule('potensi_kawasan0', 'Potensikawasan', 'trim|required', ['required' => 'Potensi[1] Kawasan harus diisi']);
-            if (!$this->validation->withRequest($this->request)->run()) {
-                return redirect()->to('user/menu-admin/input_data_kawasan')->withInput();
-            }
-            $this->validation->setRule('produk_unggulan0', 'Produkunggulan', 'trim|required', ['required' => 'Produk[1] Unggulan harus diisi']);
-            if (!$this->validation->withRequest($this->request)->run()) {
-                return redirect()->to('user/menu-admin/input_data_kawasan')->withInput();
-            }
-            $this->validation->setRule('potensi_kerjasama0', 'Potensikerjasama', 'trim|required', ['required' => 'Potensi[1] Kerjasama harus diisi']);
             if (!$this->validation->withRequest($this->request)->run()) {
                 return redirect()->to('user/menu-admin/input_data_kawasan')->withInput();
             }
@@ -380,39 +372,7 @@ class Menu_admin extends BaseController
         ];
 
         if (isset($_POST['submit'])) {
-            $this->validation->setRule('sk_lokasi_kawasan', 'SKlokasi', 'trim|required', ['required' => 'SK Lokasi Kawasan harus diisi']);
-            if (!$this->validation->withRequest($this->request)->run()) {
-                return redirect()->to('user/menu-admin/revisi_review/' . $kd_kab . '/' . $kd_kawasan)->withInput();
-            }
-            $this->validation->setRule('sk_tkpkp_kawasan', 'SKTKPKP', 'trim|required', ['required' => 'SK TKPKP Kawasan harus diisi']);
-            if (!$this->validation->withRequest($this->request)->run()) {
-                return redirect()->to('user/menu-admin/revisi_review/' . $kd_kab . '/' . $kd_kawasan)->withInput();
-            }
-            $this->validation->setRule('perbup_rpkp', 'Perbubrpkp', 'trim|required', ['required' => 'PERBUP RPKP harus diisi']);
-            if (!$this->validation->withRequest($this->request)->run()) {
-                return redirect()->to('user/menu-admin/revisi_review/' . $kd_kab . '/' . $kd_kawasan)->withInput();
-            }
-            $this->validation->setRule('perda_kab_pembangunan', 'Perdakabpembangunan', 'trim|required', ['required' => 'PERDA KAB Pembangunan harus diisi']);
-            if (!$this->validation->withRequest($this->request)->run()) {
-                return redirect()->to('user/menu-admin/revisi_review/' . $kd_kab . '/' . $kd_kawasan)->withInput();
-            }
-            $this->validation->setRule('perbup_pembangunan', 'Perbuppembangunan', 'trim|required', ['required' => 'PERBUP Pembangunan harus diisi']);
-            if (!$this->validation->withRequest($this->request)->run()) {
-                return redirect()->to('user/menu-admin/revisi_review/' . $kd_kab . '/' . $kd_kawasan)->withInput();
-            }
-            $this->validation->setRule('sk_tkpkp_kab_pembangunan', 'SKTKPKPKABpembangunan', 'trim|required', ['required' => 'SK TKPKP KAB Pembangunan harus diisi']);
-            if (!$this->validation->withRequest($this->request)->run()) {
-                return redirect()->to('user/menu-admin/revisi_review/' . $kd_kab . '/' . $kd_kawasan)->withInput();
-            }
             $this->validation->setRule('potensi_kawasan0', 'Potensikawasan', 'trim|required', ['required' => 'Potensi[1] Kawasan harus diisi']);
-            if (!$this->validation->withRequest($this->request)->run()) {
-                return redirect()->to('user/menu-admin/revisi_review/' . $kd_kab . '/' . $kd_kawasan)->withInput();
-            }
-            $this->validation->setRule('produk_unggulan0', 'Produkunggulan', 'trim|required', ['required' => 'Produk[1] Unggulan harus diisi']);
-            if (!$this->validation->withRequest($this->request)->run()) {
-                return redirect()->to('user/menu-admin/revisi_review/' . $kd_kab . '/' . $kd_kawasan)->withInput();
-            }
-            $this->validation->setRule('potensi_kerjasama0', 'Potensikerjasama', 'trim|required', ['required' => 'Potensi[1] Kerjasama harus diisi']);
             if (!$this->validation->withRequest($this->request)->run()) {
                 return redirect()->to('user/menu-admin/revisi_review/' . $kd_kab . '/' . $kd_kawasan)->withInput();
             } else {
@@ -532,5 +492,71 @@ class Menu_admin extends BaseController
         $hapus->delete(['kd_kab' => $kd_kab, 'kd_kawasan' => $kd_kawasan]);
         $this->session->setFlashdata('message', '<div class="alert alert-success alert-dismissible alert-label-icon label-arrow fade show" role="alert"><i class="mdi mdi-check-all label-icon"></i>1 data Kawasan berhasil dihapus!<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>');
         return redirect()->to('user/menu-admin/list_input_data_kawasan');
+    }
+
+    public function list_kawasan()
+    {
+        $data = [
+            'title' => 'Daftar Kawasan',
+            'user' => $this->db->table('sikaperdes_primary_user')->getWhere(['kd_login' => $this->session->get('kd_login_sikaperdes')])->getRowArray(),
+            'page_title' => view('sikaperdes/layout/user/content-page-title', ['title' => 'DATA DAFTAR ID KAWASAN', 'li_1' => 'Kawasan', 'li_2' => 'List', 'li_3' => 'ID']),
+            'tab_idkawasan' => $this->db->table('kawasan_id')->select('nm_kab, kd_kab')->distinct()->get()->getResultArray()
+        ];
+
+        return view('sikaperdes/menu/kawasan/list_kawasan', $data);
+    }
+
+    public function ajax_list_daftar_kawasan()
+    {
+        $csrfName = csrf_token();
+        $csrfHash = csrf_hash();
+
+        $filtkabupaten = $this->request->getPost('filtkabupaten');
+        $param['draw'] = isset($_REQUEST['draw']) ? $_REQUEST['draw'] : '';
+        $order_daftar_kawasan = isset($_REQUEST['order']) ? $_REQUEST['order'] : '';
+        $length = isset($_REQUEST['length']) ? $_REQUEST['length'] : '';
+        $start = isset($_REQUEST['start']) ? $_REQUEST['start'] : '';
+        $search_value = isset($_REQUEST['search']['value']) ? $_REQUEST['search']['value'] : '';
+
+        $listing =  $this->Menu_admin_kawasan->getDaftarKawasan($search_value, $order_daftar_kawasan, $length, $start, $filtkabupaten);
+        $recordsTotal = $this->Menu_admin_kawasan->recordsTotalDaftarKawasan();
+        $recordsFiltered = $this->Menu_admin_kawasan->recordsFilteredDaftarKawasan($search_value, $filtkabupaten);
+
+        $data = array();
+        foreach ($listing as $key) {
+            $row = array();
+            $row[] = $key['id'];
+            $row[] = $key['nm_kawasan'];
+            $row[] = $key['nm_kab'];
+            $row[] = '<a href="edit_daftar_kawasan/' . $key['kd_kab'] .  "/"  . $key['id'] . '" class="badge bg-warning">Edit</a>
+            <a href="#" class="badge bg-danger deleting" id="sa-delete" data-kdkab="' . $key['kd_kab'] . '" data-kdkawasan="' . $key['id'] . '">Delete</a>';
+            $data[] = $row;
+        }
+
+        $json_data = array(
+            'draw' => intval($param['draw']),
+            'recordsTotal' => count($recordsTotal),
+            'recordsFiltered' => $recordsFiltered['jml'],
+            'data' => $data,
+            $csrfName => $csrfHash,
+        );
+
+        return $this->response->setJSON($json_data);
+    }
+
+    public function inputdaftarkawasan()
+    {
+        $data = [
+            'title' => 'Tambah ID Kawasan',
+            'user' => $this->db->table('sikaperdes_primary_user')->getWhere(['kd_login' => $this->session->get('kd_login_sikaperdes')])->getRowArray(),
+            'page_title' => view('sikaperdes/layout/user/content-page-title', ['title' => 'TAMBAH DAFTAR ID KAWASAN', 'li_1' => 'Kawasan', 'li_2' => 'Tambah', 'li_3' => 'ID']),
+            'list_kab' => $this->db->table('kawasan_id')->select('nm_kab, kd_kab')->distinct()->get()->getResultArray(),
+            'validation' => $this->validation
+        ];
+
+        if (isset($_POST['submit'])) {
+        }
+
+        return view('sikaperdes/menu/kawasan/tambah_daftar_kawasan', $data);
     }
 }
