@@ -4,13 +4,13 @@
 <script src="<?= base_url('minia/libs/simplebar/simplebar.min.js'); ?>"></script>
 <script src="<?= base_url('minia/libs/node-waves/waves.min.js'); ?>"></script>
 <script src="<?= base_url('minia/libs/feather-icons/feather.min.js'); ?>"></script>
+<script src="<?= base_url('minia/js/pages/pass-addon.init.js'); ?>"></script>
 <!-- pace js -->
 <script src="<?= base_url('minia/libs/pace-js/pace.min.js'); ?>"></script>
 
 <?php $request = \Config\Services::request(); ?>
 <?php if ($request->uri->getSegment(1) == "registrasi") : ?>
     <!-- choices js -->
-    <script src="<?= base_url('minia/js/pages/pass-addon.init.js'); ?>"></script>
     <script src="<?= base_url('minia/libs/choices.js/public/assets/scripts/choices.min.js') ?>"></script>
 
     <!-- form mask -->

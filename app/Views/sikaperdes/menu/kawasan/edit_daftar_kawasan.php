@@ -35,7 +35,7 @@
                             <select class="form-control" id="kd_kab" name="kd_kab">
                                 <option value="">DAFTAR KABUPATEN...</option>
                                 <?php foreach ($list_kab as $lk) : ?>
-                                    <option value="<?= $lk['kd_kab']; ?>" <?= old('kd_kab') == $lk['kd_kab'] ? 'selected' : ''; ?>><?= $lk['kd_kab'] . ' - ' . $lk['nm_kab']; ?></option>
+                                    <option value="<?= $lk['kd_kab']; ?>" <?= $lk['kd_kab'] == $kd_kab_select ? 'selected' : ''; ?>><?= $lk['kd_kab'] . ' - ' . $lk['nm_kab']; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -44,9 +44,9 @@
                     <div class="form-group row">
                         <label for="nm_kawasan" class="col-sm-2 col-form-label">Nama Kawasan</label>
                         <div class="col-sm-6 mb-3">
-                            <input type="text" class="form-control" id="nm_kawasan" name="nm_kawasan" value="<?= old('nm_kawasan'); ?>">
+                            <input type="text" class="form-control" id="nm_kawasan" name="nm_kawasan" value="<?= $nm_kawasan['nm_kawasan']; ?>">
                             <small class="form-text text-danger"><?= $validation->getError('nm_kawasan'); ?></small>
-                            <button type="submit" name="submit" class="btn btn-primary mt-4">Tambah Daftar Kawasan</button>
+                            <button type="submit" name="submit" class="btn btn-primary mt-4">Edit Daftar Kawasan</button>
                         </div>
                     </div>
                 </div>

@@ -555,8 +555,76 @@ class Menu_admin extends BaseController
         ];
 
         if (isset($_POST['submit'])) {
+            $this->validation->setRule('kd_kab', 'KDkab', 'trim|required', ['required' => 'Kabupaten harus diisi']);
+            if (!$this->validation->withRequest($this->request)->run()) {
+                return redirect()->to('user/menu-admin/input_daftar_kawasan')->withInput();
+            }
+            $this->validation->setRule('nm_kawasan', 'Namakawasan', 'trim|required|alpha_space', ['required' => 'Nama Kawasan harus diisi', 'alpha_space' => 'Hanya dapat diisi alphabet dan spasi']);
+            if (!$this->validation->withRequest($this->request)->run()) {
+                return redirect()->to('user/menu-admin/input_daftar_kawasan')->withInput();
+            } else {
+                $nm_kab = $this->db->table('filt_kabupaten_dispermadesdukcapil')->getWhere(['kd_wilayah' => $this->request->getVar('kd_kab')])->getRowArray();
+                $builder = $this->db->table('kawasan_id');
+                $insert = array(
+                    "kd_kab" => $this->request->getVar('kd_kab'),
+                    "nm_kab" => $nm_kab['akses'],
+                    "nm_kawasan" => strtoupper($this->request->getVar('nm_kawasan')),
+                );
+                $builder->insert($insert);
+
+                $this->session->setFlashdata('message', '<div class="alert alert-success alert-dismissible alert-label-icon label-arrow fade show" role="alert"><i class="mdi mdi-check-all label-icon"></i>1 Daftar ID Kawasan berhasil ditambah!<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>');
+                return redirect()->to('user/menu-admin/daftar_kawasan');
+            }
         }
 
         return view('sikaperdes/menu/kawasan/tambah_daftar_kawasan', $data);
+    }
+
+    public function editdaftarkawasan($kd_kab, $kd_kawasan)
+    {
+        $data = [
+            'title' => 'Edit ID Kawasan',
+            'user' => $this->db->table('sikaperdes_primary_user')->getWhere(['kd_login' => $this->session->get('kd_login_sikaperdes')])->getRowArray(),
+            'page_title' => view('sikaperdes/layout/user/content-page-title', ['title' => 'EDIT DAFTAR ID KAWASAN', 'li_1' => 'Kawasan', 'li_2' => 'Edit', 'li_3' => 'ID']),
+            'list_kab' => $this->db->table('kawasan_id')->select('nm_kab, kd_kab')->distinct()->get()->getResultArray(),
+            'kd_kab_select' => $kd_kab,
+            'nm_kawasan' => $this->db->table('kawasan_id')->select('nm_kawasan')->getWhere(['id' => $kd_kawasan])->getRowArray(),
+            'validation' => $this->validation
+        ];
+
+        if (isset($_POST['submit'])) {
+            $this->validation->setRule('kd_kab', 'KDkab', 'trim|required', ['required' => 'Kabupaten harus diisi']);
+            if (!$this->validation->withRequest($this->request)->run()) {
+                return redirect()->to('user/menu-admin/input_daftar_kawasan')->withInput();
+            }
+            $this->validation->setRule('nm_kawasan', 'Namakawasan', 'trim|required|alpha_space', ['required' => 'Nama Kawasan harus diisi', 'alpha_space' => 'Hanya dapat diisi alphabet dan spasi']);
+            if (!$this->validation->withRequest($this->request)->run()) {
+                return redirect()->to('user/menu-admin/input_daftar_kawasan')->withInput();
+            } else {
+                $nm_kab = $this->db->table('filt_kabupaten_dispermadesdukcapil')->getWhere(['kd_wilayah' => $this->request->getVar('kd_kab')])->getRowArray();
+
+                $builder = $this->db->table('kawasan_id');
+                $builder->set('kd_kab', $this->request->getVar('kd_kab'));
+                $builder->set('nm_kab', $nm_kab['akses']);
+                $builder->set("nm_kawasan", strtoupper($this->request->getVar('nm_kawasan')));
+                $builder->where('kd_kab', $kd_kab);
+                $builder->where('id', $kd_kawasan);
+                $builder->update();
+
+                $this->session->setFlashdata('message', '<div class="alert alert-success alert-dismissible alert-label-icon label-arrow fade show" role="alert"><i class="mdi mdi-check-all label-icon"></i>1 Daftar ID Kawasan berhasil di edit!<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>');
+                return redirect()->to('user/menu-admin/daftar_kawasan');
+            }
+        }
+
+        return view('sikaperdes/menu/kawasan/edit_daftar_kawasan', $data);
+    }
+
+    public function deletedaftarkawasan($kd_kab, $kd_kawasan)
+    {
+        $hapus = $this->db->table('kawasan_id');
+        $hapus->delete(['kd_kab' => $kd_kab, 'id' => $kd_kawasan]);
+
+        $this->session->setFlashdata('message', '<div class="alert alert-success alert-dismissible alert-label-icon label-arrow fade show" role="alert"><i class="mdi mdi-check-all label-icon"></i>1 Daftar ID Kawasan berhasil dihapus!<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>');
+        return redirect()->to('user/menu-admin/daftar_kawasan');
     }
 }

@@ -826,7 +826,7 @@
 
             Swal.fire({
                     title: 'Apakah Anda yakin?',
-                    text: "Data Kawasan terpilih akan dihapus!",
+                    text: "Daftar Kawasan terpilih akan dihapus!",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonText: 'Yes, hapus!',
@@ -837,11 +837,11 @@
                 })
                 .then((result) => {
                     if (result.value) {
-                        window.location = '<?= base_url('user/menu-admin/delete_data_kawasan') ?>' + '/' + kd_kab + '/' + kd_kawasan
+                        window.location = '<?= base_url('user/menu-admin/delete_daftar_kawasan') ?>' + '/' + kd_kab + '/' + kd_kawasan
                     } else if (result.dismiss === 'cancel') {
                         Swal.fire(
                             'Cancelled',
-                            'Data Kawasan tidak jadi dihapus :)',
+                            'Daftar Kawasan tidak jadi dihapus :)',
                             'error',
                             '#5156be',
                         )

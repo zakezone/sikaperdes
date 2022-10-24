@@ -74,8 +74,10 @@ $routes->match(['get', 'post'], '/user/menu-admin/list_datainput_kawasan', 'User
 $routes->match(['get', 'post'], '/user/menu-admin/input_data_kawasan', 'User\Menu_admin::inputdatakawasan', ['filter' => 'authusersie']);
 $routes->match(['get', 'post'], '/user/menu-admin/daftar_kawasan', 'User\Menu_admin::list_kawasan', ['filter' => 'authusersie']);
 $routes->match(['get', 'post'], '/user/menu-admin/input_daftar_kawasan', 'User\Menu_admin::inputdaftarkawasan', ['filter' => 'authusersie']);
+$routes->get('/user/menu-admin/delete_daftar_kawasan/(:any)/(:any)', 'User\Menu_admin::deletedaftarkawasan/$1/$2', ['filter' => 'authusersie']);
 $routes->get('/user/menu-admin/delete_data_kawasan/(:any)/(:any)', 'User\Menu_admin::deletedatakawasan/$1/$2', ['filter' => 'authusersie']);
 $routes->match(['get', 'post'], '/user/menu-admin/verifikasi_review/(:any)/(:any)', 'User\Menu_admin::verifikasireview/$1/$2', ['filter' => 'authusersie']);
+$routes->match(['get', 'post'], '/user/menu-admin/edit_daftar_kawasan/(:any)/(:any)', 'User\Menu_admin::editdaftarkawasan/$1/$2', ['filter' => 'authusersie']);
 $routes->match(['get', 'post'], '/user/menu-admin/revisi_review/(:any)/(:any)', 'User\Menu_admin::revisidatainputkawasan/$1/$2', ['filter' => 'authusersie']);
 $routes->match(['get', 'post'], '/user/menu-admin/ajaxfiltkecamatan', 'User\Menu_admin::ajaxfiltkecamatan', ['filter' => 'authusersie']);
 $routes->match(['get', 'post'], '/user/menu-admin/ajaxfiltdesa', 'User\Menu_admin::ajaxfiltdesa', ['filter' => 'authusersie']);
