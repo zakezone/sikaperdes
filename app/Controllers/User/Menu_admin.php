@@ -94,30 +94,30 @@ class Menu_admin extends BaseController
 
     public function verifikasireview($kd_kab, $kd_kawasan)
     {
-        $whois = $this->db->table('kawasan_bank_data')->getWhere(['kd_kawasan' => $kd_kawasan])->getRowArray();
+        $whois = $this->db->table('sikaperdes_kawasan_bank_data')->getWhere(['kd_kawasan' => $kd_kawasan])->getRowArray();
 
-        $pk = $this->db->query("SELECT `potensi_kawasan` FROM `kawasan_bank_data` WHERE `kd_kab` = $kd_kab AND `kd_kawasan` = $kd_kawasan")->getRowArray();
+        $pk = $this->db->query("SELECT `potensi_kawasan` FROM `sikaperdes_kawasan_bank_data` WHERE `kd_kab` = $kd_kab AND `kd_kawasan` = $kd_kawasan")->getRowArray();
         if ($pk["potensi_kawasan"] != null) {
             $potensi_kawasan = explode("^", $pk["potensi_kawasan"]);
         } else {
             $potensi_kawasan = "-";
         }
 
-        $pu = $this->db->query("SELECT `produk_unggulan` FROM `kawasan_bank_data` WHERE `kd_kab` = $kd_kab AND `kd_kawasan` = $kd_kawasan")->getRowArray();
+        $pu = $this->db->query("SELECT `produk_unggulan` FROM `sikaperdes_kawasan_bank_data` WHERE `kd_kab` = $kd_kab AND `kd_kawasan` = $kd_kawasan")->getRowArray();
         if ($pu["produk_unggulan"] != null) {
             $produk_unggulan = explode("^", $pu["produk_unggulan"]);
         } else {
             $produk_unggulan = "-";
         }
 
-        $ipu = $this->db->query("SELECT `img_produk_unggulan` FROM `kawasan_bank_data` WHERE `kd_kab` = $kd_kab AND `kd_kawasan` = $kd_kawasan")->getRowArray();
+        $ipu = $this->db->query("SELECT `img_produk_unggulan` FROM `sikaperdes_kawasan_bank_data` WHERE `kd_kab` = $kd_kab AND `kd_kawasan` = $kd_kawasan")->getRowArray();
         if ($ipu["img_produk_unggulan"] != null) {
             $img_produk_unggulan = explode("^", $ipu["img_produk_unggulan"]);
         } else {
             $img_produk_unggulan = "-";
         }
 
-        $pks = $this->db->query("SELECT `potensi_kerjasama_pihak3` FROM `kawasan_bank_data` WHERE `kd_kab` = $kd_kab AND `kd_kawasan` = $kd_kawasan")->getRowArray();
+        $pks = $this->db->query("SELECT `potensi_kerjasama_pihak3` FROM `sikaperdes_kawasan_bank_data` WHERE `kd_kab` = $kd_kab AND `kd_kawasan` = $kd_kawasan")->getRowArray();
         if ($pks["potensi_kerjasama_pihak3"] != null) {
             $potensi_kerjasama_pihak3 = explode("^", $pks["potensi_kerjasama_pihak3"]);
         } else {
@@ -129,13 +129,13 @@ class Menu_admin extends BaseController
             'user' => $this->db->table('sikaperdes_primary_user')->getWhere(['kd_login' => $this->session->get('kd_login_sikaperdes')])->getRowArray(),
             'page_title' => view('sikaperdes/layout/user/content-page-title', ['title' => 'VERIFIKASI DATA KAWASAN PERDESAAN "' . $whois['nm_kawasan'] . '"', 'li_1' => 'Kawasan', 'li_2' => 'Verifikasi', 'li_3' => 'Data']),
             'nm_kawasan' => $whois['nm_kawasan'],
-            'dokumen' => $this->db->table('kawasan_bank_data')->select('*')->distinct()->getWhere(['kd_kawasan' => $kd_kawasan, 'kd_kab' => $kd_kab])->getRowArray(),
-            'dokumen_sk' => $this->db->table('kawasan_bank_data')->select('*')->getWhere(['kd_kawasan' => $kd_kawasan, 'kd_kab' => $kd_kab])->getRowArray(),
+            'dokumen' => $this->db->table('sikaperdes_kawasan_bank_data')->select('*')->distinct()->getWhere(['kd_kawasan' => $kd_kawasan, 'kd_kab' => $kd_kab])->getRowArray(),
+            'dokumen_sk' => $this->db->table('sikaperdes_kawasan_bank_data')->select('*')->getWhere(['kd_kawasan' => $kd_kawasan, 'kd_kab' => $kd_kab])->getRowArray(),
             'potensi_kawasan' => $potensi_kawasan,
             'produk_unggulan' => $produk_unggulan,
             'img_produk_unggulan' => $img_produk_unggulan,
             'potensi_kerjasama_pihak3' => $potensi_kerjasama_pihak3,
-            'bank_data' => $this->db->table('kawasan_bank_data')->getWhere(['kd_kawasan' => $kd_kawasan, 'kd_kab' => $kd_kab])->getResultArray(),
+            'bank_data' => $this->db->table('sikaperdes_kawasan_bank_data')->getWhere(['kd_kawasan' => $kd_kawasan, 'kd_kab' => $kd_kab])->getResultArray(),
         ];
 
         if (isset($_POST['submit'])) {
@@ -147,7 +147,7 @@ class Menu_admin extends BaseController
                     'verifikasi' => $this->request->getVar('status'),
                     'tgl_verifikasi' => time(),
                 ];
-                $verif = $this->db->table('kawasan_bank_data');
+                $verif = $this->db->table('sikaperdes_kawasan_bank_data');
                 $verif->where('kd_kab', $kd_kab);
                 $verif->where('kd_kawasan', $kd_kawasan);
                 $verif->update($update);
@@ -316,8 +316,8 @@ class Menu_admin extends BaseController
             'listKabupaten' => $this->Filterdatakabupaten_model->select('kd_wilayah, akses')->orderBy('kd_wilayah')->findAll(),
             'listKecamatan' => $this->Filterdatakecamatan_model->select('kd_wilayah, akses')->orderBy('kd_wilayah')->findAll(),
             'listKeldesa' => $this->Filterdatakeldesa_model->select('kd_wilayah, akses')->orderBy('kd_wilayah')->findAll(),
-            'namakawasan' => $this->db->table('kawasan_id')->select('*')->get()->getResultArray(),
-            'jenisklasifikasi' => $this->db->table('kawasan_klasifikasi')->select('*')->get()->getResultArray(),
+            'namakawasan' => $this->db->table('sikaperdes_kawasan_id')->select('*')->get()->getResultArray(),
+            'jenisklasifikasi' => $this->db->table('sikaperdes_kawasan_klasifikasi')->select('*')->get()->getResultArray(),
             'validation' =>  $this->validation
         ];
 
@@ -326,30 +326,30 @@ class Menu_admin extends BaseController
 
     public function revisidatainputkawasan($kd_kab, $kd_kawasan)
     {
-        $whois = $this->db->table('kawasan_bank_data')->getWhere(['kd_kawasan' => $kd_kawasan])->getRowArray();
+        $whois = $this->db->table('sikaperdes_kawasan_bank_data')->getWhere(['kd_kawasan' => $kd_kawasan])->getRowArray();
 
-        $pk = $this->db->query("SELECT `potensi_kawasan` FROM `kawasan_bank_data` WHERE `kd_kab` = $kd_kab AND `kd_kawasan` = $kd_kawasan")->getRowArray();
+        $pk = $this->db->query("SELECT `potensi_kawasan` FROM `sikaperdes_kawasan_bank_data` WHERE `kd_kab` = $kd_kab AND `kd_kawasan` = $kd_kawasan")->getRowArray();
         if ($pk["potensi_kawasan"] != null) {
             $potensi_kawasan = explode("^", $pk["potensi_kawasan"]);
         } else {
             $potensi_kawasan = "-";
         }
 
-        $pu = $this->db->query("SELECT `produk_unggulan` FROM `kawasan_bank_data` WHERE `kd_kab` = $kd_kab AND `kd_kawasan` = $kd_kawasan")->getRowArray();
+        $pu = $this->db->query("SELECT `produk_unggulan` FROM `sikaperdes_kawasan_bank_data` WHERE `kd_kab` = $kd_kab AND `kd_kawasan` = $kd_kawasan")->getRowArray();
         if ($pu["produk_unggulan"] != null) {
             $produk_unggulan = explode("^", $pu["produk_unggulan"]);
         } else {
             $produk_unggulan = "-";
         }
 
-        $ipu = $this->db->query("SELECT `img_produk_unggulan` FROM `kawasan_bank_data` WHERE `kd_kab` = $kd_kab AND `kd_kawasan` = $kd_kawasan")->getRowArray();
+        $ipu = $this->db->query("SELECT `img_produk_unggulan` FROM `sikaperdes_kawasan_bank_data` WHERE `kd_kab` = $kd_kab AND `kd_kawasan` = $kd_kawasan")->getRowArray();
         if ($ipu["img_produk_unggulan"] != null) {
             $img_produk_unggulan = explode("^", $ipu["img_produk_unggulan"]);
         } else {
             $img_produk_unggulan = "-";
         }
 
-        $pks = $this->db->query("SELECT `potensi_kerjasama_pihak3` FROM `kawasan_bank_data` WHERE `kd_kab` = $kd_kab AND `kd_kawasan` = $kd_kawasan")->getRowArray();
+        $pks = $this->db->query("SELECT `potensi_kerjasama_pihak3` FROM `sikaperdes_kawasan_bank_data` WHERE `kd_kab` = $kd_kab AND `kd_kawasan` = $kd_kawasan")->getRowArray();
         if ($pks["potensi_kerjasama_pihak3"] != null) {
             $potensi_kerjasama_pihak3 = explode("^", $pks["potensi_kerjasama_pihak3"]);
         } else {
@@ -361,13 +361,13 @@ class Menu_admin extends BaseController
             'user' => $this->db->table('sikaperdes_primary_user')->getWhere(['kd_login' => $this->session->get('kd_login_sikaperdes')])->getRowArray(),
             'page_title' => view('sikaperdes/layout/user/content-page-title', ['title' => 'REVISI DATA KAWASAN PERDESAAN "' . $whois['nm_kawasan'] . '"', 'li_1' => 'Kawasan', 'li_2' => 'Verifikasi', 'li_3' => 'Data']),
             'nm_kawasan' => $whois['nm_kawasan'],
-            'dokumen' => $this->db->table('kawasan_bank_data')->select('*')->distinct()->getWhere(['kd_kawasan' => $kd_kawasan, 'kd_kab' => $kd_kab])->getRowArray(),
-            'dokumen_sk' => $this->db->table('kawasan_bank_data')->select('*')->getWhere(['kd_kawasan' => $kd_kawasan, 'kd_kab' => $kd_kab])->getRowArray(),
+            'dokumen' => $this->db->table('sikaperdes_kawasan_bank_data')->select('*')->distinct()->getWhere(['kd_kawasan' => $kd_kawasan, 'kd_kab' => $kd_kab])->getRowArray(),
+            'dokumen_sk' => $this->db->table('sikaperdes_kawasan_bank_data')->select('*')->getWhere(['kd_kawasan' => $kd_kawasan, 'kd_kab' => $kd_kab])->getRowArray(),
             'potensi_kawasan' => $potensi_kawasan,
             'produk_unggulan' => $produk_unggulan,
             'img_produk_unggulan' => $img_produk_unggulan,
             'potensi_kerjasama_pihak3' => $potensi_kerjasama_pihak3,
-            'bank_data' => $this->db->table('kawasan_bank_data')->getWhere(['kd_kawasan' => $kd_kawasan, 'kd_kab' => $kd_kab])->getResultArray(),
+            'bank_data' => $this->db->table('sikaperdes_kawasan_bank_data')->getWhere(['kd_kawasan' => $kd_kawasan, 'kd_kab' => $kd_kab])->getResultArray(),
             'validation' =>  $this->validation
         ];
 
@@ -458,9 +458,9 @@ class Menu_admin extends BaseController
 
     public function deletedatakawasan($kd_kab, $kd_kawasan)
     {
-        $hapus = $this->db->table('kawasan_bank_data');
+        $hapus = $this->db->table('sikaperdes_kawasan_bank_data');
 
-        $oldfile = $this->db->table('kawasan_bank_data')->getWhere(['kd_kab' => $kd_kab, 'kd_kawasan' => $kd_kawasan])->getRowArray();
+        $oldfile = $this->db->table('sikaperdes_kawasan_bank_data')->getWhere(['kd_kab' => $kd_kab, 'kd_kawasan' => $kd_kawasan])->getRowArray();
         $oldfileimgproduk = explode("^", $oldfile["img_produk_unggulan"]);
 
         $old_file1 = $oldfileimgproduk[0];
@@ -500,7 +500,7 @@ class Menu_admin extends BaseController
             'title' => 'Daftar Kawasan',
             'user' => $this->db->table('sikaperdes_primary_user')->getWhere(['kd_login' => $this->session->get('kd_login_sikaperdes')])->getRowArray(),
             'page_title' => view('sikaperdes/layout/user/content-page-title', ['title' => 'DATA DAFTAR ID KAWASAN', 'li_1' => 'Kawasan', 'li_2' => 'List', 'li_3' => 'ID']),
-            'tab_idkawasan' => $this->db->table('kawasan_id')->select('nm_kab, kd_kab')->distinct()->get()->getResultArray()
+            'tab_idkawasan' => $this->db->table('sikaperdes_kawasan_id')->select('nm_kab, kd_kab')->distinct()->get()->getResultArray()
         ];
 
         return view('sikaperdes/menu/kawasan/list_kawasan', $data);
@@ -550,7 +550,7 @@ class Menu_admin extends BaseController
             'title' => 'Tambah ID Kawasan',
             'user' => $this->db->table('sikaperdes_primary_user')->getWhere(['kd_login' => $this->session->get('kd_login_sikaperdes')])->getRowArray(),
             'page_title' => view('sikaperdes/layout/user/content-page-title', ['title' => 'TAMBAH DAFTAR ID KAWASAN', 'li_1' => 'Kawasan', 'li_2' => 'Tambah', 'li_3' => 'ID']),
-            'list_kab' => $this->db->table('kawasan_id')->select('nm_kab, kd_kab')->distinct()->get()->getResultArray(),
+            'list_kab' => $this->db->table('sikaperdes_kawasan_id')->select('nm_kab, kd_kab')->distinct()->get()->getResultArray(),
             'validation' => $this->validation
         ];
 
@@ -563,8 +563,8 @@ class Menu_admin extends BaseController
             if (!$this->validation->withRequest($this->request)->run()) {
                 return redirect()->to('user/menu-admin/input_daftar_kawasan')->withInput();
             } else {
-                $nm_kab = $this->db->table('filt_kabupaten_dispermadesdukcapil')->getWhere(['kd_wilayah' => $this->request->getVar('kd_kab')])->getRowArray();
-                $builder = $this->db->table('kawasan_id');
+                $nm_kab = $this->db->table('sikaperdes_filt_kabupaten_dispermadesdukcapil')->getWhere(['kd_wilayah' => $this->request->getVar('kd_kab')])->getRowArray();
+                $builder = $this->db->table('sikaperdes_kawasan_id');
                 $insert = array(
                     "kd_kab" => $this->request->getVar('kd_kab'),
                     "nm_kab" => $nm_kab['akses'],
@@ -586,24 +586,24 @@ class Menu_admin extends BaseController
             'title' => 'Edit ID Kawasan',
             'user' => $this->db->table('sikaperdes_primary_user')->getWhere(['kd_login' => $this->session->get('kd_login_sikaperdes')])->getRowArray(),
             'page_title' => view('sikaperdes/layout/user/content-page-title', ['title' => 'EDIT DAFTAR ID KAWASAN', 'li_1' => 'Kawasan', 'li_2' => 'Edit', 'li_3' => 'ID']),
-            'list_kab' => $this->db->table('kawasan_id')->select('nm_kab, kd_kab')->distinct()->get()->getResultArray(),
+            'list_kab' => $this->db->table('sikaperdes_kawasan_id')->select('nm_kab, kd_kab')->distinct()->get()->getResultArray(),
             'kd_kab_select' => $kd_kab,
-            'nm_kawasan' => $this->db->table('kawasan_id')->select('nm_kawasan')->getWhere(['id' => $kd_kawasan])->getRowArray(),
+            'nm_kawasan' => $this->db->table('sikaperdes_kawasan_id')->select('nm_kawasan')->getWhere(['id' => $kd_kawasan])->getRowArray(),
             'validation' => $this->validation
         ];
 
         if (isset($_POST['submit'])) {
             $this->validation->setRule('kd_kab', 'KDkab', 'trim|required', ['required' => 'Kabupaten harus diisi']);
             if (!$this->validation->withRequest($this->request)->run()) {
-                return redirect()->to('user/menu-admin/input_daftar_kawasan')->withInput();
+                return redirect()->to('user/menu-admin/input_daftar_kawasan/' . $kd_kab . '/' . $kd_kawasan)->withInput();
             }
             $this->validation->setRule('nm_kawasan', 'Namakawasan', 'trim|required|alpha_space', ['required' => 'Nama Kawasan harus diisi', 'alpha_space' => 'Hanya dapat diisi alphabet dan spasi']);
             if (!$this->validation->withRequest($this->request)->run()) {
-                return redirect()->to('user/menu-admin/input_daftar_kawasan')->withInput();
+                return redirect()->to('user/menu-admin/input_daftar_kawasan/' . $kd_kab . '/' . $kd_kawasan)->withInput();
             } else {
-                $nm_kab = $this->db->table('filt_kabupaten_dispermadesdukcapil')->getWhere(['kd_wilayah' => $this->request->getVar('kd_kab')])->getRowArray();
+                $nm_kab = $this->db->table('sikaperdes_filt_kabupaten_dispermadesdukcapil')->getWhere(['kd_wilayah' => $this->request->getVar('kd_kab')])->getRowArray();
 
-                $builder = $this->db->table('kawasan_id');
+                $builder = $this->db->table('sikaperdes_kawasan_id');
                 $builder->set('kd_kab', $this->request->getVar('kd_kab'));
                 $builder->set('nm_kab', $nm_kab['akses']);
                 $builder->set("nm_kawasan", strtoupper($this->request->getVar('nm_kawasan')));
@@ -621,10 +621,134 @@ class Menu_admin extends BaseController
 
     public function deletedaftarkawasan($kd_kab, $kd_kawasan)
     {
-        $hapus = $this->db->table('kawasan_id');
+        $hapus = $this->db->table('sikaperdes_kawasan_id');
         $hapus->delete(['kd_kab' => $kd_kab, 'id' => $kd_kawasan]);
 
         $this->session->setFlashdata('message', '<div class="alert alert-success alert-dismissible alert-label-icon label-arrow fade show" role="alert"><i class="mdi mdi-check-all label-icon"></i>1 Daftar ID Kawasan berhasil dihapus!<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>');
         return redirect()->to('user/menu-admin/daftar_kawasan');
+    }
+
+    public function list_klasifikasi()
+    {
+        $data = [
+            'title' => 'Daftar Klasifikasi',
+            'user' => $this->db->table('sikaperdes_primary_user')->getWhere(['kd_login' => $this->session->get('kd_login_sikaperdes')])->getRowArray(),
+            'page_title' => view('sikaperdes/layout/user/content-page-title', ['title' => 'DATA DAFTAR JENIS KLASIFIKASI', 'li_1' => 'Kawasan', 'li_2' => 'List', 'li_3' => 'Klasifikasi']),
+            'tab_idkawasan' => $this->db->table('sikaperdes_kawasan_klasifikasi')->select('*')->get()->getResultArray()
+        ];
+
+        return view('sikaperdes/menu/kawasan/list_klasifikasi', $data);
+    }
+
+    public function ajax_list_jenis_klasifikasi()
+    {
+        $csrfName = csrf_token();
+        $csrfHash = csrf_hash();
+
+        $param['draw'] = isset($_REQUEST['draw']) ? $_REQUEST['draw'] : '';
+        $order_jenis_klasifikasi = isset($_REQUEST['order']) ? $_REQUEST['order'] : '';
+        $length = isset($_REQUEST['length']) ? $_REQUEST['length'] : '';
+        $start = isset($_REQUEST['start']) ? $_REQUEST['start'] : '';
+        $search_value = isset($_REQUEST['search']['value']) ? $_REQUEST['search']['value'] : '';
+
+        $listing =  $this->Menu_admin_kawasan->getJenisKlasifikasi($search_value, $order_jenis_klasifikasi, $length, $start);
+        $recordsTotal = $this->Menu_admin_kawasan->recordsTotalJenisKlasifikasi();
+        $recordsFiltered = $this->Menu_admin_kawasan->recordsFilteredJenisKlasifikasi($search_value);
+
+        $data = array();
+        foreach ($listing as $key) {
+            $row = array();
+            $row[] = $key['id'];
+            $row[] = $key['jenis_klasifikasi'];
+            $row[] = '<a href="edit_jenis_klasifikasi/' . $key['id'] . '" class="badge bg-warning">Edit</a>
+            <a href="#" class="badge bg-danger deleting" id="sa-delete" data-id="' . $key['id'] . '">Delete</a>';
+            $data[] = $row;
+        }
+
+        $json_data = array(
+            'draw' => intval($param['draw']),
+            'recordsTotal' => count($recordsTotal),
+            'recordsFiltered' => $recordsFiltered['jml'],
+            'data' => $data,
+            $csrfName => $csrfHash,
+        );
+
+        return $this->response->setJSON($json_data);
+    }
+
+    public function inputjenisklasifikasi()
+    {
+        $data = [
+            'title' => 'Tambah Jenis Klasifikasi',
+            'user' => $this->db->table('sikaperdes_primary_user')->getWhere(['kd_login' => $this->session->get('kd_login_sikaperdes')])->getRowArray(),
+            'page_title' => view('sikaperdes/layout/user/content-page-title', ['title' => 'TAMBAH DAFTAR JENIS KLASIFIKASI', 'li_1' => 'Kawasan', 'li_2' => 'Tambah', 'li_3' => 'Klasifikasi']),
+            'validation' => $this->validation
+        ];
+
+        if (isset($_POST['submit'])) {
+            $this->validation->setRule('jenis_klasifikasi', 'JenisKlasifikasi', 'trim|required|alpha_space|is_unique[sikaperdes_kawasan_klasifikasi.jenis_klasifikasi]', ['required' => 'Nama Klasifikasi harus diisi', 'alpha_space' => 'Hanya dapat diisi alphabet dan spasi', 'is_unique' => 'Nama Klasifikasi sudah terdaftar']);
+            if (!$this->validation->withRequest($this->request)->run()) {
+                return redirect()->to('user/menu-admin/input_jenis_klasifikasi')->withInput();
+            } else {
+                $builder = $this->db->table('sikaperdes_kawasan_klasifikasi');
+                $insert = array(
+                    "jenis_klasifikasi" => strtoupper($this->request->getVar('jenis_klasifikasi')),
+                );
+                $builder->insert($insert);
+
+                $this->session->setFlashdata('message', '<div class="alert alert-success alert-dismissible alert-label-icon label-arrow fade show" role="alert"><i class="mdi mdi-check-all label-icon"></i>1 Jenis Klasifikasi berhasil ditambah!<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>');
+                return redirect()->to('user/menu-admin/jenis_klasifikasi_list');
+            }
+        }
+
+        return view('sikaperdes/menu/kawasan/tambah_jenis_klasifikasi', $data);
+    }
+
+    public function editjenisklasifikasi($id)
+    {
+        $data = [
+            'title' => 'Edit Jenis Klasifikasi',
+            'user' => $this->db->table('sikaperdes_primary_user')->getWhere(['kd_login' => $this->session->get('kd_login_sikaperdes')])->getRowArray(),
+            'page_title' => view('sikaperdes/layout/user/content-page-title', ['title' => 'EDIT JENIS KLASIFIKASI', 'li_1' => 'Kawasan', 'li_2' => 'Edit', 'li_3' => 'Klasifikasi']),
+            'jenis_klasifikasi' => $this->db->table('sikaperdes_kawasan_klasifikasi')->select('*')->getWhere(['id' => $id])->getRowArray(),
+            'validation' => $this->validation
+        ];
+
+        if (isset($_POST['submit'])) {
+            $this->validation->setRule('jenis_klasifikasi', 'JenisKlasifikasi', 'trim|required|alpha_space|is_unique[sikaperdes_kawasan_klasifikasi.jenis_klasifikasi]', ['required' => 'Nama Klasifikasi harus diisi', 'alpha_space' => 'Hanya dapat diisi alphabet dan spasi', 'is_unique' => 'Nama Klasifikasi sudah terdaftar']);
+            if (!$this->validation->withRequest($this->request)->run()) {
+                return redirect()->to('user/menu-admin/edit_jenis_klasifikasi/' . $id)->withInput();
+            } else {
+                $builder = $this->db->table('sikaperdes_kawasan_klasifikasi');
+                $builder->set("jenis_klasifikasi", strtoupper($this->request->getVar('jenis_klasifikasi')));
+                $builder->where('id', $id);
+                $builder->update();
+
+                $this->session->setFlashdata('message', '<div class="alert alert-success alert-dismissible alert-label-icon label-arrow fade show" role="alert"><i class="mdi mdi-check-all label-icon"></i>1 Jenis Klasifikasi berhasil di edit!<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>');
+                return redirect()->to('user/menu-admin/jenis_klasifikasi_list');
+            }
+        }
+
+        return view('sikaperdes/menu/kawasan/edit_jenis_klasifikasi', $data);
+    }
+
+    public function editnamaklasifikasi()
+    {
+        $id = $this->request->getVar('id');
+        $jenis_klasifikasi = $this->request->getVar('jenis_klasifikasi');
+
+        $builder = $this->db->table('sikaperdes_kawasan_klasifikasi');
+        $builder->set('jenis_klasifikasi', $jenis_klasifikasi);
+        $builder->where('id', $id);
+        $builder->update();
+    }
+
+    public function deletejenisklasifikasi($id)
+    {
+        $hapus = $this->db->table('sikaperdes_kawasan_klasifikasi');
+        $hapus->delete(['id' => $id]);
+
+        $this->session->setFlashdata('message', '<div class="alert alert-success alert-dismissible alert-label-icon label-arrow fade show" role="alert"><i class="mdi mdi-check-all label-icon"></i>1 Jenis Klasifikasi berhasil dihapus!<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>');
+        return redirect()->to('user/menu-admin/jenis_klasifikasi_list');
     }
 }

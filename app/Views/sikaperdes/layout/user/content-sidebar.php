@@ -92,6 +92,11 @@ $this->db = \Config\Database::connect();
                                         </li>
                                     <?php endif; ?>
                                 </ul>
+                            <?php elseif ($sm['title'] == "Registrasi API" && session()->get('kd_login_sikaperdes') == '11111111111111') : ?>
+                                <a hidden href="<?= base_url($sm['url']); ?>">
+                                    <i data-feather="<?= $sm['icon']; ?>"></i>
+                                    <span data-key="t-menu"><?= $sm['title']; ?></span>
+                                </a>
                             <?php else : ?>
                                 <a href="<?= base_url($sm['url']); ?>">
                                     <i data-feather="<?= $sm['icon']; ?>"></i>

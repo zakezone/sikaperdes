@@ -78,30 +78,30 @@ class Data extends BaseController
 
     public function verifikasireview($kd_kab, $kd_kawasan)
     {
-        $whois = $this->db->table('kawasan_bank_data')->getWhere(['kd_kawasan' => $kd_kawasan])->getRowArray();
+        $whois = $this->db->table('sikaperdes_kawasan_bank_data')->getWhere(['kd_kawasan' => $kd_kawasan])->getRowArray();
 
-        $pk = $this->db->query("SELECT `potensi_kawasan` FROM `kawasan_bank_data` WHERE `kd_kab` = $kd_kab AND `kd_kawasan` = $kd_kawasan")->getRowArray();
+        $pk = $this->db->query("SELECT `potensi_kawasan` FROM `sikaperdes_kawasan_bank_data` WHERE `kd_kab` = $kd_kab AND `kd_kawasan` = $kd_kawasan")->getRowArray();
         if ($pk["potensi_kawasan"] != null) {
             $potensi_kawasan = explode("^", $pk["potensi_kawasan"]);
         } else {
             $potensi_kawasan = "-";
         }
 
-        $pu = $this->db->query("SELECT `produk_unggulan` FROM `kawasan_bank_data` WHERE `kd_kab` = $kd_kab AND `kd_kawasan` = $kd_kawasan")->getRowArray();
+        $pu = $this->db->query("SELECT `produk_unggulan` FROM `sikaperdes_kawasan_bank_data` WHERE `kd_kab` = $kd_kab AND `kd_kawasan` = $kd_kawasan")->getRowArray();
         if ($pu["produk_unggulan"] != null) {
             $produk_unggulan = explode("^", $pu["produk_unggulan"]);
         } else {
             $produk_unggulan = "-";
         }
 
-        $ipu = $this->db->query("SELECT `img_produk_unggulan` FROM `kawasan_bank_data` WHERE `kd_kab` = $kd_kab AND `kd_kawasan` = $kd_kawasan")->getRowArray();
+        $ipu = $this->db->query("SELECT `img_produk_unggulan` FROM `sikaperdes_kawasan_bank_data` WHERE `kd_kab` = $kd_kab AND `kd_kawasan` = $kd_kawasan")->getRowArray();
         if ($ipu["img_produk_unggulan"] != null) {
             $img_produk_unggulan = explode("^", $ipu["img_produk_unggulan"]);
         } else {
             $img_produk_unggulan = "-";
         }
 
-        $pks = $this->db->query("SELECT `potensi_kerjasama_pihak3` FROM `kawasan_bank_data` WHERE `kd_kab` = $kd_kab AND `kd_kawasan` = $kd_kawasan")->getRowArray();
+        $pks = $this->db->query("SELECT `potensi_kerjasama_pihak3` FROM `sikaperdes_kawasan_bank_data` WHERE `kd_kab` = $kd_kab AND `kd_kawasan` = $kd_kawasan")->getRowArray();
         if ($pks["potensi_kerjasama_pihak3"] != null) {
             $potensi_kerjasama_pihak3 = explode("^", $pks["potensi_kerjasama_pihak3"]);
         } else {
@@ -113,13 +113,13 @@ class Data extends BaseController
             'user' => $this->db->table('sikaperdes_primary_user')->getWhere(['kd_login' => $this->session->get('kd_login_sikaperdes')])->getRowArray(),
             'page_title' => view('sikaperdes/layout/user/content-page-title', ['title' => 'VERIFIKASI DATA KAWASAN PERDESAAN "' . $whois['nm_kawasan'] . '"', 'li_1' => 'Kawasan', 'li_2' => 'Verifikasi', 'li_3' => 'Data']),
             'nm_kawasan' => $whois['nm_kawasan'],
-            'dokumen' => $this->db->table('kawasan_bank_data')->select('*')->distinct()->getWhere(['kd_kawasan' => $kd_kawasan, 'kd_kab' => $kd_kab])->getRowArray(),
-            'dokumen_sk' => $this->db->table('kawasan_bank_data')->select('*')->getWhere(['kd_kawasan' => $kd_kawasan, 'kd_kab' => $kd_kab])->getRowArray(),
+            'dokumen' => $this->db->table('sikaperdes_kawasan_bank_data')->select('*')->distinct()->getWhere(['kd_kawasan' => $kd_kawasan, 'kd_kab' => $kd_kab])->getRowArray(),
+            'dokumen_sk' => $this->db->table('sikaperdes_kawasan_bank_data')->select('*')->getWhere(['kd_kawasan' => $kd_kawasan, 'kd_kab' => $kd_kab])->getRowArray(),
             'potensi_kawasan' => $potensi_kawasan,
             'produk_unggulan' => $produk_unggulan,
             'img_produk_unggulan' => $img_produk_unggulan,
             'potensi_kerjasama_pihak3' => $potensi_kerjasama_pihak3,
-            'bank_data' => $this->db->table('kawasan_bank_data')->getWhere(['kd_kawasan' => $kd_kawasan, 'kd_kab' => $kd_kab])->getResultArray(),
+            'bank_data' => $this->db->table('sikaperdes_kawasan_bank_data')->getWhere(['kd_kawasan' => $kd_kawasan, 'kd_kab' => $kd_kab])->getResultArray(),
         ];
 
         return view('sikaperdes/data/kawasan/verifikasi_data_kawasan', $data);

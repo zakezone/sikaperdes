@@ -125,7 +125,7 @@
                 </tbody>
             </table>
             <?php if ($total_rows > 5) : ?>
-                <?= $pager->links('auth_api_key', 'searching_pagination'); ?>
+                <?= $pager->links('sikaperdes_auth_api_key', 'searching_pagination'); ?>
             <?php endif; ?>
         </div>
 

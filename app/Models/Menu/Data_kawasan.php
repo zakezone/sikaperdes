@@ -7,18 +7,21 @@ use CodeIgniter\Model;
 
 class Data_kawasan extends Model
 {
-    protected $table = 'kawasan_bank_data';
+    protected $table = 'sikaperdes_kawasan_bank_data';
     protected $primaryKey = 'id';
 
     var $column_orderkab = array('id', 'nm_kec', 'nm_kab', 'nm_kawasan', 'tahun_pembentukan', 'verifikasi');
     var $order = array('id' => 'asc');
 
-    var $column_orderkab_daftar_kawasan = array('id', 'nm_kawasan', 'nm_kab', 'nm_kawasan', 'tahun_pembentukan', 'verifikasi');
+    var $column_orderkab_daftar_kawasan = array('id', 'nm_kawasan', 'nm_kab');
     var $order_daftar_kawasan = array('id' => 'asc');
+
+    var $column_order_jenis_klasifikasi = array('id', 'nm_kawasan', 'nm_kab');
+    var $order_jenis_klasifikasi = array('id' => 'asc');
 
     public function getJmlDesa($nmkawasan)
     {
-        $builder = $this->db->table('kawasan_bank_data');
+        $builder = $this->db->table('sikaperdes_kawasan_bank_data');
         $builder->selectCount('nm_des');
         $builder->where('nm_kawasan', $nmkawasan);
         return $builder->get()->getRowArray();
@@ -26,7 +29,7 @@ class Data_kawasan extends Model
 
     public function getJmlKec($nmkawasan)
     {
-        $builder = $this->db->table('kawasan_bank_data');
+        $builder = $this->db->table('sikaperdes_kawasan_bank_data');
         $builder->select('nm_kec');
         $builder->distinct();
         $builder->where('nm_kawasan', $nmkawasan);
@@ -58,7 +61,7 @@ class Data_kawasan extends Model
         }
 
         if ($length != -1);
-        $builder = $this->db->table('kawasan_bank_data');
+        $builder = $this->db->table('sikaperdes_kawasan_bank_data');
         $query = $builder->select('nm_kab, kd_kab, nm_kawasan, kd_kawasan, tahun_pembentukan, verifikasi')->distinct()->where($search)->orderBy($result_order, $result_dir);
         if ($start != 0 || $length != 0) {
             $query = $builder->limit($length, $start);
@@ -68,7 +71,7 @@ class Data_kawasan extends Model
 
     public function recordsTotalKawasan()
     {
-        $builder = $this->db->table('kawasan_bank_data');
+        $builder = $this->db->table('sikaperdes_kawasan_bank_data');
         $builder->select('nm_kab, kd_kab, nm_kawasan, kd_kawasan, tahun_pembentukan, verifikasi');
         $builder->distinct();
         $builder->where('verifikasi !=', '');
@@ -90,19 +93,19 @@ class Data_kawasan extends Model
             $search = "$filter";
         }
 
-        $sQuery = "SELECT COUNT(DISTINCT nm_kab, kd_kab, nm_kawasan, kd_kawasan, tahun_pembentukan, verifikasi) as jml FROM kawasan_bank_data WHERE id != 0 $search";
+        $sQuery = "SELECT COUNT(DISTINCT nm_kab, kd_kab, nm_kawasan, kd_kawasan, tahun_pembentukan, verifikasi) as jml FROM sikaperdes_kawasan_bank_data WHERE id != 0 $search";
         $query = $this->query($sQuery)->getRowArray();
         return $query;
     }
 
     public function inputData($input, $img_produk_unggulan1, $img_produk_unggulan2, $img_produk_unggulan3, $img_produk_unggulan4, $img_produk_unggulan5, $img_peta_delimitasi)
     {
-        $baru = $this->db->table('kawasan_bank_data')->select('nm_kawasan')->getWhere(['kd_kab' => $input['filtkabupaten'], 'kd_kawasan' => $input['id_kawasan']])->getRowArray();
+        $baru = $this->db->table('sikaperdes_kawasan_bank_data')->select('nm_kawasan')->getWhere(['kd_kab' => $input['filtkabupaten'], 'kd_kawasan' => $input['id_kawasan']])->getRowArray();
 
         if (isset($baru)) { // ini jika sudah ada kawasan yang sudah ada / (input desa baru ke kawasan tersebut)
-            $insertdatabase = $this->db->table('kawasan_bank_data');
-            $updatedatabase = $this->db->table('kawasan_bank_data');
-            $nm_kawasan = $this->db->table('kawasan_id')->select('nm_kawasan')->where('id', $input['id_kawasan'])->get()->getRowArray();
+            $insertdatabase = $this->db->table('sikaperdes_kawasan_bank_data');
+            $updatedatabase = $this->db->table('sikaperdes_kawasan_bank_data');
+            $nm_kawasan = $this->db->table('sikaperdes_kawasan_id')->select('nm_kawasan')->where('id', $input['id_kawasan'])->get()->getRowArray();
             $nm_kab = $this->db->table('filt_kabupaten_dispermadesdukcapil')->select('akses')->where('kd_wilayah', $input['filtkabupaten'])->get()->getRowArray();
             $nm_kec = $this->db->table('filt_kecamatan_dispermadesdukcapil')->select('akses')->where('kd_wilayah', $input['filtkecamatan'])->get()->getRowArray();
             $nm_des = $this->db->table('filt_keldesa_dispermadesdukcapil')->select('akses')->where('kd_wilayah', $input['filtkeldesa'])->get()->getRowArray();
@@ -158,7 +161,7 @@ class Data_kawasan extends Model
             $potensi_kerjasama_pihak3 = implode("^", $kumpulan_potensi_kerjasama);
             $updatedatabase->set('potensi_kerjasama_pihak3', $potensi_kerjasama_pihak3);
 
-            $oldfile = $this->db->table('kawasan_bank_data')->getWhere(['kd_kab' => $input['filtkabupaten'], 'kd_kawasan' => $input['id_kawasan']])->getRowArray();
+            $oldfile = $this->db->table('sikaperdes_kawasan_bank_data')->getWhere(['kd_kab' => $input['filtkabupaten'], 'kd_kawasan' => $input['id_kawasan']])->getRowArray();
             $oldfileimgproduk = explode("^", $oldfile["img_produk_unggulan"]);
 
             $nmfile1 = $img_produk_unggulan1->getRandomName();
@@ -313,8 +316,8 @@ class Data_kawasan extends Model
             $updatedatabase->where('kd_kawasan', $input['id_kawasan']);
             $updatedatabase->update();
         } else {
-            $builder = $this->db->table('kawasan_bank_data');
-            $nm_kawasan = $this->db->table('kawasan_id')->select('nm_kawasan')->where('id', $input['id_kawasan'])->get()->getRowArray();
+            $builder = $this->db->table('sikaperdes_kawasan_bank_data');
+            $nm_kawasan = $this->db->table('sikaperdes_kawasan_id')->select('nm_kawasan')->where('id', $input['id_kawasan'])->get()->getRowArray();
             $nm_kab = $this->db->table('filt_kabupaten_dispermadesdukcapil')->select('akses')->where('kd_wilayah', $input['filtkabupaten'])->get()->getRowArray();
             $nm_kec = $this->db->table('filt_kecamatan_dispermadesdukcapil')->select('akses')->where('kd_wilayah', $input['filtkecamatan'])->get()->getRowArray();
             $nm_des = $this->db->table('filt_keldesa_dispermadesdukcapil')->select('akses')->where('kd_wilayah', $input['filtkeldesa'])->get()->getRowArray();
@@ -471,7 +474,7 @@ class Data_kawasan extends Model
 
     public function revisiData($kd_kab, $kd_kawasan, $input, $img_produk_unggulan1, $img_produk_unggulan2, $img_produk_unggulan3, $img_produk_unggulan4, $img_produk_unggulan5, $img_peta_delimitasi)
     {
-        $updatedatabase = $this->db->table('kawasan_bank_data');
+        $updatedatabase = $this->db->table('sikaperdes_kawasan_bank_data');
 
         $kumpulan_potensi_kawasan = [
             $input['potensi_kawasan0'],
@@ -518,7 +521,7 @@ class Data_kawasan extends Model
         $potensi_kerjasama_pihak3 = implode("^", $kumpulan_potensi_kerjasama);
         $updatedatabase->set('potensi_kerjasama_pihak3', $potensi_kerjasama_pihak3);
 
-        $oldfile = $this->db->table('kawasan_bank_data')->getWhere(['kd_kab' => $kd_kab, 'kd_kawasan' => $kd_kawasan])->getRowArray();
+        $oldfile = $this->db->table('sikaperdes_kawasan_bank_data')->getWhere(['kd_kab' => $kd_kab, 'kd_kawasan' => $kd_kawasan])->getRowArray();
         $oldfileimgproduk = explode("^", $oldfile["img_produk_unggulan"]);
 
         if ($img_produk_unggulan1 == $oldfileimgproduk[0]) {
@@ -696,7 +699,7 @@ class Data_kawasan extends Model
         }
 
         if ($length != -1);
-        $builder = $this->db->table('kawasan_id');
+        $builder = $this->db->table('sikaperdes_kawasan_id');
         $query = $builder->select('id, nm_kawasan, kd_kab, nm_kab')->where($search)->orderBy($result_order, $result_dir);
         if ($start != 0 || $length != 0) {
             $query = $builder->limit($length, $start);
@@ -706,7 +709,7 @@ class Data_kawasan extends Model
 
     public function recordsTotalDaftarKawasan()
     {
-        $builder = $this->db->table('kawasan_id');
+        $builder = $this->db->table('sikaperdes_kawasan_id');
         $builder->select('id, nm_kawasan, kd_kab, nm_kab');
         $builder->where('id !=', '');
         return $builder->get()->getResultArray();
@@ -727,7 +730,56 @@ class Data_kawasan extends Model
             $search = "$filter";
         }
 
-        $sQuery = "SELECT COUNT(nm_kawasan) as jml FROM kawasan_id WHERE id != 0 $search";
+        $sQuery = "SELECT COUNT(nm_kawasan) as jml FROM sikaperdes_kawasan_id WHERE id != 0 $search";
+        $query = $this->query($sQuery)->getRowArray();
+        return $query;
+    }
+
+    public function getJenisKlasifikasi($search_value, $order_jenis_klasifikasi, $length, $start)
+    {
+        if ($search_value) {
+            $keyword = $search_value;
+            $search = "id LIKE '%$keyword%' OR jenis_klasifikasi LIKE '%$keyword%'";
+        } else {
+            $search = "id != 0";
+        }
+
+        if ($order_jenis_klasifikasi) {
+            $result_order = $this->column_order_jenis_klasifikasi[$order_jenis_klasifikasi['0']['column']];
+            $result_dir = $order_jenis_klasifikasi['0']['dir'];
+        } elseif ($this->order_jenis_klasifikasi) {
+            $order_jenis_klasifikasi = $this->order_jenis_klasifikasi;
+            $result_order = key($order_jenis_klasifikasi);
+            $result_dir = $order_jenis_klasifikasi[key($order_jenis_klasifikasi)];
+        }
+
+        if ($length != -1);
+        $builder = $this->db->table('sikaperdes_kawasan_klasifikasi');
+        $query = $builder->select('id, jenis_klasifikasi')->where($search)->orderBy($result_order, $result_dir);
+        if ($start != 0 || $length != 0) {
+            $query = $builder->limit($length, $start);
+        }
+        return $query->get()->getResultArray();
+    }
+
+    public function recordsTotalJenisKlasifikasi()
+    {
+        $builder = $this->db->table('sikaperdes_kawasan_klasifikasi');
+        $builder->select('id, jenis_klasifikasi');
+        $builder->where('id !=', '');
+        return $builder->get()->getResultArray();
+    }
+
+    public function recordsFilteredJenisKlasifikasi($search_value)
+    {
+        if ($search_value) {
+            $keyword = $search_value;
+            $search = "AND (id LIKE '%$keyword%' OR jenis_klasifikasi LIKE '%$keyword%')";
+        } else {
+            $search = "";
+        }
+
+        $sQuery = "SELECT COUNT(id) as jml FROM sikaperdes_kawasan_klasifikasi WHERE id != 0 $search";
         $query = $this->query($sQuery)->getRowArray();
         return $query;
     }

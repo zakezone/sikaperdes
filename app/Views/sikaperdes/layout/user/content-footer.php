@@ -328,7 +328,7 @@
                     },
                 },
                 "columnDefs": [
-                    <?php if ($session->get('role_id_sikaperdes') == '1' || $session->get('role_id_sikaperdes') == '2') : ?> {
+                    <?php if ($session->get('role_id_sikaperdes') == '1' && $session->get('kd_login_sikaperdes') == '10101010101010') : ?> {
                             searchable: false,
                             orderable: false,
                             targets: [0, 2, 3, 4, 5, 6, 7],
@@ -818,15 +818,58 @@
         }
     </script>
 
+<?php elseif ($request->uri->getSegment(2) == "menu-admin" && $request->uri->getSegment(3) == "jenis_klasifikasi_list") : ?>
+    <script src="<?= base_url('minia/libs/choices.js/public/assets/scripts/select2.js') ?>"></script>
+
+    <script src="<?= base_url('minia/libs/datatables.net/js/jquery.dataTablesAP.min.js'); ?>"></script>
+    <script src="<?= base_url('minia/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js'); ?>"></script>
+    <script src="<?= base_url('minia/js/pages/datatable-pages.init.js'); ?>"></script>
+    <script>
+        $(document).ready(function() {
+            var csrfName = $('.txt_csrfname_sie').attr('name'); // CSRF Token name
+            var csrfHash = $('.txt_csrfname_sie').val(); // CSRF hash
+            $('#datatable').DataTable({
+                'order': [],
+                'processing': true,
+                'serverSide': true,
+                'serverMethod': 'post',
+                'lengthMenu': [
+                    [5, 10, 15],
+                    [5, 10, 15]
+                ],
+                "ajax": {
+                    url: "<?= base_url('user/menu-admin/ajax_list_jenis_klasifikasi') ?>",
+                    type: 'post',
+                    data: {
+                        "csrf_test_name": $('input[name=csrf_test_name]').val(),
+                    },
+                    data: function(data) {
+                        data.csrf_test_name = $('input[name=csrf_test_name]').val();
+                    },
+                    dataSrc: function(response) {
+                        $('input[name=csrf_test_name]').val(response.csrf_test_name);
+                        return response.data;
+                    },
+                },
+                "columnDefs": [{
+                    searchable: false,
+                    orderable: true,
+                    targets: [2],
+                    className: "text-center",
+                }],
+                bDestroy: true,
+            });
+        })
+    </script>
+
     <script src="<?= base_url('minia/libs/sweetalert2/sweetalert2.min.js'); ?>"></script>
     <script>
         $(document).on('click', '#sa-delete', function(e) {
-            var kd_kab = $(this).data('kdkab');
-            var kd_kawasan = $(this).data('kdkawasan');
+            var id = $(this).data('id');
 
             Swal.fire({
                     title: 'Apakah Anda yakin?',
-                    text: "Daftar Kawasan terpilih akan dihapus!",
+                    text: "Jenis Klasifikasi terpilih akan dihapus!",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonText: 'Yes, hapus!',
@@ -837,16 +880,40 @@
                 })
                 .then((result) => {
                     if (result.value) {
-                        window.location = '<?= base_url('user/menu-admin/delete_daftar_kawasan') ?>' + '/' + kd_kab + '/' + kd_kawasan
+                        window.location = '<?= base_url('user/menu-admin/delete_jenis_klasifikasi') ?>' + '/' + id
                     } else if (result.dismiss === 'cancel') {
                         Swal.fire(
                             'Cancelled',
-                            'Daftar Kawasan tidak jadi dihapus :)',
+                            'Jenis Klasifikasi tidak jadi dihapus :)',
                             'error',
                             '#5156be',
                         )
                     }
                 })
+        });
+    </script>
+
+<?php elseif ($request->uri->getSegment(2) == "menu-admin" && $request->uri->getSegment(3) == "edit_jenis_klasifikasi") : ?>
+    <script>
+        $('#editjenisklasifikasi').on('click', function() {
+            var csrfName = $('.txt_csrfname_sie').attr('name'); // CSRF Token name
+            var csrfHash = $('.txt_csrfname_sie').val(); // CSRF hash
+            var id_data = $(this).data('id');
+            const jenis_klasifikasi = $(this).data('jenis_klasifikasi');
+            const id = $(this).data('id');
+
+            $.ajax({
+                url: '<?= base_url('user/menu-admin/edit_nama_klasifikasi'); ?>',
+                type: 'post',
+                data: {
+                    jenis_klasifikasi: jenis_klasifikasi,
+                    id: id,
+                    [csrfName]: csrfHash
+                },
+                success: function() {
+                    document.location.href = '<?= base_url('user/menu-admin/edit_jenis_klasifikasi'); ?>' + '/' + id_data;
+                }
+            })
         });
     </script>
 
@@ -1213,6 +1280,10 @@
                 name: 'Total Kawasan',
                 type: 'column',
                 data: [<?= $agregat_kp2016 != 0 ? $agregat_kp2016 : 0 ?>, <?= $agregat_kp2017 != 0 ? $agregat_kp2017 : 0 ?>, <?= $agregat_kp2018 != 0 ? $agregat_kp2018 : 0 ?>, <?= $agregat_kp2019 != 0 ? $agregat_kp2019 : 0 ?>, <?= $agregat_kp2020 != 0 ? $agregat_kp2020 : 0 ?>, <?= $agregat_kp2021 != 0 ? $agregat_kp2021 : 0 ?>, <?= $agregat_kp2022 != 0 ? $agregat_kp2022 : 0 ?>, <?= $agregat_kp2023 != 0 ? $agregat_kp2023 : null ?>, <?= $agregat_kp2024 != 0 ? $agregat_kp2024 : null ?>, <?= $agregat_kp2025 != 0 ? $agregat_kp2025 : null ?>],
+                zones: [{
+                    value: 2,
+                    color: '#8a1115'
+                }],
                 showInLegend: false,
                 // dataLabels: {
                 //     enabled: true,
@@ -1360,10 +1431,19 @@
                 enabled: false
             },
             series: [{
+                name: 'Jumlah KP Terverifikasi',
+                type: 'column',
+                data: [<?= $verif_kp_cilacap ?>, <?= $verif_kp_banyumas ?>, <?= $verif_kp_purbalingga ?>, <?= $verif_kp_banjarnegara ?>, <?= $verif_kp_kebumen ?>, <?= $verif_kp_purworejo ?>, <?= $verif_kp_wonosobo ?>, <?= $verif_kp_magelang ?>, <?= $verif_kp_boyolali ?>, <?= $verif_kp_klaten ?>, <?= $verif_kp_sukoharjo ?>, <?= $verif_kp_wonogiri ?>, <?= $verif_kp_karanganyar ?>, <?= $verif_kp_sragen ?>, <?= $verif_kp_grobogan ?>, <?= $verif_kp_blora ?>, <?= $verif_kp_rembang ?>, <?= $verif_kp_pati ?>, <?= $verif_kp_kudus ?>, <?= $verif_kp_jepara ?>, <?= $verif_kp_demak ?>, <?= $verif_kp_semarang ?>, <?= $verif_kp_temanggung ?>, <?= $verif_kp_kendal ?>, <?= $verif_kp_batang ?>, <?= $verif_kp_pekalongan ?>, <?= $verif_kp_pemalang ?>, <?= $verif_kp_tegal ?>, <?= $verif_kp_brebes ?>],
+                showInLegend: true,
+                // dataLabels: {
+                //     enabled: true,
+                //     format: 'Rp. {point.y:,.0f}'
+                // },
+            }, {
                 name: 'Jumlah KP',
                 type: 'column',
                 data: [<?= $kp_cilacap ?>, <?= $kp_banyumas ?>, <?= $kp_purbalingga ?>, <?= $kp_banjarnegara ?>, <?= $kp_kebumen ?>, <?= $kp_purworejo ?>, <?= $kp_wonosobo ?>, <?= $kp_magelang ?>, <?= $kp_boyolali ?>, <?= $kp_klaten ?>, <?= $kp_sukoharjo ?>, <?= $kp_wonogiri ?>, <?= $kp_karanganyar ?>, <?= $kp_sragen ?>, <?= $kp_grobogan ?>, <?= $kp_blora ?>, <?= $kp_rembang ?>, <?= $kp_pati ?>, <?= $kp_kudus ?>, <?= $kp_jepara ?>, <?= $kp_demak ?>, <?= $kp_semarang ?>, <?= $kp_temanggung ?>, <?= $kp_kendal ?>, <?= $kp_batang ?>, <?= $kp_pekalongan ?>, <?= $kp_pemalang ?>, <?= $kp_tegal ?>, <?= $kp_brebes ?>],
-                showInLegend: false,
+                showInLegend: true,
                 // dataLabels: {
                 //     enabled: true,
                 //     format: 'Rp. {point.y:,.0f}'

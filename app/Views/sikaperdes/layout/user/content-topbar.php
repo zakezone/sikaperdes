@@ -40,7 +40,7 @@
                 </button>
             </div>
 
-            <?php if ($user['role_id'] == 1) : ?>
+            <!-- <?php if ($user['role_id'] == 1) : ?>
                 <div class="dropdown d-inline-block">
                     <button type="button" class="btn header-item noti-icon position-relative" id="page-header-notifications-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i data-feather="bell" class="icon-lg"></i>
@@ -62,7 +62,7 @@
                         </div>
 
                         <?php
-                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 1 ORDER BY `tanggal` DESC -- LIMIT 5";
+                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `sikaperdes_rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `sikaperdes_rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 1 ORDER BY `tanggal` DESC -- LIMIT 5";
                         $listnotif = $this->db->query($query)->getResult('array');
                         ?>
 
@@ -115,7 +115,7 @@
                         </div>
 
                         <?php
-                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 2 ORDER BY `tanggal` DESC -- LIMIT 5";
+                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `sikaperdes_rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `sikaperdes_rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 2 ORDER BY `tanggal` DESC -- LIMIT 5";
                         $listnotif = $this->db->query($query)->getResult('array');
                         ?>
 
@@ -168,7 +168,7 @@
                         </div>
 
                         <?php
-                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
+                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `sikaperdes_rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `sikaperdes_rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
                         $listnotif = $this->db->query($query)->getResult('array');
                         ?>
 
@@ -221,7 +221,7 @@
                         </div>
 
                         <?php
-                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
+                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `sikaperdes_rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `sikaperdes_rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
                         $listnotif = $this->db->query($query)->getResult('array');
                         ?>
 
@@ -274,7 +274,7 @@
                         </div>
 
                         <?php
-                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
+                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `sikaperdes_rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `sikaperdes_rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
                         $listnotif = $this->db->query($query)->getResult('array');
                         ?>
 
@@ -327,7 +327,7 @@
                         </div>
 
                         <?php
-                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
+                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `sikaperdes_rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `sikaperdes_rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
                         $listnotif = $this->db->query($query)->getResult('array');
                         ?>
 
@@ -379,7 +379,7 @@
                         </div>
 
                         <?php
-                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
+                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `sikaperdes_rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `sikaperdes_rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
                         $listnotif = $this->db->query($query)->getResult('array');
                         ?>
 
@@ -431,7 +431,7 @@
                         </div>
 
                         <?php
-                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
+                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `sikaperdes_rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `sikaperdes_rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
                         $listnotif = $this->db->query($query)->getResult('array');
                         ?>
 
@@ -483,7 +483,7 @@
                         </div>
 
                         <?php
-                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
+                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `sikaperdes_rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `sikaperdes_rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
                         $listnotif = $this->db->query($query)->getResult('array');
                         ?>
 
@@ -535,7 +535,7 @@
                         </div>
 
                         <?php
-                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
+                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `sikaperdes_rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `sikaperdes_rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
                         $listnotif = $this->db->query($query)->getResult('array');
                         ?>
 
@@ -587,7 +587,7 @@
                         </div>
 
                         <?php
-                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
+                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `sikaperdes_rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `sikaperdes_rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
                         $listnotif = $this->db->query($query)->getResult('array');
                         ?>
 
@@ -639,7 +639,7 @@
                         </div>
 
                         <?php
-                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
+                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `sikaperdes_rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `sikaperdes_rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
                         $listnotif = $this->db->query($query)->getResult('array');
                         ?>
 
@@ -691,7 +691,7 @@
                         </div>
 
                         <?php
-                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
+                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `sikaperdes_rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `sikaperdes_rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
                         $listnotif = $this->db->query($query)->getResult('array');
                         ?>
 
@@ -743,7 +743,7 @@
                         </div>
 
                         <?php
-                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
+                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `sikaperdes_rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `sikaperdes_rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
                         $listnotif = $this->db->query($query)->getResult('array');
                         ?>
 
@@ -795,7 +795,7 @@
                         </div>
 
                         <?php
-                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
+                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `sikaperdes_rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `sikaperdes_rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
                         $listnotif = $this->db->query($query)->getResult('array');
                         ?>
 
@@ -847,7 +847,7 @@
                         </div>
 
                         <?php
-                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
+                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `sikaperdes_rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `sikaperdes_rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
                         $listnotif = $this->db->query($query)->getResult('array');
                         ?>
 
@@ -899,7 +899,7 @@
                         </div>
 
                         <?php
-                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
+                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `sikaperdes_rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `sikaperdes_rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
                         $listnotif = $this->db->query($query)->getResult('array');
                         ?>
 
@@ -951,7 +951,7 @@
                         </div>
 
                         <?php
-                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
+                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `sikaperdes_rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `sikaperdes_rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
                         $listnotif = $this->db->query($query)->getResult('array');
                         ?>
 
@@ -1003,7 +1003,7 @@
                         </div>
 
                         <?php
-                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
+                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `sikaperdes_rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `sikaperdes_rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
                         $listnotif = $this->db->query($query)->getResult('array');
                         ?>
 
@@ -1055,7 +1055,7 @@
                         </div>
 
                         <?php
-                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
+                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `sikaperdes_rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `sikaperdes_rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
                         $listnotif = $this->db->query($query)->getResult('array');
                         ?>
 
@@ -1107,7 +1107,7 @@
                         </div>
 
                         <?php
-                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
+                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `sikaperdes_rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `sikaperdes_rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
                         $listnotif = $this->db->query($query)->getResult('array');
                         ?>
 
@@ -1159,7 +1159,7 @@
                         </div>
 
                         <?php
-                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
+                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `sikaperdes_rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `sikaperdes_rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
                         $listnotif = $this->db->query($query)->getResult('array');
                         ?>
 
@@ -1211,7 +1211,7 @@
                         </div>
 
                         <?php
-                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
+                        $query = "SELECT `id`, `jenis_file`, `nama_notif`, `image_user`, `akses`, `tanggal` FROM `sikaperdes_notifikasi` LEFT JOIN `sikaperdes_rm_admin` ON `sikaperdes_notifikasi`.`kd_wilayah` = `sikaperdes_rm_admin`.`kd_wilayah` WHERE `read` = 'N' AND `target` = 3 ORDER BY `tanggal` DESC -- LIMIT 5";
                         $listnotif = $this->db->query($query)->getResult('array');
                         ?>
 
@@ -1241,7 +1241,7 @@
                         </div>
                     </div>
                 </div>
-            <?php endif; ?>
+            <?php endif; ?> -->
 
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item bg-soft-light border-start border-end" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -33,66 +33,96 @@ class Admin extends BaseController
         $this->session->remove('keyword');
         $this->session->remove('keywordapi');
 
-        $klasifikasi_ptp = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('klasifikasi', 'PERTANIAN TANAMAN PANGAN')->get()->getResultArray();
-        $klasifikasi_wisata = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('klasifikasi', 'WISATA')->get()->getResultArray();
-        $klasifikasi_perkebunan = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('klasifikasi', 'PERKEBUNAN')->get()->getResultArray();
-        $klasifikasi_perikanan = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('klasifikasi', 'PERIKANAN')->get()->getResultArray();
-        $klasifikasi_peternakan = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('klasifikasi', 'PETERNAKAN')->get()->getResultArray();
-        $klasifikasi_ir = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('klasifikasi', 'INDUSTRI RUMAHAN')->get()->getResultArray();
+        $klasifikasi_ptp = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('klasifikasi', 'PERTANIAN TANAMAN PANGAN')->get()->getResultArray();
+        $klasifikasi_wisata = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('klasifikasi', 'WISATA')->get()->getResultArray();
+        $klasifikasi_perkebunan = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('klasifikasi', 'PERKEBUNAN')->get()->getResultArray();
+        $klasifikasi_perikanan = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('klasifikasi', 'PERIKANAN')->get()->getResultArray();
+        $klasifikasi_peternakan = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('klasifikasi', 'PETERNAKAN')->get()->getResultArray();
+        $klasifikasi_ir = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('klasifikasi', 'INDUSTRI RUMAHAN')->get()->getResultArray();
 
-        $agregat_kp2016 = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2016')->get()->getResultArray();
-        $agregat_kp2017 = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2017')->get()->getResultArray();
-        $agregat_kp2018 = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2018')->get()->getResultArray();
-        $agregat_kp2019 = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2019')->get()->getResultArray();
-        $agregat_kp2020 = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2020')->get()->getResultArray();
-        $agregat_kp2021 = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2021')->get()->getResultArray();
-        $agregat_kp2022 = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2022')->get()->getResultArray();
-        $agregat_kp2023 = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2023')->get()->getResultArray();
-        $agregat_kp2024 = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2024')->get()->getResultArray();
-        $agregat_kp2025 = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2025')->get()->getResultArray();
+        $agregat_kp2016 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2016')->get()->getResultArray();
+        $agregat_kp2017 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2017')->get()->getResultArray();
+        $agregat_kp2018 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2018')->get()->getResultArray();
+        $agregat_kp2019 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2019')->get()->getResultArray();
+        $agregat_kp2020 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2020')->get()->getResultArray();
+        $agregat_kp2021 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2021')->get()->getResultArray();
+        $agregat_kp2022 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2022')->get()->getResultArray();
+        $agregat_kp2023 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2023')->get()->getResultArray();
+        $agregat_kp2024 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2024')->get()->getResultArray();
+        $agregat_kp2025 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2025')->get()->getResultArray();
 
-        $sk_lokasi_kawasan = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('sk_lokasi_kawasan !=', 'BELUM')->get()->getResultArray();
-        $sk_lokasi_kawasan_belum = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('sk_lokasi_kawasan', 'BELUM')->get()->getResultArray();
-        $sk_tkpkp_kawasan = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('sk_tkpkp_kawasan !=', 'BELUM')->get()->getResultArray();
-        $sk_tkpkp_kawasan_belum = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('sk_tkpkp_kawasan', 'BELUM')->get()->getResultArray();
-        $perbup_rpkp = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('perbup_rpkp !=', 'BELUM')->get()->getResultArray();
-        $perbup_rpkp_belum = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('perbup_rpkp', 'BELUM')->get()->getResultArray();
-        $perda_kab_pembangunan = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('perda_kab_pembangunan !=', 'BELUM')->get()->getResultArray();
-        $perda_kab_pembangunan_belum = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('perda_kab_pembangunan', 'BELUM')->get()->getResultArray();
-        $perbup_pembangunan = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('perbup_pembangunan !=', 'BELUM')->get()->getResultArray();
-        $perbup_pembangunan_belum = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('perbup_pembangunan', 'BELUM')->get()->getResultArray();
-        $sk_tkpkp_kab_pembangunan = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('sk_tkpkp_kab_pembangunan !=', 'BELUM')->get()->getResultArray();
-        $sk_tkpkp_kab_pembangunan_belum = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('sk_tkpkp_kab_pembangunan', 'BELUM')->get()->getResultArray();
+        $sk_lokasi_kawasan = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('sk_lokasi_kawasan !=', 'BELUM')->get()->getResultArray();
+        $sk_lokasi_kawasan_belum = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('sk_lokasi_kawasan', 'BELUM')->get()->getResultArray();
+        $sk_tkpkp_kawasan = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('sk_tkpkp_kawasan !=', 'BELUM')->get()->getResultArray();
+        $sk_tkpkp_kawasan_belum = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('sk_tkpkp_kawasan', 'BELUM')->get()->getResultArray();
+        $perbup_rpkp = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('perbup_rpkp !=', 'BELUM')->get()->getResultArray();
+        $perbup_rpkp_belum = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('perbup_rpkp', 'BELUM')->get()->getResultArray();
+        $perda_kab_pembangunan = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('perda_kab_pembangunan !=', 'BELUM')->get()->getResultArray();
+        $perda_kab_pembangunan_belum = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('perda_kab_pembangunan', 'BELUM')->get()->getResultArray();
+        $perbup_pembangunan = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('perbup_pembangunan !=', 'BELUM')->get()->getResultArray();
+        $perbup_pembangunan_belum = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('perbup_pembangunan', 'BELUM')->get()->getResultArray();
+        $sk_tkpkp_kab_pembangunan = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('sk_tkpkp_kab_pembangunan !=', 'BELUM')->get()->getResultArray();
+        $sk_tkpkp_kab_pembangunan_belum = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('sk_tkpkp_kab_pembangunan', 'BELUM')->get()->getResultArray();
 
-        $kp_cilacap = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.01')->get()->getResultArray();
-        $kp_banyumas = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.02')->get()->getResultArray();
-        $kp_purbalingga = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.03')->get()->getResultArray();
-        $kp_banjarnegara = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.04')->get()->getResultArray();
-        $kp_kebumen = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.05')->get()->getResultArray();
-        $kp_purworejo = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.06')->get()->getResultArray();
-        $kp_wonosobo = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.07')->get()->getResultArray();
-        $kp_magelang = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.08')->get()->getResultArray();
-        $kp_boyolali = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.09')->get()->getResultArray();
-        $kp_klaten = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.10')->get()->getResultArray();
-        $kp_sukoharjo = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.11')->get()->getResultArray();
-        $kp_wonogiri = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.12')->get()->getResultArray();
-        $kp_karanganyar = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.13')->get()->getResultArray();
-        $kp_sragen = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.14')->get()->getResultArray();
-        $kp_grobogan = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.15')->get()->getResultArray();
-        $kp_blora = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.16')->get()->getResultArray();
-        $kp_rembang = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.17')->get()->getResultArray();
-        $kp_pati = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.18')->get()->getResultArray();
-        $kp_kudus = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.19')->get()->getResultArray();
-        $kp_jepara = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.20')->get()->getResultArray();
-        $kp_demak = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.21')->get()->getResultArray();
-        $kp_semarang = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.22')->get()->getResultArray();
-        $kp_temanggung = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.23')->get()->getResultArray();
-        $kp_kendal = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.24')->get()->getResultArray();
-        $kp_batang = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.25')->get()->getResultArray();
-        $kp_pekalongan = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.26')->get()->getResultArray();
-        $kp_pemalang = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.27')->get()->getResultArray();
-        $kp_tegal = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.28')->get()->getResultArray();
-        $kp_brebes = $this->db->table('kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.29')->get()->getResultArray();
+        $kp_cilacap = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.01')->get()->getResultArray();
+        $kp_banyumas = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.02')->get()->getResultArray();
+        $kp_purbalingga = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.03')->get()->getResultArray();
+        $kp_banjarnegara = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.04')->get()->getResultArray();
+        $kp_kebumen = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.05')->get()->getResultArray();
+        $kp_purworejo = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.06')->get()->getResultArray();
+        $kp_wonosobo = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.07')->get()->getResultArray();
+        $kp_magelang = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.08')->get()->getResultArray();
+        $kp_boyolali = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.09')->get()->getResultArray();
+        $kp_klaten = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.10')->get()->getResultArray();
+        $kp_sukoharjo = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.11')->get()->getResultArray();
+        $kp_wonogiri = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.12')->get()->getResultArray();
+        $kp_karanganyar = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.13')->get()->getResultArray();
+        $kp_sragen = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.14')->get()->getResultArray();
+        $kp_grobogan = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.15')->get()->getResultArray();
+        $kp_blora = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.16')->get()->getResultArray();
+        $kp_rembang = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.17')->get()->getResultArray();
+        $kp_pati = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.18')->get()->getResultArray();
+        $kp_kudus = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.19')->get()->getResultArray();
+        $kp_jepara = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.20')->get()->getResultArray();
+        $kp_demak = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.21')->get()->getResultArray();
+        $kp_semarang = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.22')->get()->getResultArray();
+        $kp_temanggung = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.23')->get()->getResultArray();
+        $kp_kendal = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.24')->get()->getResultArray();
+        $kp_batang = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.25')->get()->getResultArray();
+        $kp_pekalongan = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.26')->get()->getResultArray();
+        $kp_pemalang = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.27')->get()->getResultArray();
+        $kp_tegal = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.28')->get()->getResultArray();
+        $kp_brebes = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('kd_kab', '33.29')->get()->getResultArray();
+
+        $verif_kp_cilacap = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->getWhere(['verifikasi' => 'disetujui', 'kd_kab' => '33.01'])->getResultArray();
+        $verif_kp_banyumas = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->getWhere(['verifikasi' => 'disetujui', 'kd_kab' => '33.02'])->getResultArray();
+        $verif_kp_purbalingga = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->getWhere(['verifikasi' => 'disetujui', 'kd_kab' => '33.03'])->getResultArray();
+        $verif_kp_banjarnegara = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->getWhere(['verifikasi' => 'disetujui', 'kd_kab' => '33.04'])->getResultArray();
+        $verif_kp_kebumen = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->getWhere(['verifikasi' => 'disetujui', 'kd_kab' => '33.05'])->getResultArray();
+        $verif_kp_purworejo = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->getWhere(['verifikasi' => 'disetujui', 'kd_kab' => '33.06'])->getResultArray();
+        $verif_kp_wonosobo = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->getWhere(['verifikasi' => 'disetujui', 'kd_kab' => '33.07'])->getResultArray();
+        $verif_kp_magelang = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->getWhere(['verifikasi' => 'disetujui', 'kd_kab' => '33.08'])->getResultArray();
+        $verif_kp_boyolali = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->getWhere(['verifikasi' => 'disetujui', 'kd_kab' => '33.09'])->getResultArray();
+        $verif_kp_klaten = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->getWhere(['verifikasi' => 'disetujui', 'kd_kab' => '33.10'])->getResultArray();
+        $verif_kp_sukoharjo = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->getWhere(['verifikasi' => 'disetujui', 'kd_kab' => '33.11'])->getResultArray();
+        $verif_kp_wonogiri = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->getWhere(['verifikasi' => 'disetujui', 'kd_kab' => '33.12'])->getResultArray();
+        $verif_kp_karanganyar = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->getWhere(['verifikasi' => 'disetujui', 'kd_kab' => '33.13'])->getResultArray();
+        $verif_kp_sragen = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->getWhere(['verifikasi' => 'disetujui', 'kd_kab' => '33.14'])->getResultArray();
+        $verif_kp_grobogan = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->getWhere(['verifikasi' => 'disetujui', 'kd_kab' => '33.15'])->getResultArray();
+        $verif_kp_blora = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->getWhere(['verifikasi' => 'disetujui', 'kd_kab' => '33.16'])->getResultArray();
+        $verif_kp_rembang = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->getWhere(['verifikasi' => 'disetujui', 'kd_kab' => '33.17'])->getResultArray();
+        $verif_kp_pati = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->getWhere(['verifikasi' => 'disetujui', 'kd_kab' => '33.18'])->getResultArray();
+        $verif_kp_kudus = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->getWhere(['verifikasi' => 'disetujui', 'kd_kab' => '33.19'])->getResultArray();
+        $verif_kp_jepara = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->getWhere(['verifikasi' => 'disetujui', 'kd_kab' => '33.20'])->getResultArray();
+        $verif_kp_demak = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->getWhere(['verifikasi' => 'disetujui', 'kd_kab' => '33.21'])->getResultArray();
+        $verif_kp_semarang = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->getWhere(['verifikasi' => 'disetujui', 'kd_kab' => '33.22'])->getResultArray();
+        $verif_kp_temanggung = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->getWhere(['verifikasi' => 'disetujui', 'kd_kab' => '33.23'])->getResultArray();
+        $verif_kp_kendal = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->getWhere(['verifikasi' => 'disetujui', 'kd_kab' => '33.24'])->getResultArray();
+        $verif_kp_batang = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->getWhere(['verifikasi' => 'disetujui', 'kd_kab' => '33.25'])->getResultArray();
+        $verif_kp_pekalongan = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->getWhere(['verifikasi' => 'disetujui', 'kd_kab' => '33.26'])->getResultArray();
+        $verif_kp_pemalang = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->getWhere(['verifikasi' => 'disetujui', 'kd_kab' => '33.27'])->getResultArray();
+        $verif_kp_tegal = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->getWhere(['verifikasi' => 'disetujui', 'kd_kab' => '33.28'])->getResultArray();
+        $verif_kp_brebes = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->getWhere(['verifikasi' => 'disetujui', 'kd_kab' => '33.29'])->getResultArray();
 
         $data = [
             'title' => 'Dashboard',
@@ -155,6 +185,93 @@ class Admin extends BaseController
             'kp_pemalang' => count($kp_pemalang),
             'kp_tegal' => count($kp_tegal),
             'kp_brebes' => count($kp_brebes),
+            'kp_cilacap' => count($kp_cilacap),
+            'kp_banyumas' => count($kp_banyumas),
+            'kp_purbalingga' => count($kp_purbalingga),
+            'kp_banjarnegara' => count($kp_banjarnegara),
+            'kp_kebumen' => count($kp_kebumen),
+            'kp_purworejo' => count($kp_purworejo),
+            'kp_wonosobo' => count($kp_wonosobo),
+            'kp_magelang' => count($kp_magelang),
+            'kp_boyolali' => count($kp_boyolali),
+            'kp_klaten' => count($kp_klaten),
+            'kp_sukoharjo' => count($kp_sukoharjo),
+            'kp_wonogiri' => count($kp_wonogiri),
+            'kp_karanganyar' => count($kp_karanganyar),
+            'kp_sragen' => count($kp_sragen),
+            'kp_grobogan' => count($kp_grobogan),
+            'kp_blora' => count($kp_blora),
+            'kp_rembang' => count($kp_rembang),
+            'kp_pati' => count($kp_pati),
+            'kp_kudus' => count($kp_kudus),
+            'kp_jepara' => count($kp_jepara),
+            'kp_demak' => count($kp_demak),
+            'kp_semarang' => count($kp_semarang),
+            'kp_temanggung' => count($kp_temanggung),
+            'kp_kendal' => count($kp_kendal),
+            'kp_batang' => count($kp_batang),
+            'kp_pekalongan' => count($kp_pekalongan),
+            'kp_pemalang' => count($kp_pemalang),
+            'kp_tegal' => count($kp_tegal),
+            'kp_brebes' => count($kp_brebes),
+            'verif_kp_cilacap' => count($verif_kp_cilacap),
+            'verif_kp_banyumas' => count($verif_kp_banyumas),
+            'verif_kp_purbalingga' => count($verif_kp_purbalingga),
+            'verif_kp_banjarnegara' => count($verif_kp_banjarnegara),
+            'verif_kp_kebumen' => count($verif_kp_kebumen),
+            'verif_kp_purworejo' => count($verif_kp_purworejo),
+            'verif_kp_wonosobo' => count($verif_kp_wonosobo),
+            'verif_kp_magelang' => count($verif_kp_magelang),
+            'verif_kp_boyolali' => count($verif_kp_boyolali),
+            'verif_kp_klaten' => count($verif_kp_klaten),
+            'verif_kp_sukoharjo' => count($verif_kp_sukoharjo),
+            'verif_kp_wonogiri' => count($verif_kp_wonogiri),
+            'verif_kp_karanganyar' => count($verif_kp_karanganyar),
+            'verif_kp_sragen' => count($verif_kp_sragen),
+            'verif_kp_grobogan' => count($verif_kp_grobogan),
+            'verif_kp_blora' => count($verif_kp_blora),
+            'verif_kp_rembang' => count($verif_kp_rembang),
+            'verif_kp_pati' => count($verif_kp_pati),
+            'verif_kp_kudus' => count($verif_kp_kudus),
+            'verif_kp_jepara' => count($verif_kp_jepara),
+            'verif_kp_demak' => count($verif_kp_demak),
+            'verif_kp_semarang' => count($verif_kp_semarang),
+            'verif_kp_temanggung' => count($verif_kp_temanggung),
+            'verif_kp_kendal' => count($verif_kp_kendal),
+            'verif_kp_batang' => count($verif_kp_batang),
+            'verif_kp_pekalongan' => count($verif_kp_pekalongan),
+            'verif_kp_pemalang' => count($verif_kp_pemalang),
+            'verif_kp_tegal' => count($verif_kp_tegal),
+            'verif_kp_brebes' => count($verif_kp_brebes),
+            'verif_kp_cilacap' => count($verif_kp_cilacap),
+            'verif_kp_banyumas' => count($verif_kp_banyumas),
+            'verif_kp_purbalingga' => count($verif_kp_purbalingga),
+            'verif_kp_banjarnegara' => count($verif_kp_banjarnegara),
+            'verif_kp_kebumen' => count($verif_kp_kebumen),
+            'verif_kp_purworejo' => count($verif_kp_purworejo),
+            'verif_kp_wonosobo' => count($verif_kp_wonosobo),
+            'verif_kp_magelang' => count($verif_kp_magelang),
+            'verif_kp_boyolali' => count($verif_kp_boyolali),
+            'verif_kp_klaten' => count($verif_kp_klaten),
+            'verif_kp_sukoharjo' => count($verif_kp_sukoharjo),
+            'verif_kp_wonogiri' => count($verif_kp_wonogiri),
+            'verif_kp_karanganyar' => count($verif_kp_karanganyar),
+            'verif_kp_sragen' => count($verif_kp_sragen),
+            'verif_kp_grobogan' => count($verif_kp_grobogan),
+            'verif_kp_blora' => count($verif_kp_blora),
+            'verif_kp_rembang' => count($verif_kp_rembang),
+            'verif_kp_pati' => count($verif_kp_pati),
+            'verif_kp_kudus' => count($verif_kp_kudus),
+            'verif_kp_jepara' => count($verif_kp_jepara),
+            'verif_kp_demak' => count($verif_kp_demak),
+            'verif_kp_semarang' => count($verif_kp_semarang),
+            'verif_kp_temanggung' => count($verif_kp_temanggung),
+            'verif_kp_kendal' => count($verif_kp_kendal),
+            'verif_kp_batang' => count($verif_kp_batang),
+            'verif_kp_pekalongan' => count($verif_kp_pekalongan),
+            'verif_kp_pemalang' => count($verif_kp_pemalang),
+            'verif_kp_tegal' => count($verif_kp_tegal),
+            'verif_kp_brebes' => count($verif_kp_brebes),
         ];
 
         return view('sikaperdes/user/admin/dashboard', $data);
@@ -220,7 +337,9 @@ class Admin extends BaseController
             $row[] = $key['ampuan'];
             $row[] = $key['akses'];
             $row[] = $key['tk_instansi'];
-            $row[] = '<a href="role_edit/' . $key['user_id'] . '' . "/" . '' . $key['kd_wilayah'] . '" class="badge bg-info">Edit</a> <a href="role_access/' . $key['role_id'] . '" class="badge bg-warning">Configure</a>';
+            if ($this->session->get('kd_login_sikaperdes') == "10101010101010") {
+                $row[] = '<a href="role_edit/' . $key['user_id'] . '' . "/" . '' . $key['kd_wilayah'] . '" class="badge bg-info">Edit</a> <a href="role_access/' . $key['role_id'] . '" class="badge bg-warning">Configure</a>';
+            }
             $data[] = $row;
         }
 
@@ -285,8 +404,8 @@ class Admin extends BaseController
             'user' => $this->db->table('sikaperdes_primary_user')->getWhere(['kd_login' => $this->session->get('kd_login_sikaperdes')])->getRowArray(),
             'edit' => $this->db->table('sikaperdes_primary_user')->getWhere(['user_id' => $user_id])->getRowArray(),
             'tabrole' => $editrole->get()->getResultArray(),
-            'permendagri' => $this->db->table('rm_admin')->where('kd_wilayah', $kd_wilayah)->orderBy('id_prov ASC')->get()->getRowArray(),
-            'roleedit' => $this->db->table('rm_admin')->select(['kd_wilayah', 'role', 'akses'])->orderBy('id_prov ASC')->get()->getResultArray(),
+            'permendagri' => $this->db->table('sikaperdes_rm_admin')->where('kd_wilayah', $kd_wilayah)->orderBy('id_prov ASC')->get()->getRowArray(),
+            'roleedit' => $this->db->table('sikaperdes_rm_admin')->select(['kd_wilayah', 'role', 'akses'])->orderBy('id_prov ASC')->get()->getResultArray(),
             'tabactive' => $this->db->table('sikaperdes_primary_is_active')->get()->getResultArray()
         ];
 
@@ -497,7 +616,7 @@ class Admin extends BaseController
             'rolak' => $this->db->table('sikaperdes_primary_role')->getWhere(['id' => $this->session->get('role_id_sikaperdes')])->getRowArray(),
             'page_title' => view('sikaperdes/layout/user/content-page-title', ['title' => 'Registrasi User API', 'li_1' => 'Admin', 'li_2' => 'Registrasi User API']),
             'start' => $start,
-            'getrole' => $get_role->paginate(5, 'auth_api_key'),
+            'getrole' => $get_role->paginate(5, 'sikaperdes_auth_api_key'),
             'validation' =>  $this->validation
         ];
 
@@ -514,7 +633,7 @@ class Admin extends BaseController
     {
         $email = $this->request->getVar('email');
 
-        $this->validation->setRule('email', 'Email', 'required|trim|valid_email|is_unique[auth_api_key.email]', ['required' => 'Email tidak boleh kosong', 'valid_email' => 'Format email tidak sesuai', 'is_unique' => 'Email sudah terdaftar']);
+        $this->validation->setRule('email', 'Email', 'required|trim|valid_email|is_unique[sikaperdes_auth_api_key.email]', ['required' => 'Email tidak boleh kosong', 'valid_email' => 'Format email tidak sesuai', 'is_unique' => 'Email sudah terdaftar']);
         $this->validation->setRule('aplication', 'Aplication', 'required|trim', ['required' => 'Nama aplikasi tidak boleh kosong']);
         $this->validation->setRule('password', 'Password', 'required|trim|min_length[6]', ['required' => 'Password tidak boleh kosong', 'min_length' => 'Password minimal 6 digit']);
         if ($this->validation->withRequest($this->request)->run()) {
@@ -524,7 +643,7 @@ class Admin extends BaseController
                 'aplication' => $this->request->getVar('aplication'),
                 'created' => time()
             ];
-            $builder = $this->db->table('auth_api_key');
+            $builder = $this->db->table('sikaperdes_auth_api_key');
             $builder->insert($input);
 
             $this->session->setFlashdata('message', '<div class="alert alert-success alert-dismissible alert-label-icon label-arrow fade show" role="alert"><i class="mdi mdi-check-all label-icon"></i>' . $email . ' telah <b>diregistrasi!</b><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>');
@@ -540,7 +659,7 @@ class Admin extends BaseController
     {
         $this->session->remove('keyword');
         $this->session->remove('keywordapi');
-        $hapus = $this->db->table('auth_api_key');
+        $hapus = $this->db->table('sikaperdes_auth_api_key');
         $hapus->delete(['id' => $id]);
         $this->session->setFlashdata('message', '<div class="alert alert-success alert-dismissible alert-label-icon label-arrow fade show" role="alert"><i class="mdi mdi-check-all label-icon"></i>User berhasil dihapus!<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>');
         return redirect()->to('user/admin/registrasi_api');

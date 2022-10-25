@@ -6,5 +6,5 @@ use CodeIgniter\Model;
 
 class Filtkeldesa extends Model
 {
-    protected $table = 'filt_keldesa_dispermadesdukcapil';
+    protected $table = 'sikaperdes_filt_keldesa_dispermadesdukcapil';
 }

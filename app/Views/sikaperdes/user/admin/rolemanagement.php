@@ -82,7 +82,9 @@
                                 <th scope="row" style="text-align: center;">Ampuan</th>
                                 <th scope="row" style="text-align: center;">Akses</th>
                                 <th scope="row" style="text-align: center;">Role</th>
-                                <th scope="row" style="text-align: center;">Action</th>
+                                <?php if ($user['kd_login'] == "10101010101010") : ?>
+                                    <th scope="row" style="text-align: center;">Action</th>
+                                <?php endif; ?>
                             </tr>
                         </thead>
                         <tbody>

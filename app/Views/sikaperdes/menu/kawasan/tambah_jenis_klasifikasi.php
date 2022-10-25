@@ -29,25 +29,13 @@
             <input type="hidden" class="txt_csrfname_sie" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="row mb-3">
-                        <label for="kd_kab" class="col-sm-2 col-form-label">Kabupaten :</label>
-                        <div class="col-sm-6">
-                            <select class="form-control" id="kd_kab" name="kd_kab">
-                                <option value="">DAFTAR KABUPATEN...</option>
-                                <?php foreach ($list_kab as $lk) : ?>
-                                    <option value="<?= $lk['kd_kab']; ?>" <?= old('kd_kab') == $lk['kd_kab'] ? 'selected' : ''; ?>><?= $lk['kd_kab'] . ' - ' . $lk['nm_kab']; ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
-                        <small class="form-text text-danger"><?= $validation->getError('kd_kab'); ?></small>
-                    </div>
                     <div class="form-group row">
-                        <label for="nm_kawasan" class="col-sm-2 col-form-label">Nama Kawasan</label>
+                        <label for="jenis_klasifikasi" class="col-sm-2 col-form-label">Nama Klasifikasi</label>
                         <div class="col-sm-6 mb-3">
-                            <input type="text" class="form-control" id="nm_kawasan" name="nm_kawasan" value="<?= old('nm_kawasan'); ?>">
-                            <small class="form-text text-danger"><?= $validation->getError('nm_kawasan'); ?></small>
+                            <input type="text" class="form-control" id="jenis_klasifikasi" name="jenis_klasifikasi" value="<?= old('jenis_klasifikasi'); ?>">
+                            <small class="form-text text-danger"><?= $validation->getError('jenis_klasifikasi'); ?></small>
                             <br>
-                            <button type="submit" name="submit" class="btn btn-primary mt-4">Tambah Daftar Kawasan</button>
+                            <button type="submit" name="submit" class="btn btn-primary mt-4">Tambah Jenis Klasifikasi</button>
                         </div>
                     </div>
                 </div>

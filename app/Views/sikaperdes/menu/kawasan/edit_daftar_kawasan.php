@@ -8,7 +8,7 @@
         <?= $page_title ?>
         <style>
             body {
-                background: url(../../img/bg/sitkd/bg-body.png);
+                background: url(../../../../img/bg/sitkd/bg-body.png);
                 background-size: cover;
                 background-repeat: no-repeat;
                 background-position: center;
@@ -17,7 +17,7 @@
             }
 
             body[data-layout-mode=dark] {
-                background: url(../../img/bg/sitkd/bg-body-dark.png);
+                background: url(../../../../img/bg/sitkd/bg-body-dark.png);
                 background-size: cover;
                 background-repeat: no-repeat;
                 background-position: center;
@@ -46,6 +46,7 @@
                         <div class="col-sm-6 mb-3">
                             <input type="text" class="form-control" id="nm_kawasan" name="nm_kawasan" value="<?= $nm_kawasan['nm_kawasan']; ?>">
                             <small class="form-text text-danger"><?= $validation->getError('nm_kawasan'); ?></small>
+                            <br>
                             <button type="submit" name="submit" class="btn btn-primary mt-4">Edit Daftar Kawasan</button>
                         </div>
                     </div>

@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class Data_kawasan extends Model
 {
-    protected $table = 'kawasan_bank_data';
+    protected $table = 'sikaperdes_kawasan_bank_data';
     protected $primaryKey = 'id';
 
     var $column_orderkab = array('id', 'nm_kec', 'nm_kab', 'nm_kawasan', 'tahun_pembentukan', 'verifikasi');
@@ -14,7 +14,7 @@ class Data_kawasan extends Model
 
     public function getDataTahun()
     {
-        $builder = $this->db->table('kawasan_bank_data');
+        $builder = $this->db->table('sikaperdes_kawasan_bank_data');
         $builder->select('tahun_pembentukan');
         $builder->distinct();
         $builder->where('verifikasi', "disetujui");
@@ -24,7 +24,7 @@ class Data_kawasan extends Model
 
     public function getJmlDesa($nmkawasan)
     {
-        $builder = $this->db->table('kawasan_bank_data');
+        $builder = $this->db->table('sikaperdes_kawasan_bank_data');
         $builder->selectCount('nm_des');
         $builder->where('nm_kawasan', $nmkawasan);
         return $builder->get()->getRowArray();
@@ -32,7 +32,7 @@ class Data_kawasan extends Model
 
     public function getJmlKec($nmkawasan)
     {
-        $builder = $this->db->table('kawasan_bank_data');
+        $builder = $this->db->table('sikaperdes_kawasan_bank_data');
         $builder->select('nm_kec');
         $builder->distinct();
         $builder->where('nm_kawasan', $nmkawasan);
@@ -64,7 +64,7 @@ class Data_kawasan extends Model
         }
 
         if ($length != -1);
-        $builder = $this->db->table('kawasan_bank_data');
+        $builder = $this->db->table('sikaperdes_kawasan_bank_data');
         $query = $builder->select('nm_kab, kd_kab, nm_kawasan, kd_kawasan, tahun_pembentukan, verifikasi')->distinct()->where($search)->where('verifikasi', 'disetujui')->orderBy($result_order, $result_dir);
         if ($start != 0 || $length != 0) {
             $query = $builder->limit($length, $start);
@@ -74,7 +74,7 @@ class Data_kawasan extends Model
 
     public function recordsTotalKawasan()
     {
-        $builder = $this->db->table('kawasan_bank_data');
+        $builder = $this->db->table('sikaperdes_kawasan_bank_data');
         $builder->select('nm_kab, kd_kab, nm_kawasan, kd_kawasan, tahun_pembentukan, verifikasi');
         $builder->distinct();
         $builder->where('verifikasi', 'disetujui');
@@ -96,7 +96,7 @@ class Data_kawasan extends Model
             $search = "$filter";
         }
 
-        $sQuery = "SELECT COUNT(DISTINCT nm_kab, kd_kab, nm_kawasan, kd_kawasan, tahun_pembentukan, verifikasi) as jml FROM kawasan_bank_data WHERE id != 0 AND verifikasi = 'disetujui' $search";
+        $sQuery = "SELECT COUNT(DISTINCT nm_kab, kd_kab, nm_kawasan, kd_kawasan, tahun_pembentukan, verifikasi) as jml FROM sikaperdes_kawasan_bank_data WHERE id != 0 AND verifikasi = 'disetujui' $search";
         $query = $this->query($sQuery)->getRowArray();
         return $query;
     }
