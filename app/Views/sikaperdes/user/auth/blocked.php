@@ -57,8 +57,7 @@
         </div>
         <div class="container my-auto">
             <div class="copyright text-center my-auto">
-                <span>Copyright &copy; <?= date("Y"); ?> . SIPOLAHTA
-                    <p>Dispermadesdukcapil Provinsi Jawa Tengah</p>
+                <span>Copyright &copy; <?= date("Y"); ?> . SIPOLAHTA . DISPERMADES Provinsi Jawa Tengah
                 </span>
             </div>
         </div>

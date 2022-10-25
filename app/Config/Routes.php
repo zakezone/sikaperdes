@@ -91,6 +91,20 @@ $routes->match(['get', 'post'], '/user/menu-admin/load_data_kawasan', 'User\Menu
 $routes->match(['get', 'post'], '/user/menu-admin/ajax_list_daftar_kawasan', 'User\Menu_admin::ajax_list_daftar_kawasan', ['filter' => 'authusersie']);
 $routes->match(['get', 'post'], '/user/menu-admin/ajax_list_jenis_klasifikasi', 'User\Menu_admin::ajax_list_jenis_klasifikasi', ['filter' => 'authusersie']);
 
+// SIKAPERDES USER PROVINSI KONTEN
+$routes->match(['get', 'post'], '/user/provinsi/editprofile', 'User\Provinsi::editprofile', ['filter' => 'authusersie']);
+$routes->match(['get', 'post'], '/user/provinsi/ganti_password', 'User\Provinsi::changepassword', ['filter' => 'authusersie']);
+$routes->match(['get', 'post'], '/user/provinsi/(:any)', 'User\Provinsi::$1', ['filter' => 'authusersie']);
+$routes->get('/user/provinsi/dashboard', 'User\Provinsi::dashboard', ['filter' => 'authusersie']);
+$routes->get('/user/provinsi', 'User\Provinsi::dashboard', ['filter' => 'authusersie']);
+
+// MENU USER PROVINSI SIKAPERDES
+$routes->match(['get', 'post'], '/user/menu-provinsi/verifikasi_review/(:any)/(:any)', 'User\Menu_provinsi::verifikasireview/$1/$2', ['filter' => 'authusersie']);
+$routes->get('/user/menu-provinsi/verifikasi_data', 'User\Menu_provinsi::verifikasi_data_kawasan', ['filter' => 'authusersie']);
+$routes->match(['get', 'post'], '/user/menu-provinsi/load_data_kawasan', 'User\Menu_provinsi::load_data_kawasan', ['filter' => 'authusersie']);
+$routes->match(['get', 'post'], '/user/menu-provinsi/ajaxfiltkecamatan', 'User\Menu_provinsi::ajaxfiltkecamatan', ['filter' => 'authusersie']);
+$routes->match(['get', 'post'], '/user/menu-provinsi/ajaxfiltdesa', 'User\Menu_provinsi::ajaxfiltdesa', ['filter' => 'authusersie']);
+
 // DATA USER SIKAPERDES
 $routes->match(['get', 'post'], '/user/data/verifikasi_review/(:any)/(:any)', 'User\Data::verifikasireview/$1/$2', ['filter' => 'authusersie']);
 $routes->get('/user/data/kawasan', 'User\Data::verifikasi_data_kawasan', ['filter' => 'authusersie']);

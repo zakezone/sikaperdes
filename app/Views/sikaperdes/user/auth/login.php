@@ -12,7 +12,7 @@
                                     <img src="<?= base_url('img/thumbnail/logojatengB.png'); ?>" alt="" height="80">
                                 </a>
                                 <h6>SIKAPERDES</h6>
-                                <h6>DISPERMADESDUKCAPIL PROV JATENG</h6>
+                                <h6>DISPERMADES PROV JATENG</h6>
                             </div>
                             <?= session()->getFlashdata('message'); ?>
                             <?php if (($validation->getError('password')) == "Kesalahan input Password") : ?>
@@ -77,7 +77,7 @@
                             </div>
                             <div class="md-5 text-center">
                                 <span>Copyright &copy; <?= date("Y"); ?> . SIKAPERDES
-                                    <p>Dispermadesdukcapil Provinsi Jawa Tengah</p>
+                                    <p>DISPERMADES Provinsi Jawa Tengah</p>
                                 </span>
                             </div>
                         </div>

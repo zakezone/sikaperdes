@@ -2,7 +2,6 @@
 
 namespace App\Models\Menu;
 
-use CodeIgniter\Database\MySQLi\Builder;
 use CodeIgniter\Model;
 
 class Data_kawasan extends Model

@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <span>Copyright &copy; <?= date("Y"); ?> . SIKAPERDES . DISPERMADESDUKCAPIL Provinsi Jawa Tengah</span>
+                <span>Copyright &copy; <?= date("Y"); ?> . SIKAPERDES . DISPERMADES Provinsi Jawa Tengah</span>
             </div>
         </div>
     </div>
@@ -104,14 +104,14 @@
         </script>
     <?php elseif ($session->get('role_id_sikaperdes') == '2') : ?>
         <script>
-            $('#editemailprovinsi').on('click', function() {
+            $('#editemail').on('click', function() {
                 var csrfName = $('.txt_csrfname_sie').attr('name'); // CSRF Token name
                 var csrfHash = $('.txt_csrfname_sie').val(); // CSRF hash
                 const email = $(this).data('email');
                 const userid = $(this).data('userid');
 
                 $.ajax({
-                    url: "<?= base_url('user/dispermades-provinsi/editemail'); ?>",
+                    url: "<?= base_url('user/provinsi/editemail'); ?>",
                     type: 'post',
                     data: {
                         email: email,
@@ -119,20 +119,20 @@
                         [csrfName]: csrfHash
                     },
                     success: function() {
-                        document.location.href = "<?= base_url('user/dispermades-provinsi/editprofile'); ?>";
+                        document.location.href = "<?= base_url('user/provinsi/editprofile'); ?>";
                     }
                 })
             });
         </script>
         <script>
-            $('#edithpprovinsi').on('click', function() {
+            $('#edithp').on('click', function() {
                 var csrfName = $('.txt_csrfname_sie').attr('name'); // CSRF Token name
                 var csrfHash = $('.txt_csrfname_sie').val(); // CSRF hash
                 const hp = $(this).data('hp');
                 const userid = $(this).data('userid');
 
                 $.ajax({
-                    url: "<?= base_url('user/dispermades-provinsi/edithp'); ?>",
+                    url: "<?= base_url('user/provinsi/edithp'); ?>",
                     type: 'post',
                     data: {
                         hp: hp,
@@ -140,7 +140,7 @@
                         [csrfName]: csrfHash
                     },
                     success: function() {
-                        document.location.href = "<?= base_url('user/dispermades-provinsi/editprofile'); ?>";
+                        document.location.href = "<?= base_url('user/provinsi/editprofile'); ?>";
                     }
                 })
             });
@@ -154,7 +154,7 @@
                 const userid = $(this).data('userid');
 
                 $.ajax({
-                    url: "<?= base_url('user/dukcapil-provinsi/editemail'); ?>",
+                    url: "<?= base_url('user/kabupaten/editemail'); ?>",
                     type: 'post',
                     data: {
                         email: email,
@@ -162,7 +162,7 @@
                         [csrfName]: csrfHash
                     },
                     success: function() {
-                        document.location.href = "<?= base_url('user/dukcapil-provinsi/editprofile'); ?>";
+                        document.location.href = "<?= base_url('user/kabupaten/editprofile'); ?>";
                     }
                 })
             });
@@ -175,7 +175,7 @@
                 const userid = $(this).data('userid');
 
                 $.ajax({
-                    url: "<?= base_url('user/dukcapil-provinsi/edithp'); ?>",
+                    url: "<?= base_url('user/kabupaten/edithp'); ?>",
                     type: 'post',
                     data: {
                         hp: hp,
@@ -183,7 +183,7 @@
                         [csrfName]: csrfHash
                     },
                     success: function() {
-                        document.location.href = "<?= base_url('user/dukcapil-provinsi/editprofile'); ?>";
+                        document.location.href = "<?= base_url('user/kabupaten/editprofile'); ?>";
                     }
                 })
             });
@@ -297,13 +297,13 @@
                     <?php if ($session->get('role_id_sikaperdes') == '1') : ?>
                         url: "<?= base_url('user/admin/ajaxserverSide_rolemanagement') ?>"
                     <?php elseif ($session->get('role_id_sikaperdes') == '2') : ?>
-                        url: "<?= base_url('user/dispermades-provinsi/ajaxserverSide_rolemanagement') ?>"
+                        url: "<?= base_url('user/provinsi/ajaxserverSide_rolemanagement') ?>"
                     <?php elseif ($session->get('role_id_sikaperdes') == '3') : ?>
-                        url: "<?= base_url('user/dukcapil-provinsi/ajaxserverSide_rolemanagement') ?>"
+                        url: "<?= base_url('user/kabupaten/ajaxserverSide_rolemanagement') ?>"
                     <?php elseif ($session->get('role_id_sikaperdes') == '4') : ?>
-                        url: "<?= base_url('user/dukcapil-pemkot/ajaxserverSide_rolemanagement') ?>"
+                        url: "<?= base_url('user/kecamatan/ajaxserverSide_rolemanagement') ?>"
                     <?php elseif ($session->get('role_id_sikaperdes') == '5') : ?>
-                        url: "<?= base_url('user/dispermades-pemkab/ajaxserverSide_rolemanagement') ?>"
+                        url: "<?= base_url('user/pemdes/ajaxserverSide_rolemanagement') ?>"
                     <?php endif; ?>,
                     type: 'post',
                     data: {
@@ -355,9 +355,9 @@
                         <?php if ($session->get('role_id_sikaperdes') == '1') : ?>
                             url: "<?= base_url('user/admin/ajaxfiltkecamatan') ?>"
                         <?php elseif ($session->get('role_id_sikaperdes') == '2') : ?>
-                            url: "<?= base_url('user/dispermades-provinsi/ajaxfiltkecamatan') ?>"
+                            url: "<?= base_url('user/provinsi/ajaxfiltkecamatan') ?>"
                         <?php elseif ($session->get('role_id_sikaperdes') == '3') : ?>
-                            url: "<?= base_url('user/dukcapil-provinsi/ajaxfiltkecamatan') ?>"
+                            url: "<?= base_url('user/kabupaten/ajaxfiltkecamatan') ?>"
                         <?php endif; ?>,
                         dataType: 'json',
                         delay: 250,
@@ -383,11 +383,11 @@
                         <?php if ($session->get('role_id_sikaperdes') == '1') : ?>
                             url: "<?= base_url('user/admin/ajaxfiltkeldesa') ?>"
                         <?php elseif ($session->get('role_id_sikaperdes') == '2') : ?>
-                            url: "<?= base_url('user/dispermades-provinsi/ajaxfiltkeldesa') ?>"
+                            url: "<?= base_url('user/provinsi/ajaxfiltkeldesa') ?>"
                         <?php elseif ($session->get('role_id_sikaperdes') == '3') : ?>
-                            url: "<?= base_url('user/dukcapil-provinsi/ajaxfiltkeldesa') ?>"
+                            url: "<?= base_url('user/kabupaten/ajaxfiltkeldesa') ?>"
                         <?php elseif ($session->get('role_id_sikaperdes') == '4') : ?>
-                            url: "<?= base_url('user/dukcapil-pemkot/ajaxfiltkeldesa') ?>"
+                            url: "<?= base_url('user/kecamatan/ajaxfiltkeldesa') ?>"
                         <?php endif; ?>,
                         dataType: 'json',
                         delay: 250,
@@ -510,7 +510,7 @@
         </script>
     <?php endif; ?>
 
-<?php elseif ($request->uri->getSegment(2) == "menu-admin" && $request->uri->getSegment(3) == "verifikasi_data") : ?>
+<?php elseif ($request->uri->getSegment(2) == "menu-admin" && $request->uri->getSegment(3) == "verifikasi_data" || $request->uri->getSegment(2) == "menu-provinsi" && $request->uri->getSegment(3) == "verifikasi_data") : ?>
     <script src="<?= base_url('minia/libs/choices.js/public/assets/scripts/select2.js') ?>"></script>
     <script>
         $('#statusfilt').select2({
@@ -534,7 +534,11 @@
                     [5, 10, 15]
                 ],
                 "ajax": {
-                    url: "<?= base_url('user/menu-admin/load_data_kawasan') ?>",
+                    <?php if ($session->get('role_id_sikaperdes') == '1') : ?>
+                        url: "<?= base_url('user/menu-admin/load_data_kawasan') ?>"
+                    <?php elseif ($session->get('role_id_sikaperdes') == '2') : ?>
+                        url: "<?= base_url('user/menu-provinsi/load_data_kawasan') ?>"
+                    <?php endif; ?>,
                     type: 'post',
                     data: {
                         "csrf_test_name": $('input[name=csrf_test_name]').val(),
@@ -577,7 +581,11 @@
                     [5, 10, 15]
                 ],
                 "ajax": {
-                    url: "<?= base_url('user/menu-admin/load_data_kawasan') ?>",
+                    <?php if ($session->get('role_id_sikaperdes') == '1') : ?>
+                        url: "<?= base_url('user/menu-admin/load_data_kawasan') ?>"
+                    <?php elseif ($session->get('role_id_sikaperdes') == '2') : ?>
+                        url: "<?= base_url('user/menu-provinsi/load_data_kawasan') ?>"
+                    <?php endif; ?>,
                     type: 'post',
                     data: {
                         "csrf_test_name": $('input[name=csrf_test_name]').val(),
@@ -1005,7 +1013,7 @@
                         <?php if ($session->get('role_id_sikaperdes') == '1') : ?>
                             url: "<?= base_url('user/menu-admin/ajaxfiltkecamatan') ?>"
                         <?php elseif ($session->get('role_id_sikaperdes') == '3') : ?>
-                            url: "<?= base_url('user/menu-pemkab/ajaxfiltkecamatan') ?>"
+                            url: "<?= base_url('user/menu-kabupaten/ajaxfiltkecamatan') ?>"
                         <?php endif; ?>,
                         dataType: 'json',
                         delay: 250,
@@ -1031,7 +1039,7 @@
                         <?php if ($session->get('role_id_sikaperdes') == '1') : ?>
                             url: "<?= base_url('user/menu-admin/ajaxfiltdesa') ?>"
                         <?php elseif ($session->get('role_id_sikaperdes') == '3') : ?>
-                            url: "<?= base_url('user/menu-pemkab/ajaxfiltdesa') ?>"
+                            url: "<?= base_url('user/menu-kabupaten/ajaxfiltdesa') ?>"
                         <?php endif; ?>,
                         dataType: 'json',
                         delay: 250,

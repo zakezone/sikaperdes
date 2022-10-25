@@ -1,6 +1,6 @@
-<?= $this->include('sie/layout/user/content-header') ?>
-<?= $this->include('sie/layout/user/content-topbar') ?>
-<?= $this->include('sie/layout/user/content-sidebar') ?>
+<?= $this->include('sikaperdes/layout/user/content-header') ?>
+<?= $this->include('sikaperdes/layout/user/content-topbar') ?>
+<?= $this->include('sikaperdes/layout/user/content-sidebar') ?>
 
 <div class="page-content" id="content">
     <div class="container-fluid">
@@ -50,7 +50,7 @@
                                 <small class="form-text text-danger"><?= $validation->getError('email'); ?></small>
                             </div>
                             <div class="col-sm-4">
-                                <button type="editemail" class="btn btn-info" id="editemailprovinsi" data-email="" data-userid="<?= $user['user_id']; ?>"><i class="fas fa-edit"></i></button>
+                                <button type="editemail" class="btn btn-info" id="editemail" data-email="" data-userid="<?= $user['user_id']; ?>"><i class="fas fa-edit"></i></button>
                             </div>
                         </div>
                     <?php else : ?>
@@ -70,7 +70,7 @@
                                 <small class="form-text text-danger"><?= $validation->getError('hp'); ?></small>
                             </div>
                             <div class="col-sm-4">
-                                <button type="edithp" class="btn btn-info" id="edithpprovinsi" data-hp="" data-userid="<?= $user['user_id']; ?>"><i class="fas fa-edit"></i></button>
+                                <button type="edithp" class="btn btn-info" id="edithp" data-hp="" data-userid="<?= $user['user_id']; ?>"><i class="fas fa-edit"></i></button>
                             </div>
                         </div>
                     <?php else : ?>
@@ -107,4 +107,4 @@
 
     </div>
 </div>
-<?= $this->include('sie/layout/user/content-footer') ?>
+<?= $this->include('sikaperdes/layout/user/content-footer') ?>

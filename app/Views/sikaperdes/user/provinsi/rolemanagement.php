@@ -1,6 +1,6 @@
-<?= $this->include('sie/layout/user/content-header') ?>
-<?= $this->include('sie/layout/user/content-topbar') ?>
-<?= $this->include('sie/layout/user/content-sidebar') ?>
+<?= $this->include('sikaperdes/layout/user/content-header') ?>
+<?= $this->include('sikaperdes/layout/user/content-topbar') ?>
+<?= $this->include('sikaperdes/layout/user/content-sidebar') ?>
 
 <div class="page-content">
     <div class="container-fluid">
@@ -26,11 +26,8 @@
             }
         </style>
 
-        <?php if ($rolak['kd_login'] == "22222222220101") : ?>
-            <h4 class="mb-4 text-gray text-center">Daftar user SIPOLAHTA - DISPERMADES Provinsi Jawa Tengah</h4>
-        <?php elseif ($rolak['kd_login'] == "22222222220201") : ?>
-            <h4 class="mb-4 text-gray text-center">Daftar user SIPOLAHTA - DUKCAPIL Provinsi Jawa Tengah</h4>
-        <?php endif; ?>
+        <h4 class="mb-4 text-gray text-center">Daftar user SIKAPERDES - DISPERMADESDUKCAPIL Provinsi Jawa Tengah</h4>
+
         <form class="needs-validation" novalidate action="" method="post" enctype="multipart/form-data">
             <input type="hidden" class="txt_csrfname_sie" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
             <div class="row">
@@ -55,7 +52,7 @@
                 </div>
 
                 <div class="col-lg-4 col-md-4 mb-2">
-                    <label for="choices-single-default" class="form-label font-size-13 text-muted">Kelurahan/Desa</label>
+                    <label for="choices-single-default" class="form-label font-size-13 text-muted">Desa</label>
                     <select class="form-select" name="filtkeldesa" id="filtkeldesa">
                         <option value=""></option>
                         <?php foreach ($listKeldesa as $lkdes) : ?>
@@ -85,7 +82,9 @@
                                 <th scope="row" style="text-align: center;">Ampuan</th>
                                 <th scope="row" style="text-align: center;">Akses</th>
                                 <th scope="row" style="text-align: center;">Role</th>
-                                <th scope="row" style="text-align: center;">Action</th>
+                                <?php if ($user['kd_login'] == "10101010101010") : ?>
+                                    <th scope="row" style="text-align: center;">Action</th>
+                                <?php endif; ?>
                             </tr>
                         </thead>
                         <tbody>
@@ -98,4 +97,4 @@
     </div>
 </div>
 
-<?= $this->include('sie/layout/user/content-footer') ?>
+<?= $this->include('sikaperdes/layout/user/content-footer') ?>

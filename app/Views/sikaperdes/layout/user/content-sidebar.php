@@ -51,44 +51,59 @@ $this->db = \Config\Database::connect();
                                                 <span data-key="t-kawasan">Verifikasi</span>
                                             </a>
                                             <ul class="sub-menu" aria-expanded="false">
-                                                <li>
-                                                    <a href="<?= base_url('user/menu-admin/verifikasi_data'); ?>">
-                                                        <span data-key="t-kawasan">Data Kawasan</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="disabled text-muted" aria-disabled="true">
-                                                        <span data-key="t-kawasan">BUMDESMA</span>
-                                                    </a>
-                                                </li>
+                                                <?php if (session()->get('role_id_sikaperdes') == 1) : ?>
+                                                    <li>
+                                                        <a href="<?= base_url('user/menu-admin/verifikasi_data'); ?>">
+                                                            <span data-key="t-kawasan">Data Kawasan</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="disabled text-muted" aria-disabled="true">
+                                                            <span data-key="t-kawasan">BUMDESMA</span>
+                                                        </a>
+                                                    </li>
+                                                <?php elseif (session()->get('role_id_sikaperdes') == 2) : ?>
+                                                    <li>
+                                                        <a href="<?= base_url('user/menu-provinsi/verifikasi_data'); ?>">
+                                                            <span data-key="t-kawasan">Data Kawasan</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="disabled text-muted" aria-disabled="true">
+                                                            <span data-key="t-kawasan">BUMDESMA</span>
+                                                        </a>
+                                                    </li>
+                                                <?php endif; ?>
                                             </ul>
                                         </li>
                                         <li <?php if ($url === 'list_input_data_kawasan') : ?> class="mm-active" <?php endif; ?>>
-                                            <a href="javascript: void(0);" class="has-arrow">
-                                                <span data-key="t-profile">Input Data</span>
-                                            </a>
-                                            <ul class="sub-menu" aria-expanded="false">
-                                                <li>
-                                                    <a href="<?= base_url('user/menu-admin/list_input_data_kawasan'); ?>">
-                                                        <span data-key="t-kawasan">Kawasan Perdesaan</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="<?= base_url('user/menu-admin/daftar_kawasan'); ?>">
-                                                        <span data-key="t-kawasan">Daftar Kawasan</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="<?= base_url('user/menu-admin/jenis_klasifikasi_list'); ?>">
-                                                        <span data-key="t-kawasan">Klasifikasi (TEMA)</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="disabled text-muted" aria-disabled="true">
-                                                        <span data-key="t-profile">BUMDESMA</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
+                                            <?php if (session()->get('role_id_sikaperdes') == 1) : ?>
+                                                <a href="javascript: void(0);" class="has-arrow">
+                                                    <span data-key="t-profile">Input Data</span>
+                                                </a>
+                                                <ul class="sub-menu" aria-expanded="false">
+                                                    <li>
+                                                        <a href="<?= base_url('user/menu-admin/list_input_data_kawasan'); ?>">
+                                                            <span data-key="t-kawasan">Kawasan Perdesaan</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="<?= base_url('user/menu-admin/daftar_kawasan'); ?>">
+                                                            <span data-key="t-kawasan">Daftar Kawasan</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="<?= base_url('user/menu-admin/jenis_klasifikasi_list'); ?>">
+                                                            <span data-key="t-kawasan">Klasifikasi (TEMA)</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="disabled text-muted" aria-disabled="true">
+                                                            <span data-key="t-profile">BUMDESMA</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            <?php endif; ?>
                                         </li>
                                     <?php endif; ?>
                                 </ul>
