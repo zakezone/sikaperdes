@@ -3,16 +3,16 @@
 namespace App\Controllers\User;
 
 use App\Controllers\BaseController;
-use App\Models\Kabupaten\User_kabupaten_model;
+use App\Models\Pemdes\User_pemdes_model;
 
-class Kabupaten extends BaseController
+class Pemdes extends BaseController
 {
-    protected $Kabupaten_model;
+    protected $Pemdes_model;
 
     public function __construct()
     {
         date_default_timezone_set('Asia/Jakarta');
-        $this->Kabupaten_model = new User_kabupaten_model();
+        $this->Pemdes_model = new User_pemdes_model();
         helper('zakezone');
     }
 
@@ -114,7 +114,7 @@ class Kabupaten extends BaseController
         $data = [
             'title' => 'Dashboard',
             'user' => $this->db->table('sikaperdes_primary_user')->getWhere(['kd_login' => $this->session->get('kd_login_sikaperdes')])->getRowArray(),
-            'page_title' => view('sikaperdes/layout/user/content-page-title', ['title' => 'Dashboard', 'li_1' => 'Kabupaten', 'li_2' => 'Dashboard']),
+            'page_title' => view('sikaperdes/layout/user/content-page-title', ['title' => 'Dashboard', 'li_1' => 'PEMDES', 'li_2' => 'Dashboard']),
             'klasifikasi_ptp' => count($klasifikasi_ptp),
             'klasifikasi_wisata' => count($klasifikasi_wisata),
             'klasifikasi_perkebunan' => count($klasifikasi_perkebunan),
@@ -261,7 +261,7 @@ class Kabupaten extends BaseController
             'verif_kp_brebes' => count($verif_kp_brebes),
         ];
 
-        return view('sikaperdes/user/kabupaten/dashboard', $data);
+        return view('sikaperdes/user/pemdes/dashboard', $data);
     }
 
     public function profile()
@@ -270,11 +270,11 @@ class Kabupaten extends BaseController
 
         $data = [
             'title' => 'Profile',
-            'page_title' => view('sikaperdes/layout/user/content-page-title', ['title' => 'Profile', 'li_1' => 'Kabupaten', 'li_2' => 'Profile']),
+            'page_title' => view('sikaperdes/layout/user/content-page-title', ['title' => 'Profile', 'li_1' => 'PEMDES', 'li_2' => 'Profile']),
             'user' => $this->db->table('sikaperdes_primary_user')->getWhere(['kd_login' => $this->session->get('kd_login_sikaperdes')])->getRowArray(),
         ];
 
-        return view('sikaperdes/user/kabupaten/profile', $data);
+        return view('sikaperdes/user/pemdes/profile', $data);
     }
 
     public function editprofile()
@@ -282,7 +282,7 @@ class Kabupaten extends BaseController
         $this->session->remove('keyword');
         $data = [
             'title' => 'Edit Profile',
-            'page_title' => view('sikaperdes/layout/user/content-page-title', ['title' => 'Edit Profile', 'li_1' => 'Kabupaten', 'li_2' => 'Edit Profile']),
+            'page_title' => view('sikaperdes/layout/user/content-page-title', ['title' => 'Edit Profile', 'li_1' => 'PEMDES', 'li_2' => 'Edit Profile']),
             'user' => $this->db->table('sikaperdes_primary_user')->getWhere(['kd_login' => $this->session->get('kd_login_sikaperdes')])->getRowArray(),
             'validation' =>  $this->validation
         ];
@@ -290,33 +290,33 @@ class Kabupaten extends BaseController
         if (isset($_POST['submit'])) {
             $this->validation->setRule('nama', 'Nama lengkap', 'trim|required', ['required' => 'Form tidak boleh dikosongkan']);
             if (!$this->validation->withRequest($this->request)->run()) {
-                return redirect()->to('user/kabupaten/editprofile')->withInput();
+                return redirect()->to('user/pemdes/editprofile')->withInput();
             }
             if ($data['user']['email'] == '') {
                 $this->validation->setRule('email', 'Email', 'required|trim|valid_email|is_unique[sikaperdes_primary_user.email]', ['required' => 'Email tidak boleh kosong', 'valid_email' => 'Format email tidak sesuai', 'is_unique' => 'Email sudah terdaftar']);
                 if (!$this->validation->withRequest($this->request)->run()) {
-                    return redirect()->to('user/kabupaten/editprofile')->withInput();
+                    return redirect()->to('user/pemdes/editprofile')->withInput();
                 }
             }
             if ($data['user']['hp'] == '') {
                 $this->validation->setRule('hp', 'HP', 'required|alpha_numeric_punct|min_length[11]|max_length[15]|trim|is_unique[sikaperdes_primary_user.hp]', ['required' => 'Nomor HP tidak boleh kosong', 'alpha_numeric_punch' => 'Nomor HP hanya diisi angka (tanpa spasi)', 'min_length' => 'Nomor HP minimal harus 11 digit', 'max_length' => 'Nomor HP maximal hanya 15 digit', 'is_unique' => 'Nomor HP sudah terdaftar']);
                 if (!$this->validation->withRequest($this->request)->run()) {
-                    return redirect()->to('user/kabupaten/editprofile')->withInput();
+                    return redirect()->to('user/pemdes/editprofile')->withInput();
                 }
             }
             $this->validation->setRule('image', 'Upload Persetujuan', 'trim|mime_in[image,image/jpg,image/JPG,image/jpeg,image/png]|max_size[image,2048]', ['mime_in' => 'File yang anda pilih bukan JPG', 'max_size' => 'File anda melebihi 2mb']);
             if (!$this->validation->withRequest($this->request)->run()) {
-                return redirect()->to('user/kabupaten/editprofile')->withInput();
+                return redirect()->to('user/pemdes/editprofile')->withInput();
             } else {
                 $file = $this->request->getFile('image');
                 $input = $this->request->getVar();
                 $user_id = $this->session->get('id_sikaperdes');
-                $this->Kabupaten_model->editProfile($user_id, $input, $file);
+                $this->Pemdes_model->editProfile($user_id, $input, $file);
                 $this->session->setFlashdata('message', '<div class="alert alert-success alert-dismissible alert-label-icon label-arrow fade show" role="alert"><i class="mdi mdi-check-all label-icon"></i><b>Profile</b> Berhasil diperbarui<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>');
-                return redirect()->to('user/kabupaten/profile');
+                return redirect()->to('user/pemdes/profile');
             }
         }
-        return view('sikaperdes/user/kabupaten/editprofile', $data);
+        return view('sikaperdes/user/pemdes/editprofile', $data);
     }
 
     public function editemail()
@@ -346,7 +346,7 @@ class Kabupaten extends BaseController
         $this->session->remove('keyword');
         $data = [
             'title' => 'Ganti Password',
-            'page_title' => view('sikaperdes/layout/user/content-page-title', ['title' => 'Ganti Password', 'li_1' => 'Kabupaten', 'li_2' => 'Ganti Password']),
+            'page_title' => view('sikaperdes/layout/user/content-page-title', ['title' => 'Ganti Password', 'li_1' => 'PEMDES', 'li_2' => 'Ganti Password']),
             'user' => $this->db->table('sikaperdes_primary_user')->getWhere(['kd_login' => $this->session->get('kd_login_sikaperdes')])->getRowArray(),
             'validation' =>  $this->validation
         ];
@@ -354,36 +354,36 @@ class Kabupaten extends BaseController
         if (isset($_POST['submit'])) {
             $this->validation->setRule('current_password', 'Current Password', 'required|trim', ['required' => 'Form tidak boleh dikosongkan']);
             if (!$this->validation->withRequest($this->request)->run()) {
-                return redirect()->to('user/kabupaten/ganti_password')->withInput();
+                return redirect()->to('user/pemdes/ganti_password')->withInput();
             }
             $this->validation->setRule('new_password1', 'New Password', 'required|trim|min_length[6]', ['required' => 'Form tidak boleh dikosongkan', 'min_length' => 'Password minimal 6 karakter']);
             if (!$this->validation->withRequest($this->request)->run()) {
-                return redirect()->to('user/kabupaten/ganti_password')->withInput();
+                return redirect()->to('user/pemdes/ganti_password')->withInput();
             }
             $this->validation->setRule('new_password2', 'New Password2', 'trim|matches[new_password1]', ['matches' => 'Input tidak sesuai dengan password baru']);
             if (!$this->validation->withRequest($this->request)->run()) {
-                return redirect()->to('user/kabupaten/ganti_password')->withInput();
+                return redirect()->to('user/pemdes/ganti_password')->withInput();
             } else {
                 $current_password = $this->request->getVar('current_password');
                 $new_password = password_hash($this->request->getVar('new_password1'), PASSWORD_DEFAULT);
                 if (!password_verify($current_password, $data['user']['password'])) {
                     $this->session->setFlashdata('message', '<div class="alert alert-danger alert-dismissible alert-label-icon label-arrow fade show" role="alert"><i class="mdi mdi-block-helper label-icon"></i>Gagal! Password awal tidak sesuai!<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>');
-                    return redirect()->to('user/kabupaten/ganti_password')->withInput();
+                    return redirect()->to('user/pemdes/ganti_password')->withInput();
                 } else {
                     if (password_verify($current_password, $new_password)) {
                         $this->session->setFlashdata('message', '<div class="alert alert-warning alert-dismissible alert-label-icon label-arrow fade show" role="alert"><i class="mdi mdi-alert-outline label-icon"></i>Gagal! Password ini telah digunakan sebelumnya<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>');
-                        return redirect()->to('user/kabupaten/ganti_password')->withInput();
+                        return redirect()->to('user/pemdes/ganti_password')->withInput();
                     } else {
                         $builder = $this->db->table('sikaperdes_primary_user');
                         $builder->set('password', $new_password);
                         $builder->where('user_id', $this->session->get('id_sikaperdes'));
                         $builder->update();
                         $this->session->setFlashdata('message', '<div class="alert alert-success alert-dismissible alert-label-icon label-arrow fade show" role="alert"><i class="mdi mdi-check-all label-icon"></i><b>Password</b> Berhasil diperbarui<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>');
-                        return redirect()->to('user/kabupaten/ganti_password');
+                        return redirect()->to('user/pemdes/ganti_password');
                     }
                 }
             }
         }
-        return view('sikaperdes/user/kabupaten/ganti-password', $data);
+        return view('sikaperdes/user/pemdes/ganti-password', $data);
     }
 }

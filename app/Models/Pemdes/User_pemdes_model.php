@@ -1,89 +1,14 @@
 <?php
 
-namespace App\Models\Provinsi;
+namespace App\Models\Pemdes;
 
 use CodeIgniter\Model;
 
-class User_provinsi_model extends Model
+class User_pemdes_model extends Model
 {
     protected $table = 'sikaperdes_primary_user';
     protected $primaryKey = 'id';
     protected $AllowedFields = ['kd_wilayah', 'is_active'];
-
-    var $column_order = array('user_id', 'kd_wilayah', 'nama', 'kd_login', 'tk_instansi', 'ampuan', 'akses', 'opd');
-    var $order = array('user_id' => 'asc');
-
-    public function defaultgetRole($search_value, $order, $length, $start, $filtkabupaten, $filtkecamatan, $filtkeldesa)
-    {
-        if ($filtkabupaten == "" && $filtkecamatan == "" && $filtkeldesa == "") {
-            $filter = "";
-        } elseif ($filtkabupaten != "" && $filtkecamatan == "" && $filtkeldesa == "") {
-            $filter = " AND id_kab = '$filtkabupaten'";
-        } elseif ($filtkabupaten != "" && $filtkecamatan != "" && $filtkeldesa == "") {
-            $filter = " AND id_Kec = '$filtkecamatan'";
-        } elseif ($filtkabupaten != "" && $filtkecamatan != "" && $filtkeldesa != "") {
-            $filter = " AND kd_wilayah = '$filtkeldesa'";
-        };
-
-        if ($search_value) {
-            $keyword = $search_value;
-            $search = "nama LIKE '%$keyword%' AND role_id != 1 AND role_id != 2 $filter OR kd_login LIKE '%$keyword%' AND role_id != 1 AND role_id != 2 $filter OR opd LIKE '%$keyword%' AND role_id != 1 AND role_id != 2 $filter OR ampuan LIKE '%$keyword%' AND role_id != 1 AND role_id != 2 $filter OR akses LIKE '%$keyword%' AND role_id != 1 AND role_id != 2 $filter OR tk_instansi LIKE '%$keyword%' AND role_id != 1 AND role_id != 2 $filter";
-        } else {
-            $search = "role_id != 1 AND role_id != 2 $filter";
-        }
-
-        if ($order) {
-            $result_order = $this->column_order[$order['0']['column']];
-            $result_dir = $order['0']['dir'];
-        } elseif ($this->order) {
-            $order = $this->order;
-            $result_order = key($order);
-            $result_dir = $order[key($order)];
-        }
-
-        if ($length != -1);
-        $builder = $this->db->table('sikaperdes_primary_user');
-        $builder->where('role_id !=', 1);
-        $builder->where('role_id !=', 2);
-        $query = $builder->select('*')->where($search)->orderBy($result_order, $result_dir);
-        if ($start != 0 || $length != 0) {
-            $query = $builder->limit($length, $start);
-        }
-        return $query->get()->getResultArray();
-    }
-
-    public function recordsTotal()
-    {
-        $builder = $this->db->table('sikaperdes_primary_user');
-        $builder->select('tanggal');
-        $builder->where('role_id !=', '1');
-        $builder->where('role_id !=', '2');
-        return $builder->get()->getResultArray();
-    }
-
-    public function recordsFiltered($search_value, $filtkabupaten, $filtkecamatan, $filtkeldesa)
-    {
-        if ($filtkabupaten == "" && $filtkecamatan == "" && $filtkeldesa == "") {
-            $filter = "";
-        } elseif ($filtkabupaten != "" && $filtkecamatan == "" && $filtkeldesa == "") {
-            $filter = " AND id_kab = '$filtkabupaten'";
-        } elseif ($filtkabupaten != "" && $filtkecamatan != "" && $filtkeldesa == "") {
-            $filter = " AND id_Kec = '$filtkecamatan'";
-        } elseif ($filtkabupaten != "" && $filtkecamatan != "" && $filtkeldesa != "") {
-            $filter = " AND kd_wilayah = '$filtkeldesa'";
-        };
-
-        if ($search_value) {
-            $keyword = $search_value;
-            $search = "AND (nama LIKE '%$keyword%' AND role_id != 1 AND role_id != 2 $filter OR kd_login LIKE '%$keyword%' AND role_id != 1 AND role_id != 2 $filter OR opd LIKE '%$keyword%' AND role_id != 1 AND role_id != 2 $filter OR ampuan LIKE '%$keyword%' AND role_id != 1 AND role_id != 2 $filter OR akses LIKE '%$keyword%' AND role_id != 1 AND role_id != 2 $filter OR tk_instansi LIKE '%$keyword%' AND role_id != 1 AND role_id != 2 $filter)";
-        } else {
-            $search = "AND role_id != '1' AND role_id != '2' $filter";
-        }
-
-        $sQuery = "SELECT COUNT(user_id) as jml FROM sikaperdes_primary_user WHERE user_id != '' $search";
-        $query = $this->query($sQuery)->getRowArray();
-        return $query;
-    }
 
     public function editProfile($user_id, $input, $file)
     {
