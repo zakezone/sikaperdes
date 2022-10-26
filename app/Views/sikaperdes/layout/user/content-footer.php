@@ -1336,10 +1336,10 @@
                     color: '#8a1115'
                 }],
                 showInLegend: false,
-                // dataLabels: {
-                //     enabled: true,
-                //     format: '{point.y:,.0f}'
-                // },
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.y:,.0f}'
+                },
             }]
         });
 
