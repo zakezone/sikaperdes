@@ -62,23 +62,25 @@
 
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-lg-3 col-md-3 mb-2">
-                                    <label for="filtkabupaten" class="form-label font-size-13 text-muted">Kabupaten</label>
-                                    <select class="form-select mb-3" name="filtkabupaten" id="filtkabupaten">
-                                        <option value=""></option>
-                                        <?php foreach ($listKabupaten as $lkab) : ?>
-                                            <option value="<?= $lkab['kd_wilayah']; ?>" <?= old('filtkabupaten') == $lkab['kd_wilayah'] ? 'selected' : ''; ?>><?= $lkab['kd_wilayah'] . ' - ' . $lkab['akses']; ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                    <small class="form-text text-danger"><?= $validation->getError('filtkabupaten'); ?></small>
-                                </div>
+                                <?php if (session()->get('role_id_sikaperdes') == 1) : ?>
+                                    <div class="col-lg-3 col-md-3 mb-2">
+                                        <label for="filtkabupaten" class="form-label font-size-13 text-muted">Kabupaten</label>
+                                        <select class="form-select mb-3" name="filtkabupaten" id="filtkabupaten">
+                                            <option value=""></option>
+                                            <?php foreach ($listKabupaten as $lkab) : ?>
+                                                <option value="<?= $lkab['kd_wilayah']; ?>" <?= old('filtkabupaten') == $lkab['kd_wilayah'] ? 'selected' : ''; ?>><?= $lkab['kd_wilayah'] . ' - ' . $lkab['akses']; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                        <small class="form-text text-danger"><?= $validation->getError('filtkabupaten'); ?></small>
+                                    </div>
+                                <?php endif; ?>
 
                                 <div class="col-lg-3 col-md-3 mb-2">
                                     <label for="filtkecamatan" class="form-label font-size-13 text-muted">Kecamatan</label>
                                     <select class="form-select" name="filtkecamatan" id="filtkecamatan">
                                         <option value=""></option>
                                         <?php foreach ($listKecamatan as $lkec) : ?>
-                                            <option value="<?= $lkab['kd_wilayah']; ?>" <?= old('filtkecamatan') == $lkab['kd_wilayah'] ? 'selected' : ''; ?>><?= $lkab['kd_wilayah'] . ' - ' . $lkab['akses']; ?></option>
+                                            <option value="<?= $lkec['kd_wilayah']; ?>" <?= old('filtkecamatan') == $lkec['kd_wilayah'] ? 'selected' : ''; ?>><?= $lkec['kd_wilayah'] . ' - ' . $lkec['akses']; ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                     <small class="form-text text-danger"><?= $validation->getError('filtkecamatan'); ?></small>
@@ -89,7 +91,7 @@
                                     <select class="form-select" name="filtkeldesa" id="filtkeldesa">
                                         <option value=""></option>
                                         <?php foreach ($listKeldesa as $lkdes) : ?>
-                                            <option value="<?= $lkab['kd_wilayah']; ?>" <?= old('filtkeldesa') == $lkab['kd_wilayah'] ? 'selected' : ''; ?>><?= $lkab['kd_wilayah'] . ' - ' . $lkab['akses']; ?></option>
+                                            <option value="<?= $lkdes['kd_wilayah']; ?>" <?= old('filtkeldesa') == $lkdes['kd_wilayah'] ? 'selected' : ''; ?>><?= $lkdes['kd_wilayah'] . ' - ' . $lkdes['akses']; ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                     <small class="form-text text-danger"><?= $validation->getError('filtkeldesa'); ?></small>

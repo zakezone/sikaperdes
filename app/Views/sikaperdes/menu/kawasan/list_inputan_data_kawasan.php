@@ -25,7 +25,11 @@
                 height: 100%;
             }
         </style>
-        <a type="button" class="btn btn-info waves-effect waves-light mb-3" href="<?= base_url('user/menu-admin/input_data_kawasan'); ?>">Input Kawasan [+]</a>
+        <?php if (session()->get('role_id_sikaperdes') == 1) : ?>
+            <a type="button" class="btn btn-info waves-effect waves-light mb-3" href="<?= base_url('user/menu-admin/input_data_kawasan'); ?>">Input Kawasan [+]</a>
+        <?php elseif (session()->get('role_id_sikaperdes') == 3) : ?>
+            <a type="button" class="btn btn-info waves-effect waves-light mb-3" href="<?= base_url('user/menu-kabupaten/input_data_kawasan'); ?>">Input Kawasan [+]</a>
+        <?php endif; ?>
         <hr>
         <div class="row">
             <div class="col-12">

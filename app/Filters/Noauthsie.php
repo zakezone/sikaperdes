@@ -16,7 +16,7 @@ class Noauthsie implements FilterInterface
         if (session()->get('role_id_sikaperdes') == 2)
             return redirect()->to(site_url('user/provinsi/dashboard'));
         if (session()->get('role_id_sikaperdes') == 3)
-            return redirect()->to(site_url('user/pemkab/dashboard'));
+            return redirect()->to(site_url('user/kabupaten/dashboard'));
         if (session()->get('role_id_sikaperdes') == 4)
             return redirect()->to(site_url('user/kecamatan/dashboard'));
         if (session()->get('role_id_sikaperdes') == 5)

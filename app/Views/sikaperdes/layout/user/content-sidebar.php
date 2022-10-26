@@ -66,8 +66,8 @@ $this->db = \Config\Database::connect();
                                                 <?php endif; ?>
                                             </ul>
                                         </li>
-                                        <li <?php if ($url === 'list_input_data_kawasan') : ?> class="mm-active" <?php endif; ?>>
-                                            <?php if (session()->get('role_id_sikaperdes') == 1) : ?>
+                                        <?php if (session()->get('role_id_sikaperdes') == 1) : ?>
+                                            <li <?php if ($url === 'list_input_data_kawasan') : ?> class="mm-active" <?php endif; ?>>
                                                 <a href="javascript: void(0);" class="has-arrow">
                                                     <span data-key="t-profile">Input Data</span>
                                                 </a>
@@ -88,7 +88,23 @@ $this->db = \Config\Database::connect();
                                                         </a>
                                                     </li>
                                                 </ul>
-                                            <?php endif; ?>
+                                            </li>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+                                    <?php if (session()->get('role_id_sikaperdes') == 3) : ?>
+                                        <li <?php if ($url === 'list_input_data_kawasan') : ?> class="mm-active" <?php endif; ?>>
+                                            <a href="javascript: void(0);" class="has-arrow">
+                                                <span data-key="t-profile">Input Data</span>
+                                            </a>
+                                            <ul class="sub-menu" aria-expanded="false">
+                                                <?php if (session()->get('role_id_sikaperdes') == 3) : ?>
+                                                    <li>
+                                                        <a href="<?= base_url('user/menu-kabupaten/list_input_data_kawasan'); ?>">
+                                                            <span data-key="t-kawasan">Kawasan Perdesaan</span>
+                                                        </a>
+                                                    </li>
+                                                <?php endif; ?>
+                                            </ul>
                                         </li>
                                     <?php endif; ?>
                                 </ul>

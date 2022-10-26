@@ -22,7 +22,7 @@
         <link href="<?= base_url('minia/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') ?>" rel="stylesheet" type="text/css" />
         <link href="<?= base_url('minia/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') ?>" rel="stylesheet" type="text/css" />
 
-    <?php elseif ($request->uri->getSegment(2) == "menu-admin" && $request->uri->getSegment(3) == "verifikasi_data" || $request->uri->getSegment(2) == "menu-provinsi" && $request->uri->getSegment(3) == "verifikasi_data" || $request->uri->getSegment(2) == "data" && $request->uri->getSegment(3) == "kawasan" || $request->uri->getSegment(2) == "menu-admin" && $request->uri->getSegment(3) == "list_input_data_kawasan" || $request->uri->getSegment(2) == "menu-admin" && $request->uri->getSegment(3) == "daftar_kawasan" || $request->uri->getSegment(2) == "menu-admin" && $request->uri->getSegment(3) == "jenis_klasifikasi_list") : ?>
+    <?php elseif ($request->uri->getSegment(2) == "menu-admin" && $request->uri->getSegment(3) == "verifikasi_data" || $request->uri->getSegment(2) == "menu-provinsi" && $request->uri->getSegment(3) == "verifikasi_data" || $request->uri->getSegment(2) == "data" && $request->uri->getSegment(3) == "kawasan" || $request->uri->getSegment(3) == "list_input_data_kawasan" || $request->uri->getSegment(2) == "menu-admin" && $request->uri->getSegment(3) == "daftar_kawasan" || $request->uri->getSegment(2) == "menu-admin" && $request->uri->getSegment(3) == "jenis_klasifikasi_list") : ?>
         <!-- select2 -->
         <link href="<?= base_url('minia/libs/choices.js/public/assets/styles/select2.min.css') ?>" rel="stylesheet" type="text/css" />
         <!-- DataTables -->

@@ -295,7 +295,7 @@
                                         <div class="col-sm-4">
                                             <div class="grid-example mt-2 mt-sm-0">
                                                 <p>KETERANGAN</p>
-                                                <textarea name="keterangan" id="keterangan" cols="30" rows="5"></textarea>
+                                                <textarea name="keterangan" id="keterangan" cols="30" rows="5"><?= $dokumen_sk['keterangan'] != '' ? $dokumen_sk['keterangan'] : ''; ?></textarea>
                                             </div>
                                         </div>
                                     </div>

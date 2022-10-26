@@ -105,6 +105,30 @@ $routes->match(['get', 'post'], '/user/menu-provinsi/load_data_kawasan', 'User\M
 $routes->match(['get', 'post'], '/user/menu-provinsi/ajaxfiltkecamatan', 'User\Menu_provinsi::ajaxfiltkecamatan', ['filter' => 'authusersie']);
 $routes->match(['get', 'post'], '/user/menu-provinsi/ajaxfiltdesa', 'User\Menu_provinsi::ajaxfiltdesa', ['filter' => 'authusersie']);
 
+// SIKAPERDES USER KABUPATEN KONTEN
+$routes->match(['get', 'post'], '/user/kabupaten/editprofile', 'User\Kabupaten::editprofile', ['filter' => 'authusersie']);
+$routes->match(['get', 'post'], '/user/kabupaten/ganti_password', 'User\Kabupaten::changepassword', ['filter' => 'authusersie']);
+$routes->match(['get', 'post'], '/user/kabupaten/(:any)', 'User\Kabupaten::$1', ['filter' => 'authusersie']);
+$routes->get('/user/kabupaten/dashboard', 'User\Kabupaten::dashboard', ['filter' => 'authusersie']);
+$routes->get('/user/kabupaten', 'User\Kabupaten::dashboard', ['filter' => 'authusersie']);
+
+// MENU USER KABUPATEN SIKAPERDES
+$routes->get('/user/menu-kabupaten/list_input_data_kawasan', 'User\Menu_kabupaten::listinputdatakawasan', ['filter' => 'authusersie']);
+$routes->match(['get', 'post'], '/user/menu-kabupaten/list_datainput_kawasan', 'User\Menu_kabupaten::list_datainput_kawasan', ['filter' => 'authusersie']);
+$routes->match(['get', 'post'], '/user/menu-kabupaten/input_data_kawasan', 'User\Menu_kabupaten::inputdatakawasan', ['filter' => 'authusersie']);
+$routes->match(['get', 'post'], '/user/menu-kabupaten/revisi_review/(:any)/(:any)', 'User\Menu_kabupaten::revisidatainputkawasan/$1/$2', ['filter' => 'authusersie']);
+$routes->get('/user/menu-kabupaten/delete_data_kawasan/(:any)/(:any)', 'User\Menu_kabupaten::deletedatakawasan/$1/$2', ['filter' => 'authusersie']);
+$routes->match(['get', 'post'], '/user/menu-kabupaten/verifikasi_review/(:any)/(:any)', 'User\Menu_kabupaten::verifikasireview/$1/$2', ['filter' => 'authusersie']);
+$routes->match(['get', 'post'], '/user/menu-kabupaten/edit_daftar_kawasan/(:any)/(:any)', 'User\Menu_kabupaten::editdaftarkawasan/$1/$2', ['filter' => 'authusersie']);
+$routes->match(['get', 'post'], '/user/menu-kabupaten/edit_jenis_klasifikasi/(:any)', 'User\Menu_kabupaten::editjenisklasifikasi/$1', ['filter' => 'authusersie']);
+$routes->match(['get', 'post'], '/user/menu-kabupaten/edit_nama_klasifikasi', 'User\Menu_kabupaten::editnamaklasifikasi/$1', ['filter' => 'authusersie']);
+$routes->match(['get', 'post'], '/user/menu-kabupaten/ajaxfiltkecamatan', 'User\Menu_kabupaten::ajaxfiltkecamatan', ['filter' => 'authusersie']);
+$routes->match(['get', 'post'], '/user/menu-kabupaten/ajaxfiltdesa', 'User\Menu_kabupaten::ajaxfiltdesa', ['filter' => 'authusersie']);
+$routes->get('/user/menu-kabupaten/verifikasi_data', 'User\Menu_kabupaten::verifikasi_data_kawasan', ['filter' => 'authusersie']);
+$routes->match(['get', 'post'], '/user/menu-kabupaten/load_data_kawasan', 'User\Menu_kabupaten::load_data_kawasan', ['filter' => 'authusersie']);
+$routes->match(['get', 'post'], '/user/menu-kabupaten/ajax_list_daftar_kawasan', 'User\Menu_kabupaten::ajax_list_daftar_kawasan', ['filter' => 'authusersie']);
+$routes->match(['get', 'post'], '/user/menu-kabupaten/ajax_list_jenis_klasifikasi', 'User\Menu_kabupaten::ajax_list_jenis_klasifikasi', ['filter' => 'authusersie']);
+
 // DATA USER SIKAPERDES
 $routes->match(['get', 'post'], '/user/data/verifikasi_review/(:any)/(:any)', 'User\Data::verifikasireview/$1/$2', ['filter' => 'authusersie']);
 $routes->get('/user/data/kawasan', 'User\Data::verifikasi_data_kawasan', ['filter' => 'authusersie']);

@@ -147,7 +147,7 @@
         </script>
     <?php elseif ($session->get('role_id_sikaperdes') == '3') : ?>
         <script>
-            $('#editemailprovinsi').on('click', function() {
+            $('#editemail').on('click', function() {
                 var csrfName = $('.txt_csrfname_sie').attr('name'); // CSRF Token name
                 var csrfHash = $('.txt_csrfname_sie').val(); // CSRF hash
                 const email = $(this).data('email');
@@ -168,7 +168,7 @@
             });
         </script>
         <script>
-            $('#edithpprovinsi').on('click', function() {
+            $('#edithp').on('click', function() {
                 var csrfName = $('.txt_csrfname_sie').attr('name'); // CSRF Token name
                 var csrfHash = $('.txt_csrfname_sie').val(); // CSRF hash
                 const hp = $(this).data('hp');
@@ -610,7 +610,7 @@
         }
     </script>
 
-<?php elseif ($request->uri->getSegment(2) == "menu-admin" && $request->uri->getSegment(3) == "list_input_data_kawasan") : ?>
+<?php elseif ($request->uri->getSegment(3) == "list_input_data_kawasan") : ?>
     <script src="<?= base_url('minia/libs/choices.js/public/assets/scripts/select2.js') ?>"></script>
     <script>
         $('#statusfilt').select2({
@@ -634,7 +634,11 @@
                     [5, 10, 15]
                 ],
                 "ajax": {
-                    url: "<?= base_url('user/menu-admin/list_datainput_kawasan') ?>",
+                    <?php if ($session->get('role_id_sikaperdes') == '1') : ?>
+                        url: "<?= base_url('user/menu-admin/list_datainput_kawasan') ?>"
+                    <?php elseif ($session->get('role_id_sikaperdes') == '3') : ?>
+                        url: "<?= base_url('user/menu-kabupaten/list_datainput_kawasan') ?>"
+                    <?php endif; ?>,
                     type: 'post',
                     data: {
                         "csrf_test_name": $('input[name=csrf_test_name]').val(),
@@ -677,7 +681,11 @@
                     [5, 10, 15]
                 ],
                 "ajax": {
-                    url: "<?= base_url('user/menu-admin/list_datainput_kawasan') ?>",
+                    <?php if ($session->get('role_id_sikaperdes') == '1') : ?>
+                        url: "<?= base_url('user/menu-admin/list_datainput_kawasan') ?>"
+                    <?php elseif ($session->get('role_id_sikaperdes') == '3') : ?>
+                        url: "<?= base_url('user/menu-kabupaten/list_datainput_kawasan') ?>"
+                    <?php endif; ?>,
                     type: 'post',
                     data: {
                         "csrf_test_name": $('input[name=csrf_test_name]').val(),
@@ -701,38 +709,73 @@
             });
         }
     </script>
+    <?php if ($session->get('role_id_sikaperdes') == '1') : ?>
+        <script src="<?= base_url('minia/libs/sweetalert2/sweetalert2.min.js'); ?>"></script>
+        <script>
+            $(document).on('click', '#sa-delete', function(e) {
+                var kd_kab = $(this).data('kdkab');
+                var kd_kawasan = $(this).data('kdkawasan');
 
-    <script src="<?= base_url('minia/libs/sweetalert2/sweetalert2.min.js'); ?>"></script>
-    <script>
-        $(document).on('click', '#sa-delete', function(e) {
-            var kd_kab = $(this).data('kdkab');
-            var kd_kawasan = $(this).data('kdkawasan');
+                Swal.fire({
+                        title: 'Apakah Anda yakin?',
+                        text: "Data Kawasan terpilih akan dihapus!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Yes, hapus!',
+                        cancelButtonText: 'No, batalkan!',
+                        confirmButtonClass: 'btn btn-success mt-2',
+                        cancelButtonClass: 'btn btn-danger ms-2 mt-2',
+                        buttonsStyling: false
+                    })
+                    .then((result) => {
+                        if (result.value) {
+                            window.location = '<?= base_url('user/menu-admin/delete_data_kawasan') ?>' + '/' + kd_kab + '/' + kd_kawasan
+                        } else if (result.dismiss === 'cancel') {
+                            Swal.fire(
+                                'Cancelled',
+                                'Data Kawasan tidak jadi dihapus :)',
+                                'error',
+                                '#5156be',
+                            )
+                        }
+                    })
+            });
+        </script>
+    <?php endif; ?>
 
-            Swal.fire({
-                    title: 'Apakah Anda yakin?',
-                    text: "Data Kawasan terpilih akan dihapus!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonText: 'Yes, hapus!',
-                    cancelButtonText: 'No, batalkan!',
-                    confirmButtonClass: 'btn btn-success mt-2',
-                    cancelButtonClass: 'btn btn-danger ms-2 mt-2',
-                    buttonsStyling: false
-                })
-                .then((result) => {
-                    if (result.value) {
-                        window.location = '<?= base_url('user/menu-admin/delete_data_kawasan') ?>' + '/' + kd_kab + '/' + kd_kawasan
-                    } else if (result.dismiss === 'cancel') {
-                        Swal.fire(
-                            'Cancelled',
-                            'Data Kawasan tidak jadi dihapus :)',
-                            'error',
-                            '#5156be',
-                        )
-                    }
-                })
-        });
-    </script>
+    <?php if ($session->get('role_id_sikaperdes') == '3') : ?>
+        <script src="<?= base_url('minia/libs/sweetalert2/sweetalert2.min.js'); ?>"></script>
+        <script>
+            $(document).on('click', '#sa-delete', function(e) {
+                var kd_kab = $(this).data('kdkab');
+                var kd_kawasan = $(this).data('kdkawasan');
+
+                Swal.fire({
+                        title: 'Apakah Anda yakin?',
+                        text: "Data Kawasan terpilih akan dihapus!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Yes, hapus!',
+                        cancelButtonText: 'No, batalkan!',
+                        confirmButtonClass: 'btn btn-success mt-2',
+                        cancelButtonClass: 'btn btn-danger ms-2 mt-2',
+                        buttonsStyling: false
+                    })
+                    .then((result) => {
+                        if (result.value) {
+                            window.location = '<?= base_url('user/menu-kabupaten/delete_data_kawasan') ?>' + '/' + kd_kab + '/' + kd_kawasan
+                        } else if (result.dismiss === 'cancel') {
+                            Swal.fire(
+                                'Cancelled',
+                                'Data Kawasan tidak jadi dihapus :)',
+                                'error',
+                                '#5156be',
+                            )
+                        }
+                    })
+            });
+        </script>
+    <?php endif; ?>
 
 <?php elseif ($request->uri->getSegment(2) == "menu-admin" && $request->uri->getSegment(3) == "daftar_kawasan") : ?>
     <script src="<?= base_url('minia/libs/choices.js/public/assets/scripts/select2.js') ?>"></script>
