@@ -412,7 +412,7 @@ class Menu_admin extends BaseController
             if (!$this->validation->withRequest($this->request)->run()) {
                 return redirect()->to('user/menu-admin/input_data_kawasan')->withInput();
             }
-            $this->validation->setRule('image5', 'Image5', 'trim|uploaded[image5]|mime_in[image5,image/png,image/jpg,image/jpeg]|max_size[image5,4096]', ['uploaded' => 'Gambar peta Delimitasi harus diisi', 'mime_in' => 'Ekstensi peta Delimitasi harus png/jpg/jpeg', 'max_size' => 'Maximal file size peta Delimitasi harus <= 4mb']);
+            $this->validation->setRule('image5', 'Image5', 'trim|mime_in[image5,image/png,image/jpg,image/jpeg]|max_size[image5,4096]', ['mime_in' => 'Ekstensi peta Delimitasi harus png/jpg/jpeg', 'max_size' => 'Maximal file size peta Delimitasi harus <= 4mb']);
             if (!$this->validation->withRequest($this->request)->run()) {
                 return redirect()->to('user/menu-admin/input_data_kawasan')->withInput();
             } else {
