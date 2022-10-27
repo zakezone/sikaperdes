@@ -28,6 +28,7 @@ class Kabupaten extends BaseController
     public function dashboard()
     {
         $this->session->remove('keyword');
+        $this->session->remove('keywordapi');
 
         $klasifikasi_ptp = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('klasifikasi', 'PERTANIAN TANAMAN PANGAN')->get()->getResultArray();
         $klasifikasi_wisata = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('klasifikasi', 'WISATA')->get()->getResultArray();
@@ -46,6 +47,27 @@ class Kabupaten extends BaseController
         $agregat_kp2023 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2023')->get()->getResultArray();
         $agregat_kp2024 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2024')->get()->getResultArray();
         $agregat_kp2025 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2025')->get()->getResultArray();
+        $agregat_kp2026 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2026')->get()->getResultArray();
+        $agregat_kp2027 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2027')->get()->getResultArray();
+        $agregat_kp2028 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2028')->get()->getResultArray();
+        $agregat_kp2029 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2029')->get()->getResultArray();
+        $agregat_kp2030 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2030')->get()->getResultArray();
+
+        $agregat_ds2016 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_des')->distinct()->where('tahun_pembentukan', '2016')->get()->getResultArray();
+        $agregat_ds2017 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_des')->distinct()->where('tahun_pembentukan', '2017')->get()->getResultArray();
+        $agregat_ds2018 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_des')->distinct()->where('tahun_pembentukan', '2018')->get()->getResultArray();
+        $agregat_ds2019 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_des')->distinct()->where('tahun_pembentukan', '2019')->get()->getResultArray();
+        $agregat_ds2020 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_des')->distinct()->where('tahun_pembentukan', '2020')->get()->getResultArray();
+        $agregat_ds2021 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_des')->distinct()->where('tahun_pembentukan', '2021')->get()->getResultArray();
+        $agregat_ds2022 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_des')->distinct()->where('tahun_pembentukan', '2022')->get()->getResultArray();
+        $agregat_ds2023 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_des')->distinct()->where('tahun_pembentukan', '2023')->get()->getResultArray();
+        $agregat_ds2024 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_des')->distinct()->where('tahun_pembentukan', '2024')->get()->getResultArray();
+        $agregat_ds2025 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_des')->distinct()->where('tahun_pembentukan', '2025')->get()->getResultArray();
+        $agregat_ds2026 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_des')->distinct()->where('tahun_pembentukan', '2026')->get()->getResultArray();
+        $agregat_ds2027 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_des')->distinct()->where('tahun_pembentukan', '2027')->get()->getResultArray();
+        $agregat_ds2028 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_des')->distinct()->where('tahun_pembentukan', '2028')->get()->getResultArray();
+        $agregat_ds2029 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_des')->distinct()->where('tahun_pembentukan', '2029')->get()->getResultArray();
+        $agregat_ds2030 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_des')->distinct()->where('tahun_pembentukan', '2030')->get()->getResultArray();
 
         $sk_lokasi_kawasan = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('sk_lokasi_kawasan !=', 'BELUM')->get()->getResultArray();
         $sk_lokasi_kawasan_belum = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('sk_lokasi_kawasan', 'BELUM')->get()->getResultArray();
@@ -123,7 +145,7 @@ class Kabupaten extends BaseController
         $data = [
             'title' => 'Dashboard',
             'user' => $this->db->table('sikaperdes_primary_user')->getWhere(['kd_login' => $this->session->get('kd_login_sikaperdes')])->getRowArray(),
-            'page_title' => view('sikaperdes/layout/user/content-page-title', ['title' => 'Dashboard', 'li_1' => 'Kabupaten', 'li_2' => 'Dashboard']),
+            'page_title' => view('sikaperdes/layout/user/content-page-title', ['title' => 'Dashboard', 'li_1' => 'Admin', 'li_2' => 'Dashboard']),
             'klasifikasi_ptp' => count($klasifikasi_ptp),
             'klasifikasi_wisata' => count($klasifikasi_wisata),
             'klasifikasi_perkebunan' => count($klasifikasi_perkebunan),
@@ -140,6 +162,26 @@ class Kabupaten extends BaseController
             'agregat_kp2023' => count($agregat_kp2023),
             'agregat_kp2024' => count($agregat_kp2024),
             'agregat_kp2025' => count($agregat_kp2025),
+            'agregat_kp2026' => count($agregat_kp2026),
+            'agregat_kp2027' => count($agregat_kp2027),
+            'agregat_kp2028' => count($agregat_kp2028),
+            'agregat_kp2029' => count($agregat_kp2029),
+            'agregat_kp2030' => count($agregat_kp2030),
+            'agregat_ds2016' => count($agregat_ds2016),
+            'agregat_ds2017' => count($agregat_ds2017),
+            'agregat_ds2018' => count($agregat_ds2018),
+            'agregat_ds2019' => count($agregat_ds2019),
+            'agregat_ds2020' => count($agregat_ds2020),
+            'agregat_ds2021' => count($agregat_ds2021),
+            'agregat_ds2022' => count($agregat_ds2022),
+            'agregat_ds2023' => count($agregat_ds2023),
+            'agregat_ds2024' => count($agregat_ds2024),
+            'agregat_ds2025' => count($agregat_ds2025),
+            'agregat_ds2026' => count($agregat_ds2026),
+            'agregat_ds2027' => count($agregat_ds2027),
+            'agregat_ds2028' => count($agregat_ds2028),
+            'agregat_ds2029' => count($agregat_ds2029),
+            'agregat_ds2030' => count($agregat_ds2030),
             'sk_lokasi_kawasan' => count($sk_lokasi_kawasan),
             'sk_lokasi_kawasan_belum' => count($sk_lokasi_kawasan_belum),
             'sk_tkpkp_kawasan' => count($sk_tkpkp_kawasan),

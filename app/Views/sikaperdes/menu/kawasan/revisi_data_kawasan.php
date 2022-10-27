@@ -207,12 +207,12 @@
                             </div>
 
                             <div class="mt-4">
-                                <h5 class="font-size-13 mb-2">Gambar produk unggulan dan peta delimitasi Kawasan Perdesaan</h5>
+                                <h5 class="font-size-13 mb-2">Gambar produk unggulan dan peta deliniasi Kawasan Perdesaan</h5>
                                 <div class="bg-soft-light p-3 text-center">
                                     <div class="row align-items-center" style="min-height: 6rem;">
                                         <div class="col-sm-4">
                                             <div class="grid-example">
-                                                <p>GAMBAR PRODUK</p>
+                                                <p>GAMBAR PRODUK <small>(max file 4mb)</small></p>
                                                 <div class="col-sm-3" style="margin: auto;">
                                                     <img src="<?= base_url('img/uploadfile/produk_unggulan/' . $img_produk_unggulan[0]) ?>" class="img-thumbnail img-preview0">
                                                 </div>
@@ -279,7 +279,7 @@
                                         </div>
                                         <div class="col-sm-4">
                                             <div class="grid-example mt-2 mt-sm-0">
-                                                <p>GAMBAR PETA DELIMITASI</p>
+                                                <p>GAMBAR PETA DELINIASI <small>(max file 4mb)</small></p>
                                                 <div class="col-sm-3" style="margin: auto;">
                                                     <img src="<?= base_url('img/uploadfile/peta_delimitasi/' . $dokumen['img_peta_delimitasi']) ?>" class="img-thumbnail img-preview5">
                                                 </div>

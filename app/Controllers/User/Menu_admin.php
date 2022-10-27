@@ -291,6 +291,22 @@ class Menu_admin extends BaseController
             if (!$this->validation->withRequest($this->request)->run()) {
                 return redirect()->to('user/menu-admin/input_data_kawasan')->withInput();
             }
+            $this->validation->setRule('image1', 'Image1', 'trim|mime_in[image1,image/png,image/jpg,image/jpeg]|max_size[image1,4096]', ['mime_in' => 'Ekstensi Gambar[2] harus png/jpg/jpeg', 'max_size' => 'Maximal file size Gambar[2] harus <= 4mb']);
+            if (!$this->validation->withRequest($this->request)->run()) {
+                return redirect()->to('user/menu-admin/input_data_kawasan')->withInput();
+            }
+            $this->validation->setRule('image2', 'Image2', 'trim|mime_in[image2,image/png,image/jpg,image/jpeg]|max_size[image2,4096]', ['mime_in' => 'Ekstensi Gambar[3] harus png/jpg/jpeg', 'max_size' => 'Maximal file size Gambar[3] harus <= 4mb']);
+            if (!$this->validation->withRequest($this->request)->run()) {
+                return redirect()->to('user/menu-admin/input_data_kawasan')->withInput();
+            }
+            $this->validation->setRule('image3', 'Image3', 'trim|mime_in[image3,image/png,image/jpg,image/jpeg]|max_size[image3,4096]', ['mime_in' => 'Ekstensi Gambar[4] harus png/jpg/jpeg', 'max_size' => 'Maximal file size Gambar[4] harus <= 4mb']);
+            if (!$this->validation->withRequest($this->request)->run()) {
+                return redirect()->to('user/menu-admin/input_data_kawasan')->withInput();
+            }
+            $this->validation->setRule('image4', 'Image4', 'trim|mime_in[image4,image/png,image/jpg,image/jpeg]|max_size[image4,4096]', ['mime_in' => 'Ekstensi Gambar[5] harus png/jpg/jpeg', 'max_size' => 'Maximal file size Gambar[5] harus <= 4mb']);
+            if (!$this->validation->withRequest($this->request)->run()) {
+                return redirect()->to('user/menu-admin/input_data_kawasan')->withInput();
+            }
             $this->validation->setRule('image5', 'Image5', 'trim|uploaded[image5]|mime_in[image5,image/png,image/jpg,image/jpeg]|max_size[image5,4096]', ['uploaded' => 'Gambar peta Delimitasi harus diisi', 'mime_in' => 'Ekstensi peta Delimitasi harus png/jpg/jpeg', 'max_size' => 'Maximal file size peta Delimitasi harus <= 4mb']);
             if (!$this->validation->withRequest($this->request)->run()) {
                 return redirect()->to('user/menu-admin/input_data_kawasan')->withInput();
@@ -375,6 +391,30 @@ class Menu_admin extends BaseController
             $this->validation->setRule('potensi_kawasan0', 'Potensikawasan', 'trim|required', ['required' => 'Potensi[1] Kawasan harus diisi']);
             if (!$this->validation->withRequest($this->request)->run()) {
                 return redirect()->to('user/menu-admin/revisi_review/' . $kd_kab . '/' . $kd_kawasan)->withInput();
+            }
+            $this->validation->setRule('image0', 'Image0', 'trim|mime_in[image0,image/png,image/jpg,image/jpeg]|max_size[image0,4096]', ['mime_in' => 'Ekstensi Gambar[1] harus png/jpg/jpeg', 'max_size' => 'Maximal file size Gambar[1] harus <= 4mb']);
+            if (!$this->validation->withRequest($this->request)->run()) {
+                return redirect()->to('user/menu-admin/input_data_kawasan')->withInput();
+            }
+            $this->validation->setRule('image1', 'Image1', 'trim|mime_in[image1,image/png,image/jpg,image/jpeg]|max_size[image1,4096]', ['mime_in' => 'Ekstensi Gambar[2] harus png/jpg/jpeg', 'max_size' => 'Maximal file size Gambar[2] harus <= 4mb']);
+            if (!$this->validation->withRequest($this->request)->run()) {
+                return redirect()->to('user/menu-admin/input_data_kawasan')->withInput();
+            }
+            $this->validation->setRule('image2', 'Image2', 'trim|mime_in[image2,image/png,image/jpg,image/jpeg]|max_size[image2,4096]', ['mime_in' => 'Ekstensi Gambar[3] harus png/jpg/jpeg', 'max_size' => 'Maximal file size Gambar[3] harus <= 4mb']);
+            if (!$this->validation->withRequest($this->request)->run()) {
+                return redirect()->to('user/menu-admin/input_data_kawasan')->withInput();
+            }
+            $this->validation->setRule('image3', 'Image3', 'trim|mime_in[image3,image/png,image/jpg,image/jpeg]|max_size[image3,4096]', ['mime_in' => 'Ekstensi Gambar[4] harus png/jpg/jpeg', 'max_size' => 'Maximal file size Gambar[4] harus <= 4mb']);
+            if (!$this->validation->withRequest($this->request)->run()) {
+                return redirect()->to('user/menu-admin/input_data_kawasan')->withInput();
+            }
+            $this->validation->setRule('image4', 'Image4', 'trim|mime_in[image4,image/png,image/jpg,image/jpeg]|max_size[image4,4096]', ['mime_in' => 'Ekstensi Gambar[5] harus png/jpg/jpeg', 'max_size' => 'Maximal file size Gambar[5] harus <= 4mb']);
+            if (!$this->validation->withRequest($this->request)->run()) {
+                return redirect()->to('user/menu-admin/input_data_kawasan')->withInput();
+            }
+            $this->validation->setRule('image5', 'Image5', 'trim|uploaded[image5]|mime_in[image5,image/png,image/jpg,image/jpeg]|max_size[image5,4096]', ['uploaded' => 'Gambar peta Delimitasi harus diisi', 'mime_in' => 'Ekstensi peta Delimitasi harus png/jpg/jpeg', 'max_size' => 'Maximal file size peta Delimitasi harus <= 4mb']);
+            if (!$this->validation->withRequest($this->request)->run()) {
+                return redirect()->to('user/menu-admin/input_data_kawasan')->withInput();
             } else {
                 $input = $this->request->getVar();
                 if ($this->request->getFile('image0') != '') {
