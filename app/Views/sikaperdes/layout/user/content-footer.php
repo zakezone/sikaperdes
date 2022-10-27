@@ -190,14 +190,14 @@
         </script>
     <?php elseif ($session->get('role_id_sikaperdes') == '4') : ?>
         <script>
-            $('#editemailpemkot').on('click', function() {
+            $('#editemail').on('click', function() {
                 var csrfName = $('.txt_csrfname_sie').attr('name'); // CSRF Token name
                 var csrfHash = $('.txt_csrfname_sie').val(); // CSRF hash
                 const email = $(this).data('email');
                 const userid = $(this).data('userid');
 
                 $.ajax({
-                    url: "<?= base_url('user/dukcapil-pemkot/editemail'); ?>",
+                    url: "<?= base_url('user/kecamatan/editemail'); ?>",
                     type: 'post',
                     data: {
                         email: email,
@@ -205,20 +205,20 @@
                         [csrfName]: csrfHash
                     },
                     success: function() {
-                        document.location.href = "<?= base_url('user/dukcapil-pemkot/editprofile'); ?>";
+                        document.location.href = "<?= base_url('user/kecamatan/editprofile'); ?>";
                     }
                 })
             });
         </script>
         <script>
-            $('#edithppemkot').on('click', function() {
+            $('#edithp').on('click', function() {
                 var csrfName = $('.txt_csrfname_sie').attr('name'); // CSRF Token name
                 var csrfHash = $('.txt_csrfname_sie').val(); // CSRF hash
                 const hp = $(this).data('hp');
                 const userid = $(this).data('userid');
 
                 $.ajax({
-                    url: "<?= base_url('user/dukcapil-pemkot/edithp'); ?>",
+                    url: "<?= base_url('user/kecamatan/edithp'); ?>",
                     type: 'post',
                     data: {
                         hp: hp,
@@ -226,21 +226,21 @@
                         [csrfName]: csrfHash
                     },
                     success: function() {
-                        document.location.href = "<?= base_url('user/dukcapil-pemkot/editprofile'); ?>";
+                        document.location.href = "<?= base_url('user/kecamatan/editprofile'); ?>";
                     }
                 })
             });
         </script>
     <?php elseif ($session->get('role_id_sikaperdes') == '5') : ?>
         <script>
-            $('#editemailpemkab').on('click', function() {
+            $('#editemail').on('click', function() {
                 var csrfName = $('.txt_csrfname_sie').attr('name'); // CSRF Token name
                 var csrfHash = $('.txt_csrfname_sie').val(); // CSRF hash
                 const email = $(this).data('email');
                 const userid = $(this).data('userid');
 
                 $.ajax({
-                    url: "<?= base_url('user/dispermades-pemkab/editemail'); ?>",
+                    url: "<?= base_url('user/pemdes/editemail'); ?>",
                     type: 'post',
                     data: {
                         email: email,
@@ -248,20 +248,20 @@
                         [csrfName]: csrfHash
                     },
                     success: function() {
-                        document.location.href = "<?= base_url('user/dispermades-pemkab/editprofile'); ?>";
+                        document.location.href = "<?= base_url('user/pemdes/editprofile'); ?>";
                     }
                 })
             });
         </script>
         <script>
-            $('#edithppemkab').on('click', function() {
+            $('#edithp').on('click', function() {
                 var csrfName = $('.txt_csrfname_sie').attr('name'); // CSRF Token name
                 var csrfHash = $('.txt_csrfname_sie').val(); // CSRF hash
                 const hp = $(this).data('hp');
                 const userid = $(this).data('userid');
 
                 $.ajax({
-                    url: "<?= base_url('user/dispermades-pemkab/edithp'); ?>",
+                    url: "<?= base_url('user/pemdes/edithp'); ?>",
                     type: 'post',
                     data: {
                         hp: hp,
@@ -269,7 +269,7 @@
                         [csrfName]: csrfHash
                     },
                     success: function() {
-                        document.location.href = "<?= base_url('user/dispermades-pemkab/editprofile'); ?>";
+                        document.location.href = "<?= base_url('user/pemdes/editprofile'); ?>";
                     }
                 })
             });

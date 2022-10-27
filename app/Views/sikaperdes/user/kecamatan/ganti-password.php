@@ -1,6 +1,6 @@
-<?= $this->include('sie/layout/user/content-header') ?>
-<?= $this->include('sie/layout/user/content-topbar') ?>
-<?= $this->include('sie/layout/user/content-sidebar') ?>
+<?= $this->include('sikaperdes/layout/user/content-header') ?>
+<?= $this->include('sikaperdes/layout/user/content-topbar') ?>
+<?= $this->include('sikaperdes/layout/user/content-sidebar') ?>
 
 <div class="page-content">
     <div class="container-fluid">
@@ -70,4 +70,4 @@
     </div>
 </div>
 
-<?= $this->include('sie/layout/user/content-footer') ?>
+<?= $this->include('sikaperdes/layout/user/content-footer') ?>

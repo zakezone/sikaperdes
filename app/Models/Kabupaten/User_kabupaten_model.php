@@ -41,84 +41,84 @@ class User_kabupaten_model extends Model
         $notifikasi->update();
     }
 
-    public function Notifikasiakses($input, $user, $kd_login)
-    {
-        $builder = $this->db->table('sikaperdes_notifikasi');
-        if ($input['role'] == 2) {
-            $role = 'Administrator';
-        } else if ($input['role'] == 3) {
-            $role = 'Moderator';
-        } else if ($input['role'] == 4) {
-            $role = 'Member';
-        } else if ($input['role'] == 5) {
-            $role = 'Belum Assign';
-        } else if ($input['role'] == 6) {
-            $role = 'Kabupaten';
-        } else if ($input['role'] == 7) {
-            $role = 'Provinsi';
-        }
+    // public function Notifikasiakses($input, $user, $kd_login)
+    // {
+    //     $builder = $this->db->table('sikaperdes_notifikasi');
+    //     if ($input['role'] == 2) {
+    //         $role = 'Administrator';
+    //     } else if ($input['role'] == 3) {
+    //         $role = 'Moderator';
+    //     } else if ($input['role'] == 4) {
+    //         $role = 'Member';
+    //     } else if ($input['role'] == 5) {
+    //         $role = 'Belum Assign';
+    //     } else if ($input['role'] == 6) {
+    //         $role = 'Kabupaten';
+    //     } else if ($input['role'] == 7) {
+    //         $role = 'Provinsi';
+    //     }
 
-        $insert1 = array(
-            "kd_wilayah" => $user['kd_wilayah'],
-            "jenis_file" => "Role Akses Assign",
-            "target" => "2",
-            "read" => "N",
-            "tanggal" => time(),
-            "keterangan" => "waiting",
-            "nama_notif" => $kd_login['kd_login'] . ' ' .  '(' . $role . ')',
-            "upload_by" => $user['nama'],
-            "user_id" => $user['user_id'],
-            "image_user" => $user['image']
-        );
+    //     $insert1 = array(
+    //         "kd_wilayah" => $user['kd_wilayah'],
+    //         "jenis_file" => "Role Akses Assign",
+    //         "target" => "2",
+    //         "read" => "N",
+    //         "tanggal" => time(),
+    //         "keterangan" => "waiting",
+    //         "nama_notif" => $kd_login['kd_login'] . ' ' .  '(' . $role . ')',
+    //         "upload_by" => $user['nama'],
+    //         "user_id" => $user['user_id'],
+    //         "image_user" => $user['image']
+    //     );
 
-        $insert2 = array(
-            "kd_wilayah" => $user['kd_wilayah'],
-            "jenis_file" => "Role Akses",
-            "target" => "3",
-            "read" => "N",
-            "tanggal" => time(),
-            "keterangan" => "waiting",
-            "nama_notif" => $kd_login['kd_login'] . ' ' . '(' . $role . ')',
-            "upload_by" => $user['nama'],
-            "user_id" => $user['user_id'],
-            "image_user" => $user['image']
-        );
+    //     $insert2 = array(
+    //         "kd_wilayah" => $user['kd_wilayah'],
+    //         "jenis_file" => "Role Akses",
+    //         "target" => "3",
+    //         "read" => "N",
+    //         "tanggal" => time(),
+    //         "keterangan" => "waiting",
+    //         "nama_notif" => $kd_login['kd_login'] . ' ' . '(' . $role . ')',
+    //         "upload_by" => $user['nama'],
+    //         "user_id" => $user['user_id'],
+    //         "image_user" => $user['image']
+    //     );
 
-        $builder->insert($insert1);
-        $builder->insert($insert2);
-    }
+    //     $builder->insert($insert1);
+    //     $builder->insert($insert2);
+    // }
 
-    public function Notifikasihapus($kd_login, $user)
-    {
-        $builder = $this->db->table('sikaperdes_notifikasi');
+    // public function Notifikasihapus($kd_login, $user)
+    // {
+    //     $builder = $this->db->table('sikaperdes_notifikasi');
 
-        $insert1 = array(
-            "kd_wilayah" => $user['kd_wilayah'],
-            "jenis_file" => "Hapus User",
-            "target" => "2",
-            "read" => "N",
-            "tanggal" => time(),
-            "keterangan" => "waiting",
-            "nama_notif" => $kd_login . " (Dihapus)",
-            "upload_by" => $user['nama'],
-            "user_id" => $user['user_id'],
-            "image_user" => $user['image']
-        );
+    //     $insert1 = array(
+    //         "kd_wilayah" => $user['kd_wilayah'],
+    //         "jenis_file" => "Hapus User",
+    //         "target" => "2",
+    //         "read" => "N",
+    //         "tanggal" => time(),
+    //         "keterangan" => "waiting",
+    //         "nama_notif" => $kd_login . " (Dihapus)",
+    //         "upload_by" => $user['nama'],
+    //         "user_id" => $user['user_id'],
+    //         "image_user" => $user['image']
+    //     );
 
-        $insert2 = array(
-            "kd_wilayah" => $user['kd_wilayah'],
-            "jenis_file" => "Hapus User",
-            "target" => "3",
-            "read" => "N",
-            "tanggal" => time(),
-            "keterangan" => "waiting",
-            "nama_notif" => $kd_login . " (Dihapus)",
-            "upload_by" => $user['nama'],
-            "user_id" => $user['user_id'],
-            "image_user" => $user['image']
-        );
+    //     $insert2 = array(
+    //         "kd_wilayah" => $user['kd_wilayah'],
+    //         "jenis_file" => "Hapus User",
+    //         "target" => "3",
+    //         "read" => "N",
+    //         "tanggal" => time(),
+    //         "keterangan" => "waiting",
+    //         "nama_notif" => $kd_login . " (Dihapus)",
+    //         "upload_by" => $user['nama'],
+    //         "user_id" => $user['user_id'],
+    //         "image_user" => $user['image']
+    //     );
 
-        $builder->insert($insert1);
-        $builder->insert($insert2);
-    }
+    //     $builder->insert($insert1);
+    //     $builder->insert($insert2);
+    // }
 }

@@ -3,23 +3,22 @@
 namespace App\Controllers\User;
 
 use App\Controllers\BaseController;
-use App\Models\Kabupaten\User_kabupaten_model;
+use App\Models\Kecamatan\User_kecamatan_model;
 
-class Kabupaten extends BaseController
+class Kecamatan extends BaseController
 {
-    protected $Kabupaten_model;
+    protected $Kecamatan_model;
 
     public function __construct()
     {
         date_default_timezone_set('Asia/Jakarta');
-        $this->Kabupaten_model = new User_kabupaten_model();
+        $this->Kecamatan_model = new User_kecamatan_model();
         helper('zakezone');
     }
 
     public function dashboard()
     {
         $this->session->remove('keyword');
-        $this->session->remove('keywordapi');
 
         $klasifikasi_ptp = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('klasifikasi', 'PERTANIAN TANAMAN PANGAN')->get()->getResultArray();
         $klasifikasi_wisata = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('klasifikasi', 'WISATA')->get()->getResultArray();
@@ -38,27 +37,6 @@ class Kabupaten extends BaseController
         $agregat_kp2023 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2023')->get()->getResultArray();
         $agregat_kp2024 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2024')->get()->getResultArray();
         $agregat_kp2025 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2025')->get()->getResultArray();
-        $agregat_kp2026 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2026')->get()->getResultArray();
-        $agregat_kp2027 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2027')->get()->getResultArray();
-        $agregat_kp2028 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2028')->get()->getResultArray();
-        $agregat_kp2029 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2029')->get()->getResultArray();
-        $agregat_kp2030 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('tahun_pembentukan', '2030')->get()->getResultArray();
-
-        $agregat_ds2016 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_des')->distinct()->where('tahun_pembentukan', '2016')->get()->getResultArray();
-        $agregat_ds2017 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_des')->distinct()->where('tahun_pembentukan', '2017')->get()->getResultArray();
-        $agregat_ds2018 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_des')->distinct()->where('tahun_pembentukan', '2018')->get()->getResultArray();
-        $agregat_ds2019 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_des')->distinct()->where('tahun_pembentukan', '2019')->get()->getResultArray();
-        $agregat_ds2020 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_des')->distinct()->where('tahun_pembentukan', '2020')->get()->getResultArray();
-        $agregat_ds2021 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_des')->distinct()->where('tahun_pembentukan', '2021')->get()->getResultArray();
-        $agregat_ds2022 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_des')->distinct()->where('tahun_pembentukan', '2022')->get()->getResultArray();
-        $agregat_ds2023 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_des')->distinct()->where('tahun_pembentukan', '2023')->get()->getResultArray();
-        $agregat_ds2024 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_des')->distinct()->where('tahun_pembentukan', '2024')->get()->getResultArray();
-        $agregat_ds2025 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_des')->distinct()->where('tahun_pembentukan', '2025')->get()->getResultArray();
-        $agregat_ds2026 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_des')->distinct()->where('tahun_pembentukan', '2026')->get()->getResultArray();
-        $agregat_ds2027 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_des')->distinct()->where('tahun_pembentukan', '2027')->get()->getResultArray();
-        $agregat_ds2028 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_des')->distinct()->where('tahun_pembentukan', '2028')->get()->getResultArray();
-        $agregat_ds2029 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_des')->distinct()->where('tahun_pembentukan', '2029')->get()->getResultArray();
-        $agregat_ds2030 = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_des')->distinct()->where('tahun_pembentukan', '2030')->get()->getResultArray();
 
         $sk_lokasi_kawasan = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('sk_lokasi_kawasan !=', 'BELUM')->get()->getResultArray();
         $sk_lokasi_kawasan_belum = $this->db->table('sikaperdes_kawasan_bank_data')->select('kd_kab, kd_kawasan')->distinct()->where('sk_lokasi_kawasan', 'BELUM')->get()->getResultArray();
@@ -136,7 +114,7 @@ class Kabupaten extends BaseController
         $data = [
             'title' => 'Dashboard',
             'user' => $this->db->table('sikaperdes_primary_user')->getWhere(['kd_login' => $this->session->get('kd_login_sikaperdes')])->getRowArray(),
-            'page_title' => view('sikaperdes/layout/user/content-page-title', ['title' => 'Dashboard', 'li_1' => 'Admin', 'li_2' => 'Dashboard']),
+            'page_title' => view('sikaperdes/layout/user/content-page-title', ['title' => 'Dashboard', 'li_1' => 'Kecamatan', 'li_2' => 'Dashboard']),
             'klasifikasi_ptp' => count($klasifikasi_ptp),
             'klasifikasi_wisata' => count($klasifikasi_wisata),
             'klasifikasi_perkebunan' => count($klasifikasi_perkebunan),
@@ -153,26 +131,6 @@ class Kabupaten extends BaseController
             'agregat_kp2023' => count($agregat_kp2023),
             'agregat_kp2024' => count($agregat_kp2024),
             'agregat_kp2025' => count($agregat_kp2025),
-            'agregat_kp2026' => count($agregat_kp2026),
-            'agregat_kp2027' => count($agregat_kp2027),
-            'agregat_kp2028' => count($agregat_kp2028),
-            'agregat_kp2029' => count($agregat_kp2029),
-            'agregat_kp2030' => count($agregat_kp2030),
-            'agregat_ds2016' => count($agregat_ds2016),
-            'agregat_ds2017' => count($agregat_ds2017),
-            'agregat_ds2018' => count($agregat_ds2018),
-            'agregat_ds2019' => count($agregat_ds2019),
-            'agregat_ds2020' => count($agregat_ds2020),
-            'agregat_ds2021' => count($agregat_ds2021),
-            'agregat_ds2022' => count($agregat_ds2022),
-            'agregat_ds2023' => count($agregat_ds2023),
-            'agregat_ds2024' => count($agregat_ds2024),
-            'agregat_ds2025' => count($agregat_ds2025),
-            'agregat_ds2026' => count($agregat_ds2026),
-            'agregat_ds2027' => count($agregat_ds2027),
-            'agregat_ds2028' => count($agregat_ds2028),
-            'agregat_ds2029' => count($agregat_ds2029),
-            'agregat_ds2030' => count($agregat_ds2030),
             'sk_lokasi_kawasan' => count($sk_lokasi_kawasan),
             'sk_lokasi_kawasan_belum' => count($sk_lokasi_kawasan_belum),
             'sk_tkpkp_kawasan' => count($sk_tkpkp_kawasan),
@@ -303,7 +261,7 @@ class Kabupaten extends BaseController
             'verif_kp_brebes' => count($verif_kp_brebes),
         ];
 
-        return view('sikaperdes/user/kabupaten/dashboard', $data);
+        return view('sikaperdes/user/kecamatan/dashboard', $data);
     }
 
     public function profile()
@@ -312,11 +270,11 @@ class Kabupaten extends BaseController
 
         $data = [
             'title' => 'Profile',
-            'page_title' => view('sikaperdes/layout/user/content-page-title', ['title' => 'Profile', 'li_1' => 'Kabupaten', 'li_2' => 'Profile']),
+            'page_title' => view('sikaperdes/layout/user/content-page-title', ['title' => 'Profile', 'li_1' => 'Kecamatan', 'li_2' => 'Profile']),
             'user' => $this->db->table('sikaperdes_primary_user')->getWhere(['kd_login' => $this->session->get('kd_login_sikaperdes')])->getRowArray(),
         ];
 
-        return view('sikaperdes/user/kabupaten/profile', $data);
+        return view('sikaperdes/user/kecamatan/profile', $data);
     }
 
     public function editprofile()
@@ -324,7 +282,7 @@ class Kabupaten extends BaseController
         $this->session->remove('keyword');
         $data = [
             'title' => 'Edit Profile',
-            'page_title' => view('sikaperdes/layout/user/content-page-title', ['title' => 'Edit Profile', 'li_1' => 'Kabupaten', 'li_2' => 'Edit Profile']),
+            'page_title' => view('sikaperdes/layout/user/content-page-title', ['title' => 'Edit Profile', 'li_1' => 'Kecamatan', 'li_2' => 'Edit Profile']),
             'user' => $this->db->table('sikaperdes_primary_user')->getWhere(['kd_login' => $this->session->get('kd_login_sikaperdes')])->getRowArray(),
             'validation' =>  $this->validation
         ];
@@ -332,33 +290,33 @@ class Kabupaten extends BaseController
         if (isset($_POST['submit'])) {
             $this->validation->setRule('nama', 'Nama lengkap', 'trim|required', ['required' => 'Form tidak boleh dikosongkan']);
             if (!$this->validation->withRequest($this->request)->run()) {
-                return redirect()->to('user/kabupaten/editprofile')->withInput();
+                return redirect()->to('user/kecamatan/editprofile')->withInput();
             }
             if ($data['user']['email'] == '') {
                 $this->validation->setRule('email', 'Email', 'required|trim|valid_email|is_unique[sikaperdes_primary_user.email]', ['required' => 'Email tidak boleh kosong', 'valid_email' => 'Format email tidak sesuai', 'is_unique' => 'Email sudah terdaftar']);
                 if (!$this->validation->withRequest($this->request)->run()) {
-                    return redirect()->to('user/kabupaten/editprofile')->withInput();
+                    return redirect()->to('user/kecamatan/editprofile')->withInput();
                 }
             }
             if ($data['user']['hp'] == '') {
                 $this->validation->setRule('hp', 'HP', 'required|alpha_numeric_punct|min_length[11]|max_length[15]|trim|is_unique[sikaperdes_primary_user.hp]', ['required' => 'Nomor HP tidak boleh kosong', 'alpha_numeric_punch' => 'Nomor HP hanya diisi angka (tanpa spasi)', 'min_length' => 'Nomor HP minimal harus 11 digit', 'max_length' => 'Nomor HP maximal hanya 15 digit', 'is_unique' => 'Nomor HP sudah terdaftar']);
                 if (!$this->validation->withRequest($this->request)->run()) {
-                    return redirect()->to('user/kabupaten/editprofile')->withInput();
+                    return redirect()->to('user/kecamatan/editprofile')->withInput();
                 }
             }
             $this->validation->setRule('image', 'Upload Persetujuan', 'trim|mime_in[image,image/jpg,image/JPG,image/jpeg,image/png]|max_size[image,2048]', ['mime_in' => 'File yang anda pilih bukan JPG', 'max_size' => 'File anda melebihi 2mb']);
             if (!$this->validation->withRequest($this->request)->run()) {
-                return redirect()->to('user/kabupaten/editprofile')->withInput();
+                return redirect()->to('user/kecamatan/editprofile')->withInput();
             } else {
                 $file = $this->request->getFile('image');
                 $input = $this->request->getVar();
                 $user_id = $this->session->get('id_sikaperdes');
-                $this->Kabupaten_model->editProfile($user_id, $input, $file);
+                $this->Kecamatan_model->editProfile($user_id, $input, $file);
                 $this->session->setFlashdata('message', '<div class="alert alert-success alert-dismissible alert-label-icon label-arrow fade show" role="alert"><i class="mdi mdi-check-all label-icon"></i><b>Profile</b> Berhasil diperbarui<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>');
-                return redirect()->to('user/kabupaten/profile');
+                return redirect()->to('user/kecamatan/profile');
             }
         }
-        return view('sikaperdes/user/kabupaten/editprofile', $data);
+        return view('sikaperdes/user/kecamatan/editprofile', $data);
     }
 
     public function editemail()
@@ -388,7 +346,7 @@ class Kabupaten extends BaseController
         $this->session->remove('keyword');
         $data = [
             'title' => 'Ganti Password',
-            'page_title' => view('sikaperdes/layout/user/content-page-title', ['title' => 'Ganti Password', 'li_1' => 'Kabupaten', 'li_2' => 'Ganti Password']),
+            'page_title' => view('sikaperdes/layout/user/content-page-title', ['title' => 'Ganti Password', 'li_1' => 'Kecamatan', 'li_2' => 'Ganti Password']),
             'user' => $this->db->table('sikaperdes_primary_user')->getWhere(['kd_login' => $this->session->get('kd_login_sikaperdes')])->getRowArray(),
             'validation' =>  $this->validation
         ];
@@ -396,36 +354,36 @@ class Kabupaten extends BaseController
         if (isset($_POST['submit'])) {
             $this->validation->setRule('current_password', 'Current Password', 'required|trim', ['required' => 'Form tidak boleh dikosongkan']);
             if (!$this->validation->withRequest($this->request)->run()) {
-                return redirect()->to('user/kabupaten/ganti_password')->withInput();
+                return redirect()->to('user/kecamatan/ganti_password')->withInput();
             }
             $this->validation->setRule('new_password1', 'New Password', 'required|trim|min_length[6]', ['required' => 'Form tidak boleh dikosongkan', 'min_length' => 'Password minimal 6 karakter']);
             if (!$this->validation->withRequest($this->request)->run()) {
-                return redirect()->to('user/kabupaten/ganti_password')->withInput();
+                return redirect()->to('user/kecamatan/ganti_password')->withInput();
             }
             $this->validation->setRule('new_password2', 'New Password2', 'trim|matches[new_password1]', ['matches' => 'Input tidak sesuai dengan password baru']);
             if (!$this->validation->withRequest($this->request)->run()) {
-                return redirect()->to('user/kabupaten/ganti_password')->withInput();
+                return redirect()->to('user/kecamatan/ganti_password')->withInput();
             } else {
                 $current_password = $this->request->getVar('current_password');
                 $new_password = password_hash($this->request->getVar('new_password1'), PASSWORD_DEFAULT);
                 if (!password_verify($current_password, $data['user']['password'])) {
                     $this->session->setFlashdata('message', '<div class="alert alert-danger alert-dismissible alert-label-icon label-arrow fade show" role="alert"><i class="mdi mdi-block-helper label-icon"></i>Gagal! Password awal tidak sesuai!<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>');
-                    return redirect()->to('user/kabupaten/ganti_password')->withInput();
+                    return redirect()->to('user/kecamatan/ganti_password')->withInput();
                 } else {
                     if (password_verify($current_password, $new_password)) {
                         $this->session->setFlashdata('message', '<div class="alert alert-warning alert-dismissible alert-label-icon label-arrow fade show" role="alert"><i class="mdi mdi-alert-outline label-icon"></i>Gagal! Password ini telah digunakan sebelumnya<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>');
-                        return redirect()->to('user/kabupaten/ganti_password')->withInput();
+                        return redirect()->to('user/kecamatan/ganti_password')->withInput();
                     } else {
                         $builder = $this->db->table('sikaperdes_primary_user');
                         $builder->set('password', $new_password);
                         $builder->where('user_id', $this->session->get('id_sikaperdes'));
                         $builder->update();
                         $this->session->setFlashdata('message', '<div class="alert alert-success alert-dismissible alert-label-icon label-arrow fade show" role="alert"><i class="mdi mdi-check-all label-icon"></i><b>Password</b> Berhasil diperbarui<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>');
-                        return redirect()->to('user/kabupaten/ganti_password');
+                        return redirect()->to('user/kecamatan/ganti_password');
                     }
                 }
             }
         }
-        return view('sikaperdes/user/kabupaten/ganti-password', $data);
+        return view('sikaperdes/user/kecamatan/ganti-password', $data);
     }
 }
