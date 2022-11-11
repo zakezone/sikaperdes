@@ -119,7 +119,7 @@
                                             <div class="testi-contain text-white">
                                                 <i class="bx bxs-quote-alt-left text-success display-6"></i>
 
-                                                <h4 class="mt-4 fw-medium lh-base text-white">“Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, sed accusantium aliquam animi, voluptates autem minus provident magni nobis, esse corrupti eaque porro rem veritatis quasi maiores aspernatur. Ex, repellat.”
+                                                <h4 class="mt-4 fw-medium lh-base text-white">“Peraturan Menteri Desa PDTT RI No. 5 Tahun 2016 Tentang Pembangunan Kawasan Perdesaan dan Peraturan Gubernur Jawa Tengah No. 36 Tahun 2016 Tentang Pembangunan Kawasan Perdesaan di Provinsi Jawa Tengah.”
                                                 </h4>
                                                 <div class="mt-4 pt-3 pb-5">
                                                     <div class="d-flex align-items-start">
@@ -127,9 +127,9 @@
                                                             <img src="<?= base_url('img/thumbnail/fav.ico'); ?>" class="avatar-md img-fluid rounded-circle">
                                                         </div>
                                                         <div class="flex-grow-1 ms-3 mb-4">
-                                                            <h5 class="font-size-18 text-white">Carousel 1
+                                                            <h5 class="font-size-18 text-white">Dasar Hukum Pembentukan Kawasan Perdesaan
                                                             </h5>
-                                                            <p class="mb-0 text-white-50">Title 1</p>
+                                                            <p class="mb-0 text-white-50">DISPERMADES PROV JATENG</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -140,16 +140,16 @@
                                             <div class="testi-contain text-white">
                                                 <i class="bx bxs-quote-alt-left text-success display-6"></i>
 
-                                                <h4 class="mt-4 fw-medium lh-base text-white">“Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, sed accusantium aliquam animi, voluptates autem minus provident magni nobis, esse corrupti eaque porro rem veritatis quasi maiores aspernatur. Ex, repellat.”</h4>
+                                                <h4 class="mt-4 fw-medium lh-base text-white">“Kawasan Perdesaan adalah kawasan yang mempunyai kegiatan utama pertanian, termasuk pengelolaan sumber daya alam dengan susunan fungsi kawasan sebagai tempat permukiman perdesaan, pelayanan jasa pemerintahan, pelayanan sosial, dan kegiatan ekonomi”</h4>
                                                 <div class="mt-4 pt-3 pb-5">
                                                     <div class="d-flex align-items-start">
                                                         <div class="flex-shrink-0">
                                                             <img src="<?= base_url('img/thumbnail/fav.ico'); ?>" class="avatar-md img-fluid rounded-circle">
                                                         </div>
                                                         <div class="flex-grow-1 ms-3 mb-4">
-                                                            <h5 class="font-size-18 text-white">Carousel 2
+                                                            <h5 class="font-size-18 text-white">Kawasan Perdesaan
                                                             </h5>
-                                                            <p class="mb-0 text-white-50">Title 2</p>
+                                                            <p class="mb-0 text-white-50">DISPERMADES PROV JATENG</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -160,16 +160,16 @@
                                             <div class="testi-contain text-white">
                                                 <i class="bx bxs-quote-alt-left text-success display-6"></i>
 
-                                                <h4 class="mt-4 fw-medium lh-base text-white">“Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur iusto quam, nemo rem, dolorum ab pariatur rerum voluptatem, vel impedit quos nulla delectus recusandae harum eveniet reiciendis sed accusamus distinctio?”</h4>
+                                                <h4 class="mt-4 fw-medium lh-base text-white">“SIKaPerdes (Sistem Informasi Kawasan Perdesaan) untuk efektivitas pelayanan publik pengembangan kawasan perdesaan pada Dispermades Provinsi Jawa Tengah”</h4>
                                                 <div class="mt-4 pt-3 pb-5">
                                                     <div class="d-flex align-items-start">
                                                         <div class="flex-shrink-0">
                                                             <img src="<?= base_url('img/thumbnail/fav.ico'); ?>" class="avatar-md img-fluid rounded-circle">
                                                         </div>
                                                         <div class="flex-grow-1 ms-3 mb-4">
-                                                            <h5 class="font-size-18 text-white">Carousel 3
+                                                            <h5 class="font-size-18 text-white">SIKaPerdes
                                                             </h5>
-                                                            <p class="mb-0 text-white-50">Title 3</p>
+                                                            <p class="mb-0 text-white-50">DISPERMADES PROV JATENG</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -180,16 +180,16 @@
                                             <div class="testi-contain text-white">
                                                 <i class="bx bxs-quote-alt-left text-success display-6"></i>
 
-                                                <h4 class="mt-4 fw-medium lh-base text-white">“Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt molestias nesciunt voluptatem minima quidem esse voluptatibus ab non atque cupiditate rerum sunt doloremque illum voluptatum delectus culpa, placeat autem sequi!”</h4>
+                                                <h4 class="mt-4 fw-medium lh-base text-white">“Tujuan SIKaPerdes adalah untuk mendorong pengelolaan dan pengembangan pembangunan kawasan perdesaan secara terintegrasi di Jawa Tengah”</h4>
                                                 <div class="mt-4 pt-3 pb-5">
                                                     <div class="d-flex align-items-start">
                                                         <div class="flex-shrink-0">
                                                             <img src="<?= base_url('img/thumbnail/fav.ico'); ?>" class="avatar-md img-fluid rounded-circle">
                                                         </div>
                                                         <div class="flex-grow-1 ms-3 mb-4">
-                                                            <h5 class="font-size-18 text-white">Carousel 4
+                                                            <h5 class="font-size-18 text-white">Tujuan SIKaPerdes
                                                             </h5>
-                                                            <p class="mb-0 text-white-50">Title 4</p>
+                                                            <p class="mb-0 text-white-50">DISPERMADES PROV JATENG</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -200,13 +200,13 @@
                                             <div class="testi-contain text-white">
                                                 <i class="bx bxs-quote-alt-left text-success display-6"></i>
 
-                                                <h4 class="mt-4 fw-medium lh-base text-white">“Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum omnis aliquid molestias, nobis placeat sit illum neque consequuntur beatae dolorum minima officia officiis saepe delectus cum a debitis, optio assumenda!”</h4>
+                                                <h4 class="mt-4 fw-medium lh-base text-white">“Manfaat SIKaPerdes adalah tersedianya data kawasan perdesaan yang diolah secara digital dan up to date untuk penyusunan rencana pembangunan kawasan perdesaan dalam upaya mempercepat dan meningkatkan kualitas pelayanan , pembangunan dan pemberdayaan mayarakat desa melalui pendekatan pembangunan partisipatif”</h4>
                                                 <div class="mt-4 pt-3 pb-5">
                                                     <div class="d-flex align-items-start">
                                                         <img src="<?= base_url('img/thumbnail/fav.ico'); ?>" class="avatar-md img-fluid rounded-circle">
                                                         <div class="flex-1 ms-3 mb-4">
-                                                            <h5 class="font-size-18 text-white">Carousel 5</h5>
-                                                            <p class="mb-0 text-white-50">Title 5
+                                                            <h5 class="font-size-18 text-white">Manfaat SIKaPerdes</h5>
+                                                            <p class="mb-0 text-white-50">DISPERMADES PROV JATENG
                                                             </p>
                                                         </div>
                                                     </div>
