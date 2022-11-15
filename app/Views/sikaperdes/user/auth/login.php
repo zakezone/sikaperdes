@@ -167,7 +167,7 @@
                                                             <img src="<?= base_url('img/thumbnail/fav.ico'); ?>" class="avatar-md img-fluid rounded-circle">
                                                         </div>
                                                         <div class="flex-grow-1 ms-3 mb-4">
-                                                            <h5 class="font-size-18 text-white">SIKaPerdes
+                                                            <h5 class="font-size-18 text-white">SIKaPerdes App
                                                             </h5>
                                                             <p class="mb-0 text-white-50">DISPERMADES PROV JATENG</p>
                                                         </div>
