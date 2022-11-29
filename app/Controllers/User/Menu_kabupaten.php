@@ -81,7 +81,7 @@ class Menu_kabupaten extends BaseController
                 // $row[] = '<a href="#" class="badge bg-danger deleting" id="sa-delete" data-kdkab="' . $key['kd_kab'] . '" data-kdkawasan="' . $key['kd_kawasan'] . '">Delete</a>';
             } else {
                 $row[] = '<a style="color:red;">' . $key['verifikasi'] . '</a>';
-                $row[] = '<a href="#" class="badge bg-danger deleting" id="sa-delete" data-kdkab="' . $key['kd_kab'] . '" data-kdkawasan="' . $key['kd_kawasan'] . '">Delete</a>';
+                $row[] = '<a href="../data/verifikasi_review/' . $key['kd_kab'] .  "/"  . $key['kd_kawasan'] . '" class="badge bg-info">Detail</a> <a href="#" class="badge bg-danger deleting" id="sa-delete" data-kdkab="' . $key['kd_kab'] . '" data-kdkawasan="' . $key['kd_kawasan'] . '">Delete</a>';
             }
             $data[] = $row;
         }
