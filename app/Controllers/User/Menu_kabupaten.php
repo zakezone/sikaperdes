@@ -59,8 +59,8 @@ class Menu_kabupaten extends BaseController
         $data = array();
         $no = $start;
         foreach ($listing as $key) {
-            $jumlahdesa = $this->Menu_kabupaten_kawasan->getJmlDesa($row[] = $key['nm_kawasan']);
-            $jumlahkec = $this->Menu_kabupaten_kawasan->getJmlKec($row[] = $key['nm_kawasan']);
+            $jumlahdesa = $this->Menu_kabupaten_kawasan->getJmlDesa($row[] = $key['kd_kawasan']);
+            $jumlahkec = $this->Menu_kabupaten_kawasan->getJmlKec($row[] = $key['kd_kawasan']);
             $no++;
             $row = array();
             $row[] = $no;
