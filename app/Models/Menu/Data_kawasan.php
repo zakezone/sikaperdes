@@ -22,7 +22,7 @@ class Data_kawasan extends Model
     {
         $builder = $this->db->table('sikaperdes_kawasan_bank_data');
         $builder->selectCount('nm_des');
-        $builder->where('kd_kawasan', $nmkawasan);
+        $builder->where('nm_kawasan', $nmkawasan);
         return $builder->get()->getRowArray();
     }
 
@@ -31,7 +31,7 @@ class Data_kawasan extends Model
         $builder = $this->db->table('sikaperdes_kawasan_bank_data');
         $builder->select('nm_kec');
         $builder->distinct();
-        $builder->where('kd_kawasan', $nmkawasan);
+        $builder->where('nm_kawasan', $nmkawasan);
         return count($builder->get()->getResultArray());
     }
 
