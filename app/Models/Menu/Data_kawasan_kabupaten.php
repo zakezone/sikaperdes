@@ -12,20 +12,22 @@ class Data_kawasan_kabupaten extends Model
     var $column_orderkab = array('id', 'nm_kec', 'nm_kab', 'nm_kawasan', 'tahun_pembentukan', 'verifikasi');
     var $order = array('id' => 'asc');
 
-    public function getJmlDesa($nmkawasan)
+    public function getJmlDesa($nmkawasan, $kdkawasan)
     {
         $builder = $this->db->table('sikaperdes_kawasan_bank_data');
         $builder->selectCount('nm_des');
         $builder->where('nm_kawasan', "$nmkawasan");
+        $builder->where('kd_kawasan', $kdkawasan);
         return $builder->get()->getRowArray();
     }
 
-    public function getJmlKec($nmkawasan)
+    public function getJmlKec($nmkawasan, $kdkawasan)
     {
         $builder = $this->db->table('sikaperdes_kawasan_bank_data');
         $builder->select('nm_kec');
         $builder->distinct();
         $builder->where('nm_kawasan', "$nmkawasan");
+        $builder->where('kd_kawasan', $kdkawasan);
         return count($builder->get()->getResultArray());
     }
 
