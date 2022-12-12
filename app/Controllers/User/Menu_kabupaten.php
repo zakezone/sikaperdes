@@ -66,7 +66,9 @@ class Menu_kabupaten extends BaseController
             $row[] = $no;
             $row[] = $key['nm_kab'];
             $row[] = $jumlahkec;
-            $row[] = $jumlahdesa;
+            foreach ($jumlahdesa as $jd) {
+                $row[] = $jd;
+            }
             $row[] = $key['nm_kawasan'];
             $row[] = $key['tahun_pembentukan'];
             if ($key['verifikasi'] == "disetujui") {
