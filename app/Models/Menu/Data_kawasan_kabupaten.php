@@ -16,7 +16,7 @@ class Data_kawasan_kabupaten extends Model
     {
         $builder = $this->db->table('sikaperdes_kawasan_bank_data');
         $builder->selectCount('nm_des');
-        $builder->where('nm_kawasan', $nmkawasan);
+        $builder->where('nm_kawasan', "$nmkawasan");
         return $builder->get()->getRowArray();
     }
 
@@ -25,7 +25,7 @@ class Data_kawasan_kabupaten extends Model
         $builder = $this->db->table('sikaperdes_kawasan_bank_data');
         $builder->select('nm_kec');
         $builder->distinct();
-        $builder->where('nm_kawasan', $nmkawasan);
+        $builder->where('nm_kawasan', "$nmkawasan");
         return count($builder->get()->getResultArray());
     }
 
