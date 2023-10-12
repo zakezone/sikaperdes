@@ -817,7 +817,7 @@
                 },
                 "columnDefs": [{
                     searchable: false,
-                    orderable: true,
+                    orderable: false,
                     targets: [3],
                     className: "text-center",
                 }],
@@ -868,6 +868,39 @@
             });
         }
     </script>
+    <?php if ($session->get('role_id_sikaperdes') == '1') : ?>
+        <script src="<?= base_url('minia/libs/sweetalert2/sweetalert2.min.js'); ?>"></script>
+        <script>
+            $(document).on('click', '#sa-delete', function(e) {
+                var kd_kab = $(this).data('kdkab');
+                var kd_kawasan = $(this).data('kdkawasan');
+
+                Swal.fire({
+                        title: 'Apakah Anda yakin?',
+                        text: "Data Kawasan terpilih akan dihapus!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Yes, hapus!',
+                        cancelButtonText: 'No, batalkan!',
+                        confirmButtonClass: 'btn btn-success mt-2',
+                        cancelButtonClass: 'btn btn-danger ms-2 mt-2',
+                        buttonsStyling: false
+                    })
+                    .then((result) => {
+                        if (result.value) {
+                            window.location = '<?= base_url('user/menu-admin/delete_daftar_kawasan') ?>' + '/' + kd_kab + '/' + kd_kawasan
+                        } else if (result.dismiss === 'cancel') {
+                            Swal.fire(
+                                'Cancelled',
+                                'Data Kawasan tidak jadi dihapus :)',
+                                'error',
+                                '#5156be',
+                            )
+                        }
+                    })
+            });
+        </script>
+    <?php endif; ?>
 
 <?php elseif ($request->uri->getSegment(2) == "menu-admin" && $request->uri->getSegment(3) == "jenis_klasifikasi_list") : ?>
     <script src="<?= base_url('minia/libs/choices.js/public/assets/scripts/select2.js') ?>"></script>
