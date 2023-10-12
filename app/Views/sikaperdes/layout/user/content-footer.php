@@ -654,8 +654,8 @@
                 },
                 "columnDefs": [{
                     searchable: false,
-                    orderable: true,
-                    targets: [0, 2, 3, 4, 5, 6, 7],
+                    orderable: false,
+                    targets: [6, 7],
                     className: "text-center",
                 }],
                 bDestroy: true,
@@ -701,8 +701,8 @@
                 },
                 "columnDefs": [{
                     searchable: false,
-                    orderable: true,
-                    targets: [0, 2, 3, 4, 5, 6, 7],
+                    orderable: false,
+                    targets: [6, 7],
                     className: "text-center",
                 }],
                 bDestroy: true,
@@ -860,7 +860,7 @@
                 },
                 "columnDefs": [{
                     searchable: false,
-                    orderable: true,
+                    orderable: false,
                     targets: [3],
                     className: "text-center",
                 }],
@@ -937,7 +937,7 @@
                 },
                 "columnDefs": [{
                     searchable: false,
-                    orderable: true,
+                    orderable: false,
                     targets: [2],
                     className: "text-center",
                 }],
