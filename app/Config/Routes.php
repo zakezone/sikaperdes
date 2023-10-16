@@ -145,6 +145,13 @@ $routes->get('/user/pemdes', 'User\Pemdes::dashboard', ['filter' => 'authusersie
 $routes->match(['get', 'post'], '/user/data/verifikasi_review/(:any)/(:any)', 'User\Data::verifikasireview/$1/$2', ['filter' => 'authusersie']);
 $routes->get('/user/data/kawasan', 'User\Data::verifikasi_data_kawasan', ['filter' => 'authusersie']);
 $routes->match(['get', 'post'], '/user/data/load_data_kawasan', 'User\Data::load_data_kawasan', ['filter' => 'authusersie']);
+
+// API SIKAPERDES
+$routes->group('api', ['namespace' => 'App\Controllers\Api'], function ($routes) {
+    $routes->resource('Auth');
+    $routes->resource('Kawasan');
+});
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
