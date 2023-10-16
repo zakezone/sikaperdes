@@ -16,15 +16,15 @@ class Api_model extends BaseBuilder
     {
         if ($kd_kab === null && $tahun === null) {
             $builder = $this->db->table('sikaperdes_kawasan_bank_data');
-            $builder->select('id, nm_kab, nm_kec, nm_desa, kd_des, nm_kawasan, kd_kawasan, sk_lokasi_kawasan, sk_tkpkp_kawasan, perbup_rpkp, perda_kab_pembangunan, perbup_pembangunan, sk_tkpkp_kab_pembangunan, klasifikasi, tahun_pembentukan, verifikasi');
+            $builder->select('id, nm_kab, nm_kec, nm_des, kd_des, nm_kawasan, kd_kawasan, sk_lokasi_kawasan, sk_tkpkp_kawasan, perbup_rpkp, perda_kab_pembangunan, perbup_pembangunan, sk_tkpkp_kab_pembangunan, klasifikasi, tahun_pembentukan, verifikasi');
             return $builder->get()->getResultArray();
         } else if ($kd_kab != null && $tahun === null) {
             $builder = $this->db->table('sikaperdes_kawasan_bank_data');
-            $builder->select('id, nm_kab, nm_kec, nm_desa, kd_des, nm_kawasan, kd_kawasan, sk_lokasi_kawasan, sk_tkpkp_kawasan, perbup_rpkp, perda_kab_pembangunan, perbup_pembangunan, sk_tkpkp_kab_pembangunan, klasifikasi, tahun_pembentukan, verifikasi');
+            $builder->select('id, nm_kab, nm_kec, nm_des, kd_des, nm_kawasan, kd_kawasan, sk_lokasi_kawasan, sk_tkpkp_kawasan, perbup_rpkp, perda_kab_pembangunan, perbup_pembangunan, sk_tkpkp_kab_pembangunan, klasifikasi, tahun_pembentukan, verifikasi');
             return $builder->getWhere(['LEFT(kd_wilayah,5)' => $kd_kab])->getResultArray();
         } else {
             $builder = $this->db->table('sikaperdes_kawasan_bank_data');
-            $builder->select('id, nm_kab, nm_kec, nm_desa, kd_des, nm_kawasan, kd_kawasan, sk_lokasi_kawasan, sk_tkpkp_kawasan, perbup_rpkp, perda_kab_pembangunan, perbup_pembangunan, sk_tkpkp_kab_pembangunan, klasifikasi, tahun_pembentukan, verifikasi');
+            $builder->select('id, nm_kab, nm_kec, nm_des, kd_des, nm_kawasan, kd_kawasan, sk_lokasi_kawasan, sk_tkpkp_kawasan, perbup_rpkp, perda_kab_pembangunan, perbup_pembangunan, sk_tkpkp_kab_pembangunan, klasifikasi, tahun_pembentukan, verifikasi');
             return $builder->getWhere(['LEFT(kd_wilayah,5)' => $kd_kab, 'tahun' => $tahun])->getResultArray();
         }
     }
@@ -33,15 +33,15 @@ class Api_model extends BaseBuilder
     {
         if ($kd_kec === null && $tahun === null) {
             $builder = $this->db->table('sikaperdes_kawasan_bank_data');
-            $builder->select('id, nm_kab, nm_kec, nm_desa, kd_des, nm_kawasan, kd_kawasan, sk_lokasi_kawasan, sk_tkpkp_kawasan, perbup_rpkp, perda_kab_pembangunan, perbup_pembangunan, sk_tkpkp_kab_pembangunan, klasifikasi, tahun_pembentukan, verifikasi');
+            $builder->select('id, nm_kab, nm_kec, nm_des, kd_des, nm_kawasan, kd_kawasan, sk_lokasi_kawasan, sk_tkpkp_kawasan, perbup_rpkp, perda_kab_pembangunan, perbup_pembangunan, sk_tkpkp_kab_pembangunan, klasifikasi, tahun_pembentukan, verifikasi');
             return $builder->get()->getResultArray();
         } else if ($kd_kec != null && $tahun === null) {
             $builder = $this->db->table('sikaperdes_kawasan_bank_data');
-            $builder->select('id, nm_kab, nm_kec, nm_desa, kd_des, nm_kawasan, kd_kawasan, sk_lokasi_kawasan, sk_tkpkp_kawasan, perbup_rpkp, perda_kab_pembangunan, perbup_pembangunan, sk_tkpkp_kab_pembangunan, klasifikasi, tahun_pembentukan, verifikasi');
+            $builder->select('id, nm_kab, nm_kec, nm_des, kd_des, nm_kawasan, kd_kawasan, sk_lokasi_kawasan, sk_tkpkp_kawasan, perbup_rpkp, perda_kab_pembangunan, perbup_pembangunan, sk_tkpkp_kab_pembangunan, klasifikasi, tahun_pembentukan, verifikasi');
             return $builder->getWhere(['LEFT(kd_wilayah,8)' => $kd_kec])->getResultArray();
         } else {
             $builder = $this->db->table('sikaperdes_kawasan_bank_data');
-            $builder->select('id, nm_kab, nm_kec, nm_desa, kd_des, nm_kawasan, kd_kawasan, sk_lokasi_kawasan, sk_tkpkp_kawasan, perbup_rpkp, perda_kab_pembangunan, perbup_pembangunan, sk_tkpkp_kab_pembangunan, klasifikasi, tahun_pembentukan, verifikasi');
+            $builder->select('id, nm_kab, nm_kec, nm_des, kd_des, nm_kawasan, kd_kawasan, sk_lokasi_kawasan, sk_tkpkp_kawasan, perbup_rpkp, perda_kab_pembangunan, perbup_pembangunan, sk_tkpkp_kab_pembangunan, klasifikasi, tahun_pembentukan, verifikasi');
             return $builder->getWhere(['LEFT(kd_wilayah,8)' => $kd_kec, 'tahun' => $tahun])->getResultArray();
         }
     }
@@ -50,15 +50,15 @@ class Api_model extends BaseBuilder
     {
         if ($kd_des === null && $tahun === null) {
             $builder = $this->db->table('sikaperdes_kawasan_bank_data');
-            $builder->select('id, nm_kab, nm_kec, nm_desa, kd_des, nm_kawasan, kd_kawasan, sk_lokasi_kawasan, sk_tkpkp_kawasan, perbup_rpkp, perda_kab_pembangunan, perbup_pembangunan, sk_tkpkp_kab_pembangunan, klasifikasi, tahun_pembentukan, verifikasi');
+            $builder->select('id, nm_kab, nm_kec, nm_des, kd_des, nm_kawasan, kd_kawasan, sk_lokasi_kawasan, sk_tkpkp_kawasan, perbup_rpkp, perda_kab_pembangunan, perbup_pembangunan, sk_tkpkp_kab_pembangunan, klasifikasi, tahun_pembentukan, verifikasi');
             return $builder->get()->getResultArray();
         } else if ($kd_des != null && $tahun === null) {
             $builder = $this->db->table('sikaperdes_kawasan_bank_data');
-            $builder->select('id, nm_kab, nm_kec, nm_desa, kd_des, nm_kawasan, kd_kawasan, sk_lokasi_kawasan, sk_tkpkp_kawasan, perbup_rpkp, perda_kab_pembangunan, perbup_pembangunan, sk_tkpkp_kab_pembangunan, klasifikasi, tahun_pembentukan, verifikasi');
+            $builder->select('id, nm_kab, nm_kec, nm_des, kd_des, nm_kawasan, kd_kawasan, sk_lokasi_kawasan, sk_tkpkp_kawasan, perbup_rpkp, perda_kab_pembangunan, perbup_pembangunan, sk_tkpkp_kab_pembangunan, klasifikasi, tahun_pembentukan, verifikasi');
             return $builder->getWhere(['kd_wilayah' => $kd_des])->getResultArray();
         } else {
             $builder = $this->db->table('sikaperdes_kawasan_bank_data');
-            $builder->select('id, nm_kab, nm_kec, nm_desa, kd_des, nm_kawasan, kd_kawasan, sk_lokasi_kawasan, sk_tkpkp_kawasan, perbup_rpkp, perda_kab_pembangunan, perbup_pembangunan, sk_tkpkp_kab_pembangunan, klasifikasi, tahun_pembentukan, verifikasi');
+            $builder->select('id, nm_kab, nm_kec, nm_des, kd_des, nm_kawasan, kd_kawasan, sk_lokasi_kawasan, sk_tkpkp_kawasan, perbup_rpkp, perda_kab_pembangunan, perbup_pembangunan, sk_tkpkp_kab_pembangunan, klasifikasi, tahun_pembentukan, verifikasi');
             return $builder->getWhere(['kd_wilayah' => $kd_des, 'tahun' => $tahun])->getResultArray();
         }
     }
@@ -67,11 +67,11 @@ class Api_model extends BaseBuilder
     {
         if ($tahun === null) {
             $builder = $this->db->table('sikaperdes_kawasan_bank_data');
-            $builder->select('id, nm_kab, nm_kec, nm_desa, kd_des, nm_kawasan, kd_kawasan, sk_lokasi_kawasan, sk_tkpkp_kawasan, perbup_rpkp, perda_kab_pembangunan, perbup_pembangunan, sk_tkpkp_kab_pembangunan, klasifikasi, tahun_pembentukan, verifikasi');
+            $builder->select('id, nm_kab, nm_kec, nm_des, kd_des, nm_kawasan, kd_kawasan, sk_lokasi_kawasan, sk_tkpkp_kawasan, perbup_rpkp, perda_kab_pembangunan, perbup_pembangunan, sk_tkpkp_kab_pembangunan, klasifikasi, tahun_pembentukan, verifikasi');
             return $builder->get()->getResultArray();
         } else {
             $builder = $this->db->table('sikaperdes_kawasan_bank_data');
-            $builder->select('id, nm_kab, nm_kec, nm_desa, kd_des, nm_kawasan, kd_kawasan, sk_lokasi_kawasan, sk_tkpkp_kawasan, perbup_rpkp, perda_kab_pembangunan, perbup_pembangunan, sk_tkpkp_kab_pembangunan, klasifikasi, tahun_pembentukan, verifikasi');
+            $builder->select('id, nm_kab, nm_kec, nm_des, kd_des, nm_kawasan, kd_kawasan, sk_lokasi_kawasan, sk_tkpkp_kawasan, perbup_rpkp, perda_kab_pembangunan, perbup_pembangunan, sk_tkpkp_kab_pembangunan, klasifikasi, tahun_pembentukan, verifikasi');
             return $builder->getWhere(['tahun' => $tahun])->getResultArray();
         }
     }
