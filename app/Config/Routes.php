@@ -148,11 +148,10 @@ $routes->match(['get', 'post'], '/user/data/load_data_kawasan', 'User\Data::load
 
 // API SIKAPERDES
 $routes->post('/api/auth', 'Api\Auth::index');
-$routes->match(['get', 'post'], '/api/kawasan', 'Api\Kawasan::index');
-// $routes->group('api', ['namespace' => 'App\Controllers\Api'], static function ($routes) {
-//     $routes->resource('Auth');
-//     $routes->resource('Kawasan');
-// });
+// $routes->get('/api/kawasan', 'Api\Kawasan::index');
+$routes->group('api', ['namespace' => 'App\Controllers\Api'], static function ($routes) {
+    $routes->resource('Kawasan');
+});
 
 /*
  * --------------------------------------------------------------------
