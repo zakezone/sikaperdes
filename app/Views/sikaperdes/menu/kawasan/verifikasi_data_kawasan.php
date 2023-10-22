@@ -82,19 +82,19 @@
                                         <div class="col-sm-4">
                                             <div class="grid-example">
                                                 <p>SK LOKASI KAWASAN</p>
-                                                <code><?= $dokumen_sk['sk_lokasi_kawasan']; ?></code>
+                                                <p class="font-size-14"><?= $dokumen_sk['sk_lokasi_kawasan']; ?></p>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
                                             <div class="grid-example mt-2 mt-sm-0">
                                                 <p>SK TKPKP KAWASAN</p>
-                                                <code><?= $dokumen_sk['sk_tkpkp_kawasan']; ?></code>
+                                                <p class="font-size-14"><?= $dokumen_sk['sk_tkpkp_kawasan']; ?></p>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
                                             <div class="grid-example mt-2 mt-sm-0">
                                                 <p>PERBUP RPKP</p>
-                                                <code><?= $dokumen_sk['perbup_rpkp']; ?></code>
+                                                <p class="font-size-14"><?= $dokumen_sk['perbup_rpkp']; ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -108,19 +108,19 @@
                                         <div class="col-sm-4">
                                             <div class="grid-example">
                                                 <p>PERDA KABUPATEN</p>
-                                                <code><?= $dokumen_sk['perda_kab_pembangunan']; ?></code>
+                                                <p class="font-size-14"><?= $dokumen_sk['perda_kab_pembangunan']; ?></p>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
                                             <div class="grid-example mt-2 mt-sm-0">
                                                 <p>PERBUP</p>
-                                                <code><?= $dokumen_sk['perbup_pembangunan']; ?></code>
+                                                <p class="font-size-14"><?= $dokumen_sk['perbup_pembangunan']; ?></p>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
                                             <div class="grid-example mt-2 mt-sm-0">
                                                 <p>SK TKPKP KABUPATEN</p>
-                                                <code><?= $dokumen_sk['sk_tkpkp_kab_pembangunan']; ?></code>
+                                                <p class="font-size-14"><?= $dokumen_sk['sk_tkpkp_kab_pembangunan']; ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -142,54 +142,58 @@
                         <div class="card-body">
                             <div>
                                 <h5 class="font-size-13 mb-2">Keunggulan Kawasan Perdesaan</h5>
-                                <div class="bg-soft-light p-3 text-center">
+                                <div class="bg-soft-light p-3">
                                     <div class="row align-items-center" style="min-height: 6rem;">
                                         <div class="col-sm-4">
                                             <div class="grid-example">
-                                                <p>POTENSI PRODUK</p>
+                                                <p class="text-center">POTENSI PRODUK</p>
                                                 <?php $no = 1; ?>
                                                 <?php if ($potensi_kawasan != "-") : ?>
                                                     <?php foreach ($potensi_kawasan as $pk) : ?>
                                                         <?php if ($pk != '') : ?>
-                                                            <code><?= $no++ . '. ' . $pk; ?></code><br>
+                                                            <p class="font-size-14"><?= $no++ . '. ' . $pk; ?></p>
                                                         <?php endif; ?>
                                                     <?php endforeach; ?>
                                                 <?php else : ?>
-                                                    <code><?= $potensi_kawasan; ?></code>
+                                                    <p class="font-size-14"><?= $potensi_kawasan; ?></p>
                                                 <?php endif; ?>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
                                             <div class="grid-example mt-2 mt-sm-0">
-                                                <p>PRODUK UNGGULAN</p>
+                                                <p class="text-center">PRODUK UNGGULAN</p>
                                                 <?php $no = 1; ?>
                                                 <?php if ($produk_unggulan != "-") : ?>
                                                     <?php foreach ($produk_unggulan as $pu) : ?>
                                                         <?php if ($pu == '-') : ?>
-                                                            <code>-</code>
+                                                            <code>
+                                                                <center>-</center>
+                                                            </code>
                                                         <?php elseif ($pu != '') : ?>
-                                                            <code><?= $no++ . '. ' . $pu; ?></code><br>
+                                                            <p class="font-size-14"><?= $no++ . '. ' . $pu; ?></p>
                                                         <?php endif; ?>
                                                     <?php endforeach; ?>
                                                 <?php else : ?>
-                                                    <code><?= $produk_unggulan; ?></code>
+                                                    <p class="font-size-14"><?= $produk_unggulan; ?></p>
                                                 <?php endif; ?>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
                                             <div class="grid-example mt-2 mt-sm-0">
-                                                <p>POTENSI KERJASAMA</p>
+                                                <p class="text-center">POTENSI KERJASAMA</p>
                                                 <?php $no = 1; ?>
                                                 <?php if ($potensi_kerjasama_pihak3 != "-") : ?>
                                                     <?php foreach ($potensi_kerjasama_pihak3 as $pks) : ?>
                                                         <?php if ($pks == '-') : ?>
-                                                            <code>-</code>
+                                                            <code>
+                                                                <center>-</center>
+                                                            </code>
                                                         <?php elseif ($pks != '') : ?>
-                                                            <code><?= $no++ . '. ' . $pks; ?></code><br>
+                                                            <p class="font-size-14"><?= $no++ . '. ' . $pks; ?></p>
                                                         <?php endif; ?>
                                                     <?php endforeach; ?>
                                                 <?php else : ?>
-                                                    <code><?= $potensi_kerjasama_pihak3; ?></code>
+                                                    <p class="font-size-14"><?= $potensi_kerjasama_pihak3; ?></p>
                                                 <?php endif; ?>
                                             </div>
                                         </div>
@@ -198,31 +202,31 @@
                             </div>
 
                             <div class="mt-4">
-                                <h5 class="font-size-13 mb-2">Gambar produk unggulan dan peta delimitasi Kawasan Perdesaan</h5>
+                                <h5 class="font-size-13 mb-2">Gambar produk unggulan dan peta deliniasi Kawasan Perdesaan</h5>
                                 <div class="bg-soft-light p-3 text-center">
                                     <div class="row align-items-center" style="min-height: 6rem;">
                                         <div class="col-sm-4">
                                             <div class="grid-example">
-                                                <p>GAMBAR PRODUK UNGGULAN</p>
+                                                <p>GAMBAR PRODUK</p>
                                                 <?php $no = 1; ?>
                                                 <?php if ($img_produk_unggulan != "-") : ?>
                                                     <?php foreach ($img_produk_unggulan as $ipu) : ?>
                                                         <?php if ($ipu != '') : ?>
-                                                            <code><?= $no++ . '. '; ?><img src="/img/uploadfile/produk_unggulan/<?= $ipu; ?>" alt="" width="100"><br></code><br>
+                                                            <p class="font-size-14"><?= $no++ . '. '; ?><img src="/img/uploadfile/produk_unggulan/<?= $ipu; ?>" alt="" width="100"><br></p>
                                                         <?php endif; ?>
                                                     <?php endforeach; ?>
                                                 <?php else : ?>
-                                                    <code><?= $img_produk_unggulan; ?></code>
+                                                    <p class="font-size-14"><?= $img_produk_unggulan; ?></p>
                                                 <?php endif; ?>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
                                             <div class="grid-example mt-2 mt-sm-0">
-                                                <p>GAMBAR PETA DELIMITASI</p>
+                                                <p>GAMBAR PETA DELINIASI</p>
                                                 <?php if ($dokumen['img_peta_delimitasi'] == "-") : ?>
                                                     <code>-</code>
                                                 <?php else : ?>
-                                                    <code><img src="/img/uploadfile/peta_delimitasi/<?= $dokumen['img_peta_delimitasi']; ?>" alt="" width="200"></code>
+                                                    <p class="font-size-14"><img src="/img/uploadfile/peta_delimitasi/<?= $dokumen['img_peta_delimitasi']; ?>" alt="" width="200"></p>
                                                 <?php endif; ?>
                                             </div>
                                         </div>
@@ -232,7 +236,7 @@
                                                 <?php if ($dokumen['keterangan'] == null) : ?>
                                                     <code>-</code>
                                                 <?php else : ?>
-                                                    <code><?= $dokumen['keterangan']; ?></code>
+                                                    <p class="font-size-14"><?= $dokumen['keterangan']; ?></p>
                                                 <?php endif; ?>
                                             </div>
                                         </div>

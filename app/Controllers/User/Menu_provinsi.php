@@ -58,8 +58,8 @@ class Menu_provinsi extends BaseController
         $data = array();
         $no = $start;
         foreach ($listing as $key) {
-            $jumlahdesa = $this->Menu_provinsi_kawasan->getJmlDesa($row[] = $key['nm_kawasan']);
-            $jumlahkec = $this->Menu_provinsi_kawasan->getJmlKec($row[] = $key['nm_kawasan']);
+            $jumlahdesa = $this->Menu_provinsi_kawasan->getJmlDesa($row[] = $key['nm_kawasan'], $row[] = $key['kd_kawasan']);
+            $jumlahkec = $this->Menu_provinsi_kawasan->getJmlKec($row[] = $key['nm_kawasan'], $row[] = $key['kd_kawasan']);
             $no++;
             $row = array();
             $row[] = $no;

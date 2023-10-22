@@ -25,7 +25,7 @@ $routes->set404Override();
 // where controller filters or CSRF protection are bypassed.
 // If you don't want to define all routes, please use the Auto Routing (Improved).
 // Set `$autoRoutesImproved` to true in `app/Config/Feature.php` and set the following to true.
-// $routes->setAutoRoute(false);
+$routes->setAutoRoute(false);
 
 /*
  * --------------------------------------------------------------------
@@ -145,6 +145,15 @@ $routes->get('/user/pemdes', 'User\Pemdes::dashboard', ['filter' => 'authusersie
 $routes->match(['get', 'post'], '/user/data/verifikasi_review/(:any)/(:any)', 'User\Data::verifikasireview/$1/$2', ['filter' => 'authusersie']);
 $routes->get('/user/data/kawasan', 'User\Data::verifikasi_data_kawasan', ['filter' => 'authusersie']);
 $routes->match(['get', 'post'], '/user/data/load_data_kawasan', 'User\Data::load_data_kawasan', ['filter' => 'authusersie']);
+
+// API SIKAPERDES
+$routes->post('/api/auth', 'Api\Auth::index');
+$routes->get('/api/kawasan', 'Api\Kawasan::index');
+// $routes->group('api', ['namespace' => 'App\Controllers\Api'], static function ($routes) {
+//     $routes->resource('Auth');
+//     $routes->resource('Kawasan');
+// });
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

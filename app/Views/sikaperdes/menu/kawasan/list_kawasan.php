@@ -46,7 +46,7 @@
                     <div class="table-responsive">
                         <?= session()->getFlashdata('message'); ?>
                         <div class="table-responsive mt-4 mb-4">
-                            <table class="table align-middle datatable dt-responsive table-check nowrap" style="border-collapse: collapse; border-spacing: 0 8px; width: 100%;" id="datatable">
+                            <table class="table align-middle datatable dt-responsive table-check nowrap text-center" style="border-collapse: collapse; border-spacing: 0 8px; width: 100%;" id="datatable">
                                 <thead>
                                     <tr>
                                         <th scope="col">ID</th>

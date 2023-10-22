@@ -654,8 +654,8 @@
                 },
                 "columnDefs": [{
                     searchable: false,
-                    orderable: true,
-                    targets: [0, 2, 3, 4, 5, 6, 7],
+                    orderable: false,
+                    targets: [6, 7],
                     className: "text-center",
                 }],
                 bDestroy: true,
@@ -701,8 +701,8 @@
                 },
                 "columnDefs": [{
                     searchable: false,
-                    orderable: true,
-                    targets: [0, 2, 3, 4, 5, 6, 7],
+                    orderable: false,
+                    targets: [6, 7],
                     className: "text-center",
                 }],
                 bDestroy: true,
@@ -817,7 +817,7 @@
                 },
                 "columnDefs": [{
                     searchable: false,
-                    orderable: true,
+                    orderable: false,
                     targets: [3],
                     className: "text-center",
                 }],
@@ -860,7 +860,7 @@
                 },
                 "columnDefs": [{
                     searchable: false,
-                    orderable: true,
+                    orderable: false,
                     targets: [3],
                     className: "text-center",
                 }],
@@ -868,6 +868,39 @@
             });
         }
     </script>
+    <?php if ($session->get('role_id_sikaperdes') == '1') : ?>
+        <script src="<?= base_url('minia/libs/sweetalert2/sweetalert2.min.js'); ?>"></script>
+        <script>
+            $(document).on('click', '#sa-delete', function(e) {
+                var kd_kab = $(this).data('kdkab');
+                var kd_kawasan = $(this).data('kdkawasan');
+
+                Swal.fire({
+                        title: 'Apakah Anda yakin?',
+                        text: "Data Kawasan terpilih akan dihapus!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Yes, hapus!',
+                        cancelButtonText: 'No, batalkan!',
+                        confirmButtonClass: 'btn btn-success mt-2',
+                        cancelButtonClass: 'btn btn-danger ms-2 mt-2',
+                        buttonsStyling: false
+                    })
+                    .then((result) => {
+                        if (result.value) {
+                            window.location = '<?= base_url('user/menu-admin/delete_daftar_kawasan') ?>' + '/' + kd_kab + '/' + kd_kawasan
+                        } else if (result.dismiss === 'cancel') {
+                            Swal.fire(
+                                'Cancelled',
+                                'Data Kawasan tidak jadi dihapus :)',
+                                'error',
+                                '#5156be',
+                            )
+                        }
+                    })
+            });
+        </script>
+    <?php endif; ?>
 
 <?php elseif ($request->uri->getSegment(2) == "menu-admin" && $request->uri->getSegment(3) == "jenis_klasifikasi_list") : ?>
     <script src="<?= base_url('minia/libs/choices.js/public/assets/scripts/select2.js') ?>"></script>
@@ -904,7 +937,7 @@
                 },
                 "columnDefs": [{
                     searchable: false,
-                    orderable: true,
+                    orderable: false,
                     targets: [2],
                     className: "text-center",
                 }],
@@ -1224,69 +1257,56 @@
             })
         });
 
-        Highcharts.chart('klasifikasi_kawasan', {
+        Highcharts.chart('agregat_tahun_pembentukan_desa', {
             chart: {
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false,
                 backgroundColor: 'rgba(0,0,0,0)',
-                type: 'pie'
+                type: 'column',
+                options3d: {
+                    enabled: true,
+                    alpha: 10,
+                    beta: 25,
+                    depth: 70
+                }
             },
             title: {
-                text: 'BERDASARKAN TEMA KAWASAN'
+                text: 'BERDASARKAN TAHUN PEMBENTUKAN'
             },
             subtitle: {
-                text: 'Tahun <?= date('Y'); ?>'
+                text: 'Agregat Tahunan Total Desa'
             },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.y:,.0f}</b>'
+            xAxis: {
+                categories: [
+                    <?php for ($tahun = 2016; $tahun <= date('Y'); $tahun++) : ?>
+                        <?= $tahun; ?>,
+                    <?php endfor; ?>
+                ]
             },
-            accessibility: {
-                point: {
-                    valueSuffix: ''
-                }
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: true,
-                        format: '<b>{point.name}</b>: {point.y:,.0f}',
-                        connectorColor: 'silver'
+            yAxis: {
+                title: {
+                    text: 'Total Desa'
+                },
+                labels: {
+                    formatter: function() {
+                        return Highcharts.numberFormat(Math.abs(this.value), 0);
                     }
-                }
+                },
             },
             credits: {
                 enabled: false
             },
             series: [{
-                name: 'Total',
-                data: [{
-                        name: 'PERTANIAN TANAMAN PANGAN',
-                        y: <?= $klasifikasi_ptp ?>
-                    },
-                    {
-                        name: 'WISATA',
-                        y: <?= $klasifikasi_wisata ?>
-                    },
-                    {
-                        name: 'PERKEBUNAN',
-                        y: <?= $klasifikasi_perkebunan ?>
-                    },
-                    {
-                        name: 'PERIKANAN',
-                        y: <?= $klasifikasi_perikanan ?>
-                    },
-                    {
-                        name: 'PETERNAKAN',
-                        y: <?= $klasifikasi_peternakan ?>
-                    },
-                    {
-                        name: 'INDUSTRI RUMAHAN',
-                        y: <?= $klasifikasi_peternakan ?>
-                    },
-                ]
+                name: 'Total Desa',
+                type: 'column',
+                data: [<?= $agregat_ds2016 != 0 ? $agregat_ds2016 : 0 ?>, <?= $agregat_ds2017 != 0 ? $agregat_ds2017 : 0 ?>, <?= $agregat_ds2018 != 0 ? $agregat_ds2018 : 0 ?>, <?= $agregat_ds2019 != 0 ? $agregat_ds2019 : 0 ?>, <?= $agregat_ds2020 != 0 ? $agregat_ds2020 : 0 ?>, <?= $agregat_ds2021 != 0 ? $agregat_ds2021 : 0 ?>, <?= $agregat_ds2022 != 0 ? $agregat_ds2022 : 0 ?>, <?= $agregat_ds2023 != 0 ? $agregat_ds2023 : null ?>, <?= $agregat_ds2024 != 0 ? $agregat_ds2024 : null ?>, <?= $agregat_ds2025 != 0 ? $agregat_ds2025 : null ?>],
+                // zones: [{
+                //     value: 11,
+                //     color: '#8a1115'
+                // }],
+                showInLegend: false,
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.y:,.0f}'
+                },
             }]
         });
 
@@ -1305,7 +1325,7 @@
                 text: 'BERDASARKAN TAHUN PEMBENTUKAN'
             },
             subtitle: {
-                text: 'Agregat Tahunan'
+                text: 'Agregat Tahunan Total Kawasan'
             },
             xAxis: {
                 categories: [
@@ -1332,7 +1352,7 @@
                 type: 'column',
                 data: [<?= $agregat_kp2016 != 0 ? $agregat_kp2016 : 0 ?>, <?= $agregat_kp2017 != 0 ? $agregat_kp2017 : 0 ?>, <?= $agregat_kp2018 != 0 ? $agregat_kp2018 : 0 ?>, <?= $agregat_kp2019 != 0 ? $agregat_kp2019 : 0 ?>, <?= $agregat_kp2020 != 0 ? $agregat_kp2020 : 0 ?>, <?= $agregat_kp2021 != 0 ? $agregat_kp2021 : 0 ?>, <?= $agregat_kp2022 != 0 ? $agregat_kp2022 : 0 ?>, <?= $agregat_kp2023 != 0 ? $agregat_kp2023 : null ?>, <?= $agregat_kp2024 != 0 ? $agregat_kp2024 : null ?>, <?= $agregat_kp2025 != 0 ? $agregat_kp2025 : null ?>],
                 zones: [{
-                    value: 2,
+                    value: 25,
                     color: '#8a1115'
                 }],
                 showInLegend: false,
@@ -1352,7 +1372,7 @@
                 text: 'BERDASARKAN REGULASI TK KAWASAN'
             },
             subtitle: {
-                text: 'Tahun <?= date('Y'); ?>'
+                text: 'Pertahun <?= date('Y'); ?>'
             },
             xAxis: {
                 categories: ['SK Lokasi Kawasan', 'SK TKPKP Kawasan', 'PERBUB RPKP'],
@@ -1409,7 +1429,7 @@
                 text: 'BERDASARKAN REGULASI TK KABUPATEN'
             },
             subtitle: {
-                text: 'Tahun <?= date('Y'); ?>'
+                text: 'Pertahun <?= date('Y'); ?>'
             },
             xAxis: {
                 categories: ['SK TKPKP Kabupaten', 'PERBUP PKP', 'PERDA PKP'],
@@ -1455,6 +1475,72 @@
             }]
         });
 
+        Highcharts.chart('klasifikasi_kawasan', {
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                backgroundColor: 'rgba(0,0,0,0)',
+                type: 'pie'
+            },
+            title: {
+                text: 'BERDASARKAN TEMA KAWASAN'
+            },
+            subtitle: {
+                text: 'Pertahun <?= date('Y'); ?>'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.y:,.0f}</b>'
+            },
+            accessibility: {
+                point: {
+                    valueSuffix: ''
+                }
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.y:,.0f}',
+                        connectorColor: 'silver'
+                    }
+                }
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: 'Total',
+                data: [{
+                        name: 'PERTANIAN TANAMAN PANGAN',
+                        y: <?= $klasifikasi_ptp ?>
+                    },
+                    {
+                        name: 'WISATA',
+                        y: <?= $klasifikasi_wisata ?>
+                    },
+                    {
+                        name: 'PERKEBUNAN',
+                        y: <?= $klasifikasi_perkebunan ?>
+                    },
+                    {
+                        name: 'PERIKANAN',
+                        y: <?= $klasifikasi_perikanan ?>
+                    },
+                    {
+                        name: 'PETERNAKAN',
+                        y: <?= $klasifikasi_peternakan ?>
+                    },
+                    {
+                        name: 'INDUSTRI RUMAHAN',
+                        y: <?= $klasifikasi_peternakan ?>
+                    },
+                ]
+            }]
+        });
+
         Highcharts.chart('regulasi_tk_kawasan_perkabupaten', {
             chart: {
                 backgroundColor: 'rgba(0,0,0,0)'
@@ -1463,7 +1549,7 @@
                 text: 'BERDASARKAN JUMLAH KAWASAN PERKABUPATEN'
             },
             subtitle: {
-                text: 'Tahun <?= date('Y'); ?>'
+                text: 'Pertahun <?= date('Y'); ?>'
             },
             xAxis: {
                 categories: ['Cilacap', 'Banyumas', 'Purbalingga', 'Banjarnegara', 'Kebumen', 'Purworejo', 'Wonosobo', 'Magelang', 'Boyolali', 'Klaten', 'Sukoharjo', 'Wonogiri', 'Karanganyar', 'Sragen', 'Grobogan', 'Blora', 'Rembang', 'Pati', 'Kudus', 'Jepara', 'Demak', 'Semarang', 'Temanggung', 'Kendal', 'Batang', 'Pekalongan', 'Pemalang', 'Tegal', 'Brebes']
@@ -1492,6 +1578,7 @@
                 // },
             }, {
                 name: 'Jumlah KP',
+                color: '#cc9e06',
                 type: 'column',
                 data: [<?= $kp_cilacap ?>, <?= $kp_banyumas ?>, <?= $kp_purbalingga ?>, <?= $kp_banjarnegara ?>, <?= $kp_kebumen ?>, <?= $kp_purworejo ?>, <?= $kp_wonosobo ?>, <?= $kp_magelang ?>, <?= $kp_boyolali ?>, <?= $kp_klaten ?>, <?= $kp_sukoharjo ?>, <?= $kp_wonogiri ?>, <?= $kp_karanganyar ?>, <?= $kp_sragen ?>, <?= $kp_grobogan ?>, <?= $kp_blora ?>, <?= $kp_rembang ?>, <?= $kp_pati ?>, <?= $kp_kudus ?>, <?= $kp_jepara ?>, <?= $kp_demak ?>, <?= $kp_semarang ?>, <?= $kp_temanggung ?>, <?= $kp_kendal ?>, <?= $kp_batang ?>, <?= $kp_pekalongan ?>, <?= $kp_pemalang ?>, <?= $kp_tegal ?>, <?= $kp_brebes ?>],
                 showInLegend: true,

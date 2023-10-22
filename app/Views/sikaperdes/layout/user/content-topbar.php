@@ -7,21 +7,19 @@
             <div class="navbar-brand-box">
                 <a href="#" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="<?= base_url('img/thumbnail/fav.ico'); ?>" alt="" height="30">
+                        <img src="<?= base_url('img/thumbnail/logosikaperdes.jpeg'); ?>" alt="" height="20">
                     </span>
                     <span class="logo-lg">
-                        <img src="<?= base_url('img/thumbnail/fav.ico'); ?>" alt="" height="50">
-                        <span class="logo-txt">SI - KA - PERDES</span>
+                        <img src="<?= base_url('img/thumbnail/logosikaperdes.jpeg'); ?>" alt="" height="80">
                     </span>
                 </a>
 
                 <a href="#" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="<?= base_url('img/thumbnail/fav.ico'); ?>" alt="" height="30">
+                        <img src="<?= base_url('img/thumbnail/logosikaperdes.jpeg'); ?>" alt="" height="20">
                     </span>
                     <span class="logo-lg">
-                        <img src="<?= base_url('img/thumbnail/fav.ico'); ?>" alt="" height="50">
-                        <span class="logo-txt">SI - KA - PERDES</span>
+                        <img src="<?= base_url('img/thumbnail/logosikaperdes.jpeg'); ?>" alt="" height="80">
                     </span>
                 </a>
             </div>

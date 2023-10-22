@@ -35,7 +35,7 @@
                     <div class="media">
                         <div class="media-body text-center">
                             <figure class="highcharts-figure">
-                                <div id="klasifikasi_kawasan"></div>
+                                <div id="agregat_tahun_pembentukan_desa"></div>
                             </figure>
                         </div>
                     </div>
@@ -66,6 +66,18 @@
                         <div class="media-body text-center">
                             <figure class="highcharts-figure">
                                 <div id="regulasi_tk_kabupaten"></div>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="margin-bottom:45px;">
+                <div class="col-md-12 col-lg-12 text-center">
+                    <div class="media">
+                        <div class="media-body text-center">
+                            <figure class="highcharts-figure">
+                                <div id="klasifikasi_kawasan"></div>
                             </figure>
                         </div>
                     </div>

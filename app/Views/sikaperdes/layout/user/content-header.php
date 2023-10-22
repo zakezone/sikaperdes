@@ -14,7 +14,7 @@
     <link href="<?= base_url('minia/libs/sweetalert2/sweetalert2.min.css') ?>" rel="stylesheet" type="text/css" />
 
     <?php if ($request->uri->getSegment(3) === "dashboard") : ?>
-        <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/highchart/css/dashboard.css">
+        <link rel="stylesheet" type="text/css" href="<?= base_url('highchart/css/dashboard.css'); ?>">
 
     <?php elseif ($request->uri->getSegment(3) === "role_edit") : ?>
         <link href="<?= base_url('minia/libs/choices.js/public/assets/styles/choices.min.css') ?>" rel="stylesheet" type="text/css" />
