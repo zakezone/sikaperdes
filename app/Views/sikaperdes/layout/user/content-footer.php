@@ -1464,12 +1464,12 @@
             },
             series: [{
                 name: 'Sudah',
-                data: [<?= $perda_kab_pembangunan ?>, <?= $perbup_pembangunan ?>, <?= $sk_tkpkp_kab_pembangunan ?>],
+                data: [<?= $sk_tkpkp_kab_pembangunan ?>, <?= $perbup_pembangunan ?>, <?= $perda_kab_pembangunan ?>],
 
                 showInLegend: true,
             }, {
                 name: 'Belum',
-                data: [<?= $perda_kab_pembangunan_belum ?>, <?= $perbup_pembangunan_belum ?>, <?= $sk_tkpkp_kab_pembangunan_belum ?>],
+                data: [<?= $sk_tkpkp_kab_pembangunan_belum ?>, <?= $perbup_pembangunan_belum ?>, <?= $perda_kab_pembangunan_belum ?>],
 
                 showInLegend: true,
             }]

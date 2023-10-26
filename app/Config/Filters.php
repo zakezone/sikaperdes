@@ -79,6 +79,8 @@ class Filters extends BaseConfig
     public $filters = [
         'otentikasi' => [
             'before' => [
+                'Api/Kawasan_/*',
+                'Api/Kawasan_',
                 'Api/Kawasan/*',
                 'Api/Kawasan',
             ]
