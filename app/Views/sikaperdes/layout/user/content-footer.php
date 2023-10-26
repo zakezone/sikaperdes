@@ -1535,7 +1535,7 @@
                     },
                     {
                         name: 'INDUSTRI RUMAHAN',
-                        y: <?= $klasifikasi_peternakan ?>
+                        y: <?= $klasifikasi_ir ?>
                     },
                 ]
             }]
