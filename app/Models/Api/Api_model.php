@@ -91,7 +91,7 @@ class Api_model extends BaseBuilder
     {
         if ($data != null) {
             $builder = $this->db->table('sikaperdes_kawasan_bank_data');
-            $builder->select('tahun_pembentukan, COUNT(DISTINCT nm_kawasan) total_kawasan');
+            $builder->select('tahun_pembentukan, COUNT(DISTINCT kd_kab, kd_kawasan) total_kawasan');
             $builder->where('nm_kawasan !=', NULL);
             $builder->groupBy('tahun_pembentukan');
             return $builder->get()->getResultArray();
